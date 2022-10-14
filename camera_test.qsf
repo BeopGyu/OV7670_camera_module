@@ -47,7 +47,6 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
-set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
@@ -94,16 +93,6 @@ set_location_assignment PIN_B10 -to vga_blue[0]
 set_location_assignment PIN_A10 -to vga_blue[1]
 set_location_assignment PIN_C11 -to vga_blue[2]
 set_location_assignment PIN_B11 -to vga_blue[3]
-set_global_assignment -name VERILOG_FILE RGB.v
-set_global_assignment -name VERILOG_FILE CNT_BLANK_SYNC.v
-set_global_assignment -name VERILOG_FILE debounce.v
-set_global_assignment -name VERILOG_FILE vga.v
-set_global_assignment -name VERILOG_FILE ov7670_registers_verilog.v
-set_global_assignment -name VERILOG_FILE ov7670_controller_verilog.v
-set_global_assignment -name VERILOG_FILE ov7670_capture_verilog.v
-set_global_assignment -name VERILOG_FILE i2c_sender_verilog.v
-set_global_assignment -name VERILOG_FILE camera_test.v
-set_global_assignment -name QIP_FILE sclk.qip
 set_location_assignment PIN_A12 -to vga_clk
 set_location_assignment PIN_C9 -to vga_green[7]
 set_location_assignment PIN_F10 -to vga_green[6]
@@ -121,4 +110,13 @@ set_location_assignment PIN_C10 -to SYNC
 set_location_assignment PIN_F11 -to BLANK
 set_location_assignment PIN_R24 -to rst
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VERILOG_FILE SCCB_interface.v
+set_global_assignment -name VERILOG_FILE camera_interface.v
+set_global_assignment -name VERILOG_FILE RGB.v
+set_global_assignment -name VERILOG_FILE CNT_BLANK_SYNC.v
+set_global_assignment -name VERILOG_FILE debounce.v
+set_global_assignment -name VERILOG_FILE vga.v
+set_global_assignment -name VERILOG_FILE ov7670_capture_verilog.v
+set_global_assignment -name VERILOG_FILE camera_test.v
+set_global_assignment -name QIP_FILE sclk.qip
 set_global_assignment -name QIP_FILE sccb_clk.qip

@@ -76,14 +76,15 @@ module camera_test(
 	sclk sclk(.inclk0(clk50), .c0(clk25));
 	sccb_clk sccbclk(.inclk0(clk50), .c0(clk400k));		//400KHz
 	clk_PatGen patclk(.inclk0(clk50), .c0(clk148_5)); // 148.5MHz
-// debounce db1(.clk(clk50),.i(btn),.o(resend));
-// ov7670_controller_verilog con(.clk(clk50),.sioc(OV7670_SIOC),.resend(resend),.config_finished(config_finished),.siod(OV7670_SIOD),.pwdn(OV7670_PWDN),.reset(OV7670_RESET),.xclk(OV7670_XCLK));
-	debounce db1(.clk(clk50),.i(btn),.o(resend));
 	CNT_BLANK_SYNC blank_sync (.clk(clk148_5), .reset(rst), .HCNT(HCNT), .VCNT(VCNT), .BLANK(BLANK), .SYNC(SYNC), .HSYNC(HSYNC), .VSYNC(VSYNC));
+	
+	debounce db1(.clk(clk50),.i(btn),.o(resend));
    vga vg1(.clk25(clk25),.vga_red(vga_red_t),.vga_green(vga_green_t),.vga_blue(vga_blue_t),.vga_hsync(vga_hsync_m),.vga_vsync(vga_vsync_m),.frame_addr(frame_addr),.frame_pixel(frame_pixel));
    frame_buffer fb1(.clka(OV7670_PCLK),.wea(capture_we),.addra(capture_addr),.dina(capture_data),.clkb(clk50),.addrb(frame_addr),.doutb(frame_pixel));
    ov7670_capture_verilog cap1(.pclk(OV7670_PCLK),.vsync(OV7670_VSYNC),.href(OV7670_HREF),.d(OV7670_D),.addr(capture_addr),.dout(capture_data),.we(capture_we));
-   ov7670_controller_verilog con1(.clk(clk50),.sioc(OV7670_SIOC),.resend(resend),.config_finished(config_finished),.siod(OV7670_SIOD),.pwdn(OV7670_PWDN),.reset(OV7670_RESET),.xclk(OV7670_XCLK));
+//   ov7670_controller_verilog con1(.clk(clk50),.sioc(OV7670_SIOC),.resend(resend),.config_finished(config_finished),.siod(OV7670_SIOD),.pwdn(OV7670_PWDN),.reset(OV7670_RESET),.xclk(OV7670_XCLK));
+
+	
     
 assign led_test1 = resend;
 //assign led_test2 = config_finished;
