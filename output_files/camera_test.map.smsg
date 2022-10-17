@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at asyn_fifo.v(59): always construct contains both blocking and non-blocking assignments File: C:/Users/vydus/Desktop/test/test_camera/FPGA_OV7670_Camera_Interface-main/src/asyn_fifo.v Line: 59
+Warning (10268): Verilog HDL information at asyn_fifo.v(92): always construct contains both blocking and non-blocking assignments File: C:/Users/vydus/Desktop/test/test_camera/FPGA_OV7670_Camera_Interface-main/src/asyn_fifo.v Line: 92

@@ -1,0 +1,10 @@
+module camera_test(sw, led);
+
+input sw;
+output led;
+
+wire sw,led;
+
+assign led = sw;
+
+endmodule

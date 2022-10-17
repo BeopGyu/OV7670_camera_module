@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-   module camera_test(
+   module top_module(
 	input wire clk,rst_n,
 	input wire[3:0] key, //key[1:0] for brightness control , key[3:2] for contrast control
 	//camera pinouts
@@ -9,8 +9,7 @@
 	inout cmos_sda,cmos_scl, 
 	output wire cmos_rst_n, cmos_pwdn, cmos_xclk,
 	//Debugging
-	output[3:0] ledt,
-	output ledtt,
+	output[3:0] led, 
 	//controller to sdram
 	output wire sdram_clk,
 	output wire sdram_cke, 
@@ -23,7 +22,7 @@
 	output wire[4:0] vga_out_r,
 	output wire[5:0] vga_out_g,
 	output wire[4:0] vga_out_b,
-	output wire vga_out_vs,vga_out_hs,vga_out_bl,vga_out_sy,clk_out
+	output wire vga_out_vs,vga_out_hs
     );
 	 
 	 wire f2s_data_valid;
@@ -34,14 +33,8 @@
 	 wire clk_vga;
 	 wire state;
 	 wire rd_en;
-	 wire [4:0] t1,t3;
-	 wire [5:0] t2;
-	 assign sdram_clk = clk_sdram;
-	 assign ledtt = vga_out_r[3];
-	 //assign vga_out_r = 5'b0;
-	 //assign vga_out_g = 6'b111111;
-	 //assign vga_out_b = 5'b0;
-	 
+
+
 	camera_interface m0 //control logic for retrieving data from camera, storing data to asyn_fifo, and  sending data to sdram
 	(
 		.clk(clk),
@@ -63,7 +56,7 @@
 		.cmos_pwdn(cmos_pwdn),
 		.cmos_xclk(cmos_xclk),
 		//Debugging
-		.led(ledt)
+		.led(led)
     );
 	 
 	 sdram_interface m1 //control logic for writing the pixel-data from camera to sdram and reading pixel-data from sdram to vga
@@ -104,27 +97,33 @@
 		.vga_out_g(vga_out_g),
 		.vga_out_b(vga_out_b),
 		.vga_out_vs(vga_out_vs),
-		.vga_out_hs(vga_out_hs),
-		.vga_out_bl(vga_out_bl),
-		.vga_out_sy(vga_out_sy)
+		.vga_out_hs(vga_out_hs)
     );
 	 
+	 
+	
+	//ERROR APPEARS IF ODDR2 IS ROUTED INSIDE THE FPGA INSTEAD OF BEING DIRECTLY CONNECTED TO OUTPUT (so we bring this outside)
+	 ODDR2#(.DDR_ALIGNMENT("NONE"), .INIT(1'b0),.SRTYPE("SYNC")) oddr2_primitive
+	 (
+		.D0(1'b0),
+		.D1(1'b1),
+		.C0(clk_sdram),
+		.C1(~clk_sdram),
+		.CE(1'b1),
+		.R(1'b0),
+		.S(1'b0),
+		.Q(sdram_clk)
+	);
 	
 	//SDRAM clock
 	dcm_165MHz m3
    (// Clock in ports
-    .inclk0(clk),      // IN
+    .clk(clk),      // IN
     // Clock out ports
-    .c0(clk_sdram),     // OUT
+    .clk_sdram(clk_sdram),     // OUT
     // Status and control signals
-		);      // OUT
-	dcm_25MHz m4 //clock for vga(620x480 60fps) 
-   (// Clock in ports
-    .inclk0(clk),      // IN
-    // Clock out ports
-    .c0(clk_out),     // OUT
-    // Status and control signals
-    );   
+    .RESET(RESET),// IN
+    .LOCKED(LOCKED));      // OUT
 
 
 endmodule

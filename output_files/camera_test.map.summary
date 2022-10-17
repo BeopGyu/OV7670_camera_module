@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Oct 17 04:23:27 2022
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : camera_test
+Top-level Entity Name : camera_test
+Family : Cyclone IV E
+Total logic elements : 1,326
+    Total combinational functions : 1,196
+    Dedicated logic registers : 633
+Total registers : 633
+Total pins : 87
+Total virtual pins : 0
+Total memory bits : 32,768
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 4

@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE115F29) Path("C:/Users/IDEA/Desktop/camera_module/output_files/") File("camera_test.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE115F29) Path("C:/Users/vydus/Desktop/test/test_camera/output_files/") File("camera_test.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
