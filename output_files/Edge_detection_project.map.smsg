@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at main.v(164): always construct contains both blocking and non-blocking assignments File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 164
+Warning (10268): Verilog HDL information at main.v(233): always construct contains both blocking and non-blocking assignments File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 233

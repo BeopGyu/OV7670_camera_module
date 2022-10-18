@@ -1,0 +1,189 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "VGA_red[0]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_red[1]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_red[2]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_red[3]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_red[4]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_red[5]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_red[6]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_red[7]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_green[2]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_green[3]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_green[4]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blue[0]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blue[1]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blue[2]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blue[3]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blue[4]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blue[5]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blue[6]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blue[7]",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_hsync",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_vsync",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_sync",
+					"strict" : false
+				},
+				{
+					"name" : "VGA_blank",
+					"strict" : false
+				},
+				{
+					"name" : "ledt[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ledt[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ledt[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ledG[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ledG[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ledG[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ledG[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ledG[4]",
+					"strict" : false
+				},
+				{
+					"name" : "ledG[5]",
+					"strict" : false
+				},
+				{
+					"name" : "button",
+					"strict" : false
+				},
+				{
+					"name" : "clk_50",
+					"strict" : false
+				},
+				{
+					"name" : "cam_clock",
+					"strict" : false
+				},
+				{
+					"name" : "cam_data_wires[5]",
+					"strict" : false
+				},
+				{
+					"name" : "cam_href",
+					"strict" : false
+				},
+				{
+					"name" : "cam_data_wires[6]",
+					"strict" : false
+				},
+				{
+					"name" : "cam_data_wires[7]",
+					"strict" : false
+				},
+				{
+					"name" : "cam_data_wires[0]",
+					"strict" : false
+				},
+				{
+					"name" : "cam_data_wires[1]",
+					"strict" : false
+				},
+				{
+					"name" : "cam_data_wires[2]",
+					"strict" : false
+				},
+				{
+					"name" : "cam_vsync",
+					"strict" : false
+				},
+				{
+					"name" : "cam_data_wires[3]",
+					"strict" : false
+				},
+				{
+					"name" : "cam_data_wires[4]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
