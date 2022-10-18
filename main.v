@@ -1,6 +1,10 @@
 module Edge_detection_project(
 	//General
 	input button,									//Button input to select showing the static image or the real-time video
+	input rst_n,
+	output [3:0] led_d,
+	output [1:0] led_err,
+	output [6:0] seg_100, seg_10, seg_1,
 	//VGA I/O
 	output [7:0] VGA_red, VGA_green, VGA_blue,	//VGA colors' channel		
 	output VGA_hsync, VGA_vsync,				//VGA vertical and horziontal synchronization signals
@@ -9,6 +13,8 @@ module Edge_detection_project(
 	input cam_clock,								//(pixel clk pin) Camera's clock that generated from the camera to indicate that pixel is ready to be sent
 	input cam_vsync, cam_href,					//Cameera vertical and horizontal synchronization signals
 	input [7:0] cam_data_wires,				//Camera data wires (d0-d7)
+	output cmos_scl,
+	inout cmos_sda,
 	//Clocks
 	input clk_50,									//Clock 50 MHz input from the board itself
 	output clk_25,									//Clock 25 MHz generated from PLL to be connected to Camera system clock pin
@@ -37,7 +43,7 @@ module Edge_detection_project(
 	//---------------------------Buffer---------------------------
 	// The interface for Buffer module
 	// Buffer port A 150x150x8: Used to store the grayscale frames
-	reg [7:0]data_buffer_in_a = 0;		//Input data for the port A
+	reg [15:0]data_buffer_in_a = 0;		//Input data for the port A
 	reg [14:0] read_addr_a = 0;			// Address of port A for reading
 	reg [14:0] write_addr_a = 0;			// Address of port A for writing
 	reg write_en_a = 0;						// Writing enable flag for port A
@@ -99,6 +105,20 @@ module Edge_detection_project(
 	end
 	assign ledt[2] = cnt2[20];
 	
+	assign led_err[0] = write_en_a ? error_write_a : 1'b0;
+	assign led_err[1] = write_en_b ? error_write_b : 1'b0;
+	
+	
+	wire [3:0] S100, S10, S1;
+	
+	assign S1 = pixel_cam_counterv % 10;
+	assign S10 = (pixel_cam_counterv / 10)%10;
+	assign S100 = pixel_cam_counterv / 100;
+	
+	Seg7 Seg100(.num(S100), .seg(seg_100));
+	Seg7 Seg10(.num(S10), .seg(seg_10));
+	Seg7 Seg1(.num(S1), .seg(seg_1));
+	
 	
 	pll(clk_50, clk_25);		// Instance of pll module
 	
@@ -112,6 +132,18 @@ module Edge_detection_project(
 	.p_data(cam_pixel_data),
 	.f_done(cam_frame_done)
    );
+	
+	
+	camera_interface m0 //control logic for retrieving data from camera, storing data to asyn_fifo, and  sending data to sdram
+	(
+		.clk(clk_25),
+		.rst_n(rst_n),
+		//camera pinouts
+		.cmos_sda(cmos_sda),
+		.cmos_scl(cmos_scl), 
+		//Debugging
+		.led(led_d)
+    );
 	
 	Buffer(						// Instance of Buffer module
 	.d_in_a(data_buffer_in_a),
@@ -130,17 +162,6 @@ module Edge_detection_project(
 	.err_w_b(error_write_b)
 	);
 	
-	core_sobel(					// Instance of core_sobel module
-	.p0(p_sobel[0]),
-	.p1(p_sobel[3]),
-	.p2(p_sobel[6]),
-	.p3(p_sobel[1]),
-	.p5(p_sobel[7]),
-	.p6(p_sobel[2]),
-	.p7(p_sobel[5]),
-	.p8(p_sobel[8]),
-	.out(out_sobel)
-	);
 	
 	VGA(							// Instance of VGA module
 		.clk(clk_50),
@@ -172,59 +193,20 @@ module Edge_detection_project(
 			// 8-bits gray scale converter from RGB5565 format
 			gray_value <= (red_channel_gray >> 2) + (red_channel_gray >> 5)+ (green_channel_gray >> 4) + (green_channel_gray >> 1) + (blue_channel_gray >> 4) + (blue_channel_gray >> 5);
 			
-			data_buffer_in_a <= cam_pixel_data;					//Set the value of grayscale in the register of input data for buffer port A
+//			data_buffer_in_a <= 16'd0;					
+			data_buffer_in_a <= cam_pixel_data;
 
 			// Check if the current pixel in the needed portion of the image or not (150x150)
 			if(pixel_cam_counterv < 'd150 && pixel_cam_counterh < 'd150 )
 			begin
 				// Start writing to the buffer port A
 				write_en_a <= 1;									// Set the Enable to write on the buffer
-				write_addr_a <= pixel_cam_counterv* 15'd150 +pixel_cam_counterh;	// Set the address of the pixel in the buffer
+				write_addr_a <= pixel_cam_counterv * 'd150 +pixel_cam_counterh;	// Set the address of the pixel in the buffer
 			end
+			else write_en_a <= 0;
 			// Increase the Vertical and Horizontal counter by one and check their limits
-			pixel_cam_counterv<= ((pixel_cam_counterh == 9'd639)?((pixel_cam_counterv+10'd1)%10'd480):pixel_cam_counterv);		
-			pixel_cam_counterh<= (pixel_cam_counterh+9'd1)%9'd640;
-		end
-	end
-	
-	// This block is activated at the negative edge of clock of the system(50 MHz)
-	// This block iterate over the frame by 3x3 square to apply the kernel of soble operator
-	always @(negedge clk_50) begin
-		// Check if we took 9 pixels or not yet
-		if (counter_sobel <= 'd8) begin
-			// Setting the address of needed pixel depending on its position in the kernel
-			case (counter_sobel%'d3)
-				0: read_addr_a = i_sobel + j_sobel*'d150;
-				1: read_addr_a = i_sobel + j_sobel*'d150 +'d150;
-				2: 
-				begin
-					read_addr_a = i_sobel + j_sobel*'d150 + 'd300;
-					j_sobel = (i_sobel == 'd149 ? (j_sobel + 'd1) : j_sobel);	// Increase the Vertical counter by one when horizontal counter reached the maximum 149
-					i_sobel = (i_sobel+'d1)%'d150;	// Increase the horizontal counter by one and restarting it again every 150
-				end
-			endcase
-			// Check if it is the middle pixel or not
-			if(counter_sobel == 'd4)
-				target_sobel_addr = read_addr_a;			// Store the middle pixel address to store the output of sobel in it
-			p_sobel[counter_sobel] = outp_a;				// Store the pixel that we recieved to process sobel on it
-			counter_sobel = counter_sobel + 'd1;		// Increase the counter for pixels that we recieved by one
-		end
-		else begin
-			counter_sobel = 0; // Reset the counter pixel's sobel 
-			i_sobel = (i_sobel >= 'd2 ? (i_sobel - 'd2): i_sobel);	// Determine the horizontal position of the next square of the kernel
-			
-			data_buffer_in_b = (out_sobel < 'd70 ? 1'b1:1'b0);		//Applying the threshold value to determine if it less than 70 to store it as 1
-			// Start writing to the buffer port B
-			write_en_b = 1;									// Set the Enable to write on the buffer					
-			write_addr_b= target_sobel_addr;			 	// Set the address of the pixel in the buffer	
-			
-			// Check if we reached the end of applying the soble on the image or not
-			// 	as sobel take 3 lines and 3 columns
-			if(j_sobel == 'd147) 
-			begin
-				i_sobel = 0;
-				j_sobel = 0;
-			end
+			pixel_cam_counterv<= ((pixel_cam_counterh == 'd639)?((pixel_cam_counterv+'d1)%'d480):pixel_cam_counterv);		
+			pixel_cam_counterh<= (pixel_cam_counterh+'d1)%'d640;
 		end
 	end
 	
@@ -250,9 +232,9 @@ module Edge_detection_project(
 			end
 			else
 				begin
-					pixel_VGA_R <= 8'd255;
-					pixel_VGA_G <= 8'd0;
-					pixel_VGA_B <= 8'd255;
+					pixel_VGA_R <= 8'd70;
+					pixel_VGA_G <= 8'd70;
+					pixel_VGA_B <= 8'd70;
 				end
 				//pixel_VGA_RGB <= 8'd0;				//if it is not in our portion of memory it will be black
 		end

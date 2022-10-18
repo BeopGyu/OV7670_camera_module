@@ -102,6 +102,20 @@ set_location_assignment PIN_A11 -to VGA_blue[4]
 set_location_assignment PIN_C12 -to VGA_blue[5]
 set_location_assignment PIN_D11 -to VGA_blue[6]
 set_location_assignment PIN_D12 -to VGA_blue[7]
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_M23 -to rst_n
+set_location_assignment PIN_AG25 -to cmos_scl
+set_location_assignment PIN_AD25 -to cmos_sda
+set_location_assignment PIN_J17 -to led_d[0]
+set_location_assignment PIN_G17 -to led_d[1]
+set_location_assignment PIN_J15 -to led_d[2]
+set_location_assignment PIN_H16 -to led_d[3]
+set_location_assignment PIN_H15 -to led_err[1]
+set_location_assignment PIN_G16 -to led_err[0]
+set_global_assignment -name VERILOG_FILE Seg7.v
+set_global_assignment -name VERILOG_FILE camera_interface.v
+set_global_assignment -name VERILOG_FILE i2c_top.v
 set_global_assignment -name VERILOG_FILE dcm24.v
 set_global_assignment -name VERILOG_FILE main.v
 set_global_assignment -name VERILOG_FILE Buffer.v
@@ -109,6 +123,25 @@ set_global_assignment -name QIP_FILE pll.qip
 set_global_assignment -name VERILOG_FILE VGA.v
 set_global_assignment -name VERILOG_FILE core_sobel.v
 set_global_assignment -name VERILOG_FILE Camera.v
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_G18 -to seg_1[0]
+set_location_assignment PIN_F22 -to seg_1[1]
+set_location_assignment PIN_E17 -to seg_1[2]
+set_location_assignment PIN_L26 -to seg_1[3]
+set_location_assignment PIN_L25 -to seg_1[4]
+set_location_assignment PIN_J22 -to seg_1[5]
+set_location_assignment PIN_H22 -to seg_1[6]
+set_location_assignment PIN_M24 -to seg_10[0]
+set_location_assignment PIN_Y22 -to seg_10[1]
+set_location_assignment PIN_W21 -to seg_10[2]
+set_location_assignment PIN_W22 -to seg_10[3]
+set_location_assignment PIN_W25 -to seg_10[4]
+set_location_assignment PIN_U23 -to seg_10[5]
+set_location_assignment PIN_U24 -to seg_10[6]
+set_location_assignment PIN_AA25 -to seg_100[0]
+set_location_assignment PIN_AA26 -to seg_100[1]
+set_location_assignment PIN_Y25 -to seg_100[2]
+set_location_assignment PIN_W26 -to seg_100[3]
+set_location_assignment PIN_Y26 -to seg_100[4]
+set_location_assignment PIN_W27 -to seg_100[5]
+set_location_assignment PIN_W28 -to seg_100[6]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

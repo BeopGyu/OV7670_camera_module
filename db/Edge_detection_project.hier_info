@@ -43,41 +43,77 @@ button => data_buffer_in_a[4].ENA
 button => data_buffer_in_a[5].ENA
 button => data_buffer_in_a[6].ENA
 button => data_buffer_in_a[7].ENA
+button => data_buffer_in_a[8].ENA
+button => data_buffer_in_a[9].ENA
+button => data_buffer_in_a[10].ENA
+button => data_buffer_in_a[11].ENA
+button => data_buffer_in_a[12].ENA
+button => data_buffer_in_a[13].ENA
+button => data_buffer_in_a[14].ENA
+button => data_buffer_in_a[15].ENA
 button => green_channel_gray[0].ENA
 button => green_channel_gray[1].ENA
 button => green_channel_gray[2].ENA
 button => green_channel_gray[3].ENA
 button => green_channel_gray[4].ENA
 button => green_channel_gray[5].ENA
-VGA_red[0] <= VGA:comb_107.red
-VGA_red[1] <= VGA:comb_107.red
-VGA_red[2] <= VGA:comb_107.red
-VGA_red[3] <= VGA:comb_107.red
-VGA_red[4] <= VGA:comb_107.red
-VGA_red[5] <= VGA:comb_107.red
-VGA_red[6] <= VGA:comb_107.red
-VGA_red[7] <= VGA:comb_107.red
-VGA_green[0] <= VGA:comb_107.green
-VGA_green[1] <= VGA:comb_107.green
-VGA_green[2] <= VGA:comb_107.green
-VGA_green[3] <= VGA:comb_107.green
-VGA_green[4] <= VGA:comb_107.green
-VGA_green[5] <= VGA:comb_107.green
-VGA_green[6] <= VGA:comb_107.green
-VGA_green[7] <= VGA:comb_107.green
-VGA_blue[0] <= VGA:comb_107.blue
-VGA_blue[1] <= VGA:comb_107.blue
-VGA_blue[2] <= VGA:comb_107.blue
-VGA_blue[3] <= VGA:comb_107.blue
-VGA_blue[4] <= VGA:comb_107.blue
-VGA_blue[5] <= VGA:comb_107.blue
-VGA_blue[6] <= VGA:comb_107.blue
-VGA_blue[7] <= VGA:comb_107.blue
-VGA_hsync <= VGA:comb_107.hsync
-VGA_vsync <= VGA:comb_107.vsync
-VGA_clk <= pll:comb_103.port1
+rst_n => rst_n.IN1
+led_d[0] <= camera_interface:m0.led
+led_d[1] <= camera_interface:m0.led
+led_d[2] <= camera_interface:m0.led
+led_d[3] <= camera_interface:m0.led
+led_err[0] <= led_err.DB_MAX_OUTPUT_PORT_TYPE
+led_err[1] <= <GND>
+seg_100[0] <= Seg7:Seg100.seg
+seg_100[1] <= Seg7:Seg100.seg
+seg_100[2] <= Seg7:Seg100.seg
+seg_100[3] <= Seg7:Seg100.seg
+seg_100[4] <= Seg7:Seg100.seg
+seg_100[5] <= Seg7:Seg100.seg
+seg_100[6] <= Seg7:Seg100.seg
+seg_10[0] <= Seg7:Seg10.seg
+seg_10[1] <= Seg7:Seg10.seg
+seg_10[2] <= Seg7:Seg10.seg
+seg_10[3] <= Seg7:Seg10.seg
+seg_10[4] <= Seg7:Seg10.seg
+seg_10[5] <= Seg7:Seg10.seg
+seg_10[6] <= Seg7:Seg10.seg
+seg_1[0] <= Seg7:Seg1.seg
+seg_1[1] <= Seg7:Seg1.seg
+seg_1[2] <= Seg7:Seg1.seg
+seg_1[3] <= Seg7:Seg1.seg
+seg_1[4] <= Seg7:Seg1.seg
+seg_1[5] <= Seg7:Seg1.seg
+seg_1[6] <= Seg7:Seg1.seg
+VGA_red[0] <= VGA:comb_112.red
+VGA_red[1] <= VGA:comb_112.red
+VGA_red[2] <= VGA:comb_112.red
+VGA_red[3] <= VGA:comb_112.red
+VGA_red[4] <= VGA:comb_112.red
+VGA_red[5] <= VGA:comb_112.red
+VGA_red[6] <= VGA:comb_112.red
+VGA_red[7] <= VGA:comb_112.red
+VGA_green[0] <= VGA:comb_112.green
+VGA_green[1] <= VGA:comb_112.green
+VGA_green[2] <= VGA:comb_112.green
+VGA_green[3] <= VGA:comb_112.green
+VGA_green[4] <= VGA:comb_112.green
+VGA_green[5] <= VGA:comb_112.green
+VGA_green[6] <= VGA:comb_112.green
+VGA_green[7] <= VGA:comb_112.green
+VGA_blue[0] <= VGA:comb_112.blue
+VGA_blue[1] <= VGA:comb_112.blue
+VGA_blue[2] <= VGA:comb_112.blue
+VGA_blue[3] <= VGA:comb_112.blue
+VGA_blue[4] <= VGA:comb_112.blue
+VGA_blue[5] <= VGA:comb_112.blue
+VGA_blue[6] <= VGA:comb_112.blue
+VGA_blue[7] <= VGA:comb_112.blue
+VGA_hsync <= VGA:comb_112.hsync
+VGA_vsync <= VGA:comb_112.vsync
+VGA_clk <= clk_25.DB_MAX_OUTPUT_PORT_TYPE
 VGA_sync <= VGA_sync.DB_MAX_OUTPUT_PORT_TYPE
-VGA_blank <= VGA:comb_107.active
+VGA_blank <= VGA:comb_112.active
 cam_clock => cam_clock.IN1
 cam_vsync => cam_vsync.IN1
 cam_href => cam_href.IN1
@@ -89,8 +125,10 @@ cam_data_wires[4] => cam_data_wires[4].IN1
 cam_data_wires[5] => cam_data_wires[5].IN1
 cam_data_wires[6] => cam_data_wires[6].IN1
 cam_data_wires[7] => cam_data_wires[7].IN1
+cmos_scl <= camera_interface:m0.cmos_scl
+cmos_sda <> camera_interface:m0.cmos_sda
 clk_50 => clk_50.IN2
-clk_25 <= pll:comb_103.port1
+clk_25 <= clk_25.DB_MAX_OUTPUT_PORT_TYPE
 ledt[0] <= button.DB_MAX_OUTPUT_PORT_TYPE
 ledt[1] <= cnt[20].DB_MAX_OUTPUT_PORT_TYPE
 ledt[2] <= cnt2[20].DB_MAX_OUTPUT_PORT_TYPE
@@ -103,12 +141,54 @@ ledG[4] <= green_channel_gray[4].DB_MAX_OUTPUT_PORT_TYPE
 ledG[5] <= green_channel_gray[5].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Edge_detection_project|pll:comb_103
+|Edge_detection_project|Seg7:Seg100
+num[0] => Decoder0.IN3
+num[1] => Decoder0.IN2
+num[2] => Decoder0.IN1
+num[3] => Decoder0.IN0
+seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Edge_detection_project|Seg7:Seg10
+num[0] => Decoder0.IN3
+num[1] => Decoder0.IN2
+num[2] => Decoder0.IN1
+num[3] => Decoder0.IN0
+seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Edge_detection_project|Seg7:Seg1
+num[0] => Decoder0.IN3
+num[1] => Decoder0.IN2
+num[2] => Decoder0.IN1
+num[3] => Decoder0.IN0
+seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Edge_detection_project|pll:comb_109
 inclk0 => sub_wire3[0].IN1
 c0 <= altpll:altpll_component.clk
 
 
-|Edge_detection_project|pll:comb_103|altpll:altpll_component
+|Edge_detection_project|pll:comb_109|altpll:altpll_component
 inclk[0] => pll_altpll:auto_generated.inclk[0]
 inclk[1] => pll_altpll:auto_generated.inclk[1]
 fbin => ~NO_FANOUT~
@@ -168,7 +248,7 @@ fref <= <GND>
 icdrclk <= <GND>
 
 
-|Edge_detection_project|pll:comb_103|altpll:altpll_component|pll_altpll:auto_generated
+|Edge_detection_project|pll:comb_109|altpll:altpll_component|pll_altpll:auto_generated
 clk[0] <= pll1.CLK
 clk[1] <= pll1.CLK1
 clk[2] <= pll1.CLK2
@@ -178,7 +258,7 @@ inclk[0] => pll1.CLK
 inclk[1] => pll1.CLK1
 
 
-|Edge_detection_project|Camera:comb_104
+|Edge_detection_project|Camera:comb_110
 clock => p_data[0]~reg0.CLK
 clock => p_data[1]~reg0.CLK
 clock => p_data[2]~reg0.CLK
@@ -255,7 +335,159 @@ p_data[15] <= p_data[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 f_done <= f_done~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Edge_detection_project|Buffer:comb_105
+|Edge_detection_project|camera_interface:m0
+clk => clk.IN1
+rst_n => rst_n.IN1
+cmos_sda <> i2c_top:m0.sda
+cmos_scl <> i2c_top:m0.scl
+led[0] <= led_q[0].DB_MAX_OUTPUT_PORT_TYPE
+led[1] <= led_q[1].DB_MAX_OUTPUT_PORT_TYPE
+led[2] <= led_q[2].DB_MAX_OUTPUT_PORT_TYPE
+led[3] <= led_q[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Edge_detection_project|camera_interface:m0|i2c_top:m0
+clk => rd_data_q[0].CLK
+clk => rd_data_q[1].CLK
+clk => rd_data_q[2].CLK
+clk => rd_data_q[3].CLK
+clk => rd_data_q[4].CLK
+clk => rd_data_q[5].CLK
+clk => rd_data_q[6].CLK
+clk => rd_data_q[7].CLK
+clk => counter_q[0].CLK
+clk => counter_q[1].CLK
+clk => counter_q[2].CLK
+clk => counter_q[3].CLK
+clk => counter_q[4].CLK
+clk => counter_q[5].CLK
+clk => counter_q[6].CLK
+clk => sda_q.CLK
+clk => scl_q.CLK
+clk => wr_data_q[0].CLK
+clk => wr_data_q[1].CLK
+clk => wr_data_q[2].CLK
+clk => wr_data_q[3].CLK
+clk => wr_data_q[4].CLK
+clk => wr_data_q[5].CLK
+clk => wr_data_q[6].CLK
+clk => wr_data_q[7].CLK
+clk => wr_data_q[8].CLK
+clk => idx_q[0].CLK
+clk => idx_q[1].CLK
+clk => idx_q[2].CLK
+clk => idx_q[3].CLK
+clk => start_q.CLK
+clk => state_q~1.DATAIN
+rst_n => rd_data_q[0].ACLR
+rst_n => rd_data_q[1].ACLR
+rst_n => rd_data_q[2].ACLR
+rst_n => rd_data_q[3].ACLR
+rst_n => rd_data_q[4].ACLR
+rst_n => rd_data_q[5].ACLR
+rst_n => rd_data_q[6].ACLR
+rst_n => rd_data_q[7].ACLR
+rst_n => counter_q[0].ACLR
+rst_n => counter_q[1].ACLR
+rst_n => counter_q[2].ACLR
+rst_n => counter_q[3].ACLR
+rst_n => counter_q[4].ACLR
+rst_n => counter_q[5].ACLR
+rst_n => counter_q[6].ACLR
+rst_n => sda_q.ACLR
+rst_n => scl_q.ACLR
+rst_n => wr_data_q[0].ACLR
+rst_n => wr_data_q[1].ACLR
+rst_n => wr_data_q[2].ACLR
+rst_n => wr_data_q[3].ACLR
+rst_n => wr_data_q[4].ACLR
+rst_n => wr_data_q[5].ACLR
+rst_n => wr_data_q[6].ACLR
+rst_n => wr_data_q[7].ACLR
+rst_n => wr_data_q[8].ACLR
+rst_n => idx_q[0].ACLR
+rst_n => idx_q[1].ACLR
+rst_n => idx_q[2].ACLR
+rst_n => idx_q[3].ACLR
+rst_n => start_q.ACLR
+rst_n => state_q~3.DATAIN
+start => wr_data_d.OUTPUTSELECT
+start => wr_data_d.OUTPUTSELECT
+start => wr_data_d.OUTPUTSELECT
+start => wr_data_d.OUTPUTSELECT
+start => wr_data_d.OUTPUTSELECT
+start => wr_data_d.OUTPUTSELECT
+start => wr_data_d.OUTPUTSELECT
+start => wr_data_d.OUTPUTSELECT
+start => wr_data_d.OUTPUTSELECT
+start => start_d.OUTPUTSELECT
+start => idx_d.OUTPUTSELECT
+start => idx_d.OUTPUTSELECT
+start => idx_d.OUTPUTSELECT
+start => idx_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => state_d.OUTPUTSELECT
+start => start_d.DATAA
+start => start_d.DATAB
+start => start_d.OUTPUTSELECT
+start => state_d.DATAA
+start => state_d.DATAA
+stop => state_d.OUTPUTSELECT
+stop => state_d.OUTPUTSELECT
+stop => start_d.OUTPUTSELECT
+stop => idx_d.OUTPUTSELECT
+stop => idx_d.OUTPUTSELECT
+stop => idx_d.OUTPUTSELECT
+stop => idx_d.OUTPUTSELECT
+stop => state_d.OUTPUTSELECT
+stop => state_d.OUTPUTSELECT
+stop => start_d.OUTPUTSELECT
+stop => state_d.DATAB
+stop => state_d.DATAB
+wr_data[0] => wr_data_d.DATAB
+wr_data[0] => wr_data_d.DATAB
+wr_data[0] => start_d.DATAB
+wr_data[1] => wr_data_d.DATAB
+wr_data[1] => wr_data_d.DATAB
+wr_data[2] => wr_data_d.DATAB
+wr_data[2] => wr_data_d.DATAB
+wr_data[3] => wr_data_d.DATAB
+wr_data[3] => wr_data_d.DATAB
+wr_data[4] => wr_data_d.DATAB
+wr_data[4] => wr_data_d.DATAB
+wr_data[5] => wr_data_d.DATAB
+wr_data[5] => wr_data_d.DATAB
+wr_data[6] => wr_data_d.DATAB
+wr_data[6] => wr_data_d.DATAB
+wr_data[7] => wr_data_d.DATAB
+wr_data[7] => wr_data_d.DATAB
+rd_tick <= rd_tick.DB_MAX_OUTPUT_PORT_TYPE
+ack[0] <= ack.DB_MAX_OUTPUT_PORT_TYPE
+ack[1] <= Selector1.DB_MAX_OUTPUT_PORT_TYPE
+rd_data[0] <= rd_data_q[0].DB_MAX_OUTPUT_PORT_TYPE
+rd_data[1] <= rd_data_q[1].DB_MAX_OUTPUT_PORT_TYPE
+rd_data[2] <= rd_data_q[2].DB_MAX_OUTPUT_PORT_TYPE
+rd_data[3] <= rd_data_q[3].DB_MAX_OUTPUT_PORT_TYPE
+rd_data[4] <= rd_data_q[4].DB_MAX_OUTPUT_PORT_TYPE
+rd_data[5] <= rd_data_q[5].DB_MAX_OUTPUT_PORT_TYPE
+rd_data[6] <= rd_data_q[6].DB_MAX_OUTPUT_PORT_TYPE
+rd_data[7] <= rd_data_q[7].DB_MAX_OUTPUT_PORT_TYPE
+scl <> scl
+sda <> sda
+state[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+state[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+state[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+state[3] <= state[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Edge_detection_project|Buffer:comb_111
 d_in_a[0] => data_a.data_a[0].DATAIN
 d_in_a[0] => data_a.DATAIN
 d_in_a[1] => data_a.data_a[1].DATAIN
@@ -477,114 +709,7 @@ d_out_b <= d_out_b~reg0.DB_MAX_OUTPUT_PORT_TYPE
 err_w_b <= err_w_b~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Edge_detection_project|core_sobel:comb_106
-p0[0] => Add5.IN16
-p0[0] => Add0.IN8
-p0[1] => Add5.IN15
-p0[1] => Add0.IN7
-p0[2] => Add5.IN14
-p0[2] => Add0.IN6
-p0[3] => Add5.IN13
-p0[3] => Add0.IN5
-p0[4] => Add5.IN12
-p0[4] => Add0.IN4
-p0[5] => Add5.IN11
-p0[5] => Add0.IN3
-p0[6] => Add5.IN10
-p0[6] => Add0.IN2
-p0[7] => Add5.IN9
-p0[7] => Add0.IN1
-p1[0] => Add6.IN16
-p1[1] => Add6.IN15
-p1[2] => Add6.IN14
-p1[3] => Add6.IN13
-p1[4] => Add6.IN12
-p1[5] => Add6.IN11
-p1[6] => Add6.IN10
-p1[7] => Add6.IN9
-p2[0] => Add0.IN16
-p2[0] => Add8.IN16
-p2[1] => Add0.IN15
-p2[1] => Add8.IN15
-p2[2] => Add0.IN14
-p2[2] => Add8.IN14
-p2[3] => Add0.IN13
-p2[3] => Add8.IN13
-p2[4] => Add0.IN12
-p2[4] => Add8.IN12
-p2[5] => Add0.IN11
-p2[5] => Add8.IN11
-p2[6] => Add0.IN10
-p2[6] => Add8.IN10
-p2[7] => Add0.IN9
-p2[7] => Add8.IN9
-p3[0] => Add1.IN8
-p3[1] => Add1.IN7
-p3[2] => Add1.IN6
-p3[3] => Add1.IN5
-p3[4] => Add1.IN4
-p3[5] => Add1.IN3
-p3[6] => Add1.IN2
-p3[7] => Add1.IN1
-p5[0] => Add1.IN16
-p5[1] => Add1.IN15
-p5[2] => Add1.IN14
-p5[3] => Add1.IN13
-p5[4] => Add1.IN12
-p5[5] => Add1.IN11
-p5[6] => Add1.IN10
-p5[7] => Add1.IN9
-p6[0] => Add3.IN8
-p6[0] => Add5.IN8
-p6[1] => Add3.IN7
-p6[1] => Add5.IN7
-p6[2] => Add3.IN6
-p6[2] => Add5.IN6
-p6[3] => Add3.IN5
-p6[3] => Add5.IN5
-p6[4] => Add3.IN4
-p6[4] => Add5.IN4
-p6[5] => Add3.IN3
-p6[5] => Add5.IN3
-p6[6] => Add3.IN2
-p6[6] => Add5.IN2
-p6[7] => Add3.IN1
-p6[7] => Add5.IN1
-p7[0] => Add6.IN8
-p7[1] => Add6.IN7
-p7[2] => Add6.IN6
-p7[3] => Add6.IN5
-p7[4] => Add6.IN4
-p7[5] => Add6.IN3
-p7[6] => Add6.IN2
-p7[7] => Add6.IN1
-p8[0] => Add3.IN16
-p8[0] => Add8.IN8
-p8[1] => Add3.IN15
-p8[1] => Add8.IN7
-p8[2] => Add3.IN14
-p8[2] => Add8.IN6
-p8[3] => Add3.IN13
-p8[3] => Add8.IN5
-p8[4] => Add3.IN12
-p8[4] => Add8.IN4
-p8[5] => Add3.IN11
-p8[5] => Add8.IN3
-p8[6] => Add3.IN10
-p8[6] => Add8.IN2
-p8[7] => Add3.IN9
-p8[7] => Add8.IN1
-out[0] <= out.DB_MAX_OUTPUT_PORT_TYPE
-out[1] <= out.DB_MAX_OUTPUT_PORT_TYPE
-out[2] <= out.DB_MAX_OUTPUT_PORT_TYPE
-out[3] <= out.DB_MAX_OUTPUT_PORT_TYPE
-out[4] <= out.DB_MAX_OUTPUT_PORT_TYPE
-out[5] <= out.DB_MAX_OUTPUT_PORT_TYPE
-out[6] <= out.DB_MAX_OUTPUT_PORT_TYPE
-out[7] <= out.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|Edge_detection_project|VGA:comb_107
+|Edge_detection_project|VGA:comb_112
 clk => blue_r[0].CLK
 clk => blue_r[1].CLK
 clk => blue_r[2].CLK

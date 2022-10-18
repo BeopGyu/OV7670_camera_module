@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Edge_detection_project
-Tue Oct 18 17:19:00 2022
+Tue Oct 18 19:04:17 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -15,26 +15,34 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. Registers Removed During Synthesis
- 11. Removed Registers Triggering Further Register Optimizations
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Source assignments for Buffer:comb_105|altsyncram:data_a_rtl_0|altsyncram_boe1:auto_generated
- 15. Parameter Settings for User Entity Instance: pll:comb_103|altpll:altpll_component
- 16. Parameter Settings for Inferred Entity Instance: Buffer:comb_105|altsyncram:data_a_rtl_0
- 17. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
- 18. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
- 19. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2
- 20. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1
- 21. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
- 22. altpll Parameter Settings by Entity Instance
- 23. altsyncram Parameter Settings by Entity Instance
- 24. lpm_mult Parameter Settings by Entity Instance
- 25. Port Connectivity Checks: "Buffer:comb_105"
- 26. Port Connectivity Checks: "Camera:comb_104"
- 27. Post-Synthesis Netlist Statistics for Top Partition
- 28. Elapsed Time Per Partition
- 29. Analysis & Synthesis Messages
+ 10. State Machine - |Edge_detection_project|camera_interface:m0|sccb_state_q
+ 11. State Machine - |Edge_detection_project|camera_interface:m0|state_q
+ 12. State Machine - |Edge_detection_project|camera_interface:m0|i2c_top:m0|state_q
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Registers Packed Into Inferred Megafunctions
+ 17. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 18. Source assignments for Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated
+ 19. Parameter Settings for User Entity Instance: pll:comb_109|altpll:altpll_component
+ 20. Parameter Settings for User Entity Instance: camera_interface:m0|i2c_top:m0
+ 21. Parameter Settings for Inferred Entity Instance: Buffer:comb_111|altsyncram:data_a_rtl_0
+ 22. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
+ 23. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 24. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 25. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 26. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2
+ 27. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
+ 28. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod3
+ 29. altpll Parameter Settings by Entity Instance
+ 30. altsyncram Parameter Settings by Entity Instance
+ 31. lpm_mult Parameter Settings by Entity Instance
+ 32. Port Connectivity Checks: "Buffer:comb_111"
+ 33. Port Connectivity Checks: "camera_interface:m0|i2c_top:m0"
+ 34. Port Connectivity Checks: "Camera:comb_110"
+ 35. Post-Synthesis Netlist Statistics for Top Partition
+ 36. Elapsed Time Per Partition
+ 37. Analysis & Synthesis Messages
 
 
 
@@ -61,18 +69,18 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Oct 18 17:19:00 2022       ;
+; Analysis & Synthesis Status        ; Successful - Tue Oct 18 19:04:17 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; Edge_detection_project                      ;
 ; Top-level Entity Name              ; Edge_detection_project                      ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 492                                         ;
-;     Total combinational functions  ; 451                                         ;
-;     Dedicated logic registers      ; 194                                         ;
-; Total registers                    ; 194                                         ;
-; Total pins                         ; 53                                          ;
+; Total logic elements               ; 860                                         ;
+;     Total combinational functions  ; 801                                         ;
+;     Dedicated logic registers      ; 257                                         ;
+; Total registers                    ; 257                                         ;
+; Total pins                         ; 83                                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 180,000                                     ;
+; Total memory bits                  ; 131,072                                     ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total PLLs                         ; 1                                           ;
 +------------------------------------+---------------------------------------------+
@@ -182,108 +190,114 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                     ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+
-; main.v                           ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v                     ;         ;
-; Buffer.v                         ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/Buffer.v                   ;         ;
-; pll.v                            ; yes             ; User Wizard-Generated File   ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/pll.v                      ;         ;
-; VGA.v                            ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/VGA.v                      ;         ;
-; core_sobel.v                     ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/core_sobel.v               ;         ;
-; Camera.v                         ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/Camera.v                   ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altpll.tdf                                                                ;         ;
-; aglobal201.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/aglobal201.inc                                                            ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/stratix_pll.inc                                                           ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/stratixii_pll.inc                                                         ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/cycloneii_pll.inc                                                         ;         ;
-; db/pll_altpll.v                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/pll_altpll.v            ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf                                                            ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                     ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mux.inc                                                               ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_decode.inc                                                            ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                             ;         ;
-; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altrom.inc                                                                ;         ;
-; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altram.inc                                                                ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altdpram.inc                                                              ;         ;
-; db/altsyncram_boe1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/altsyncram_boe1.tdf     ;         ;
-; db/decode_lsa.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/decode_lsa.tdf          ;         ;
-; db/decode_e8a.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/decode_e8a.tdf          ;         ;
-; db/mux_5nb.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/mux_5nb.tdf             ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                            ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/abs_divider.inc                                                           ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                       ;         ;
-; db/lpm_divide_g9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/lpm_divide_g9m.tdf      ;         ;
-; db/sign_div_unsign_5kh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/sign_div_unsign_5kh.tdf ;         ;
-; db/alt_u_div_u3f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/alt_u_div_u3f.tdf       ;         ;
-; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/add_sub_7pc.tdf         ;         ;
-; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/add_sub_8pc.tdf         ;         ;
-; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mult.tdf                                                              ;         ;
-; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_add_sub.inc                                                           ;         ;
-; multcore.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/multcore.inc                                                              ;         ;
-; bypassff.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/bypassff.inc                                                              ;         ;
-; altshift.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altshift.inc                                                              ;         ;
-; multcore.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/multcore.tdf                                                              ;         ;
-; csa_add.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/csa_add.inc                                                               ;         ;
-; mpar_add.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mpar_add.inc                                                              ;         ;
-; muleabz.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/muleabz.inc                                                               ;         ;
-; mul_lfrg.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mul_lfrg.inc                                                              ;         ;
-; mul_boothc.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mul_boothc.inc                                                            ;         ;
-; alt_ded_mult.inc                 ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/alt_ded_mult.inc                                                          ;         ;
-; alt_ded_mult_y.inc               ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/alt_ded_mult_y.inc                                                        ;         ;
-; dffpipe.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/dffpipe.inc                                                               ;         ;
-; mpar_add.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mpar_add.tdf                                                              ;         ;
-; lpm_add_sub.tdf                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_add_sub.tdf                                                           ;         ;
-; addcore.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/addcore.inc                                                               ;         ;
-; look_add.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/look_add.inc                                                              ;         ;
-; alt_stratix_add_sub.inc          ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/alt_stratix_add_sub.inc                                                   ;         ;
-; db/add_sub_lgh.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/add_sub_lgh.tdf         ;         ;
-; db/add_sub_pgh.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/add_sub_pgh.tdf         ;         ;
-; altshift.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altshift.tdf                                                              ;         ;
-; db/lpm_divide_r9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/lpm_divide_r9m.tdf      ;         ;
-; db/sign_div_unsign_gkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/sign_div_unsign_gkh.tdf ;         ;
-; db/alt_u_div_k4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/alt_u_div_k4f.tdf       ;         ;
-; db/lpm_divide_4bm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/lpm_divide_4bm.tdf      ;         ;
-; db/sign_div_unsign_plh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/sign_div_unsign_plh.tdf ;         ;
-; db/alt_u_div_67f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/alt_u_div_67f.tdf       ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                  ; Library ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
+; Seg7.v                           ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/Seg7.v                     ;         ;
+; camera_interface.v               ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v         ;         ;
+; i2c_top.v                        ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v                  ;         ;
+; main.v                           ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v                     ;         ;
+; Buffer.v                         ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/Buffer.v                   ;         ;
+; pll.v                            ; yes             ; User Wizard-Generated File   ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/pll.v                      ;         ;
+; VGA.v                            ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/VGA.v                      ;         ;
+; Camera.v                         ; yes             ; User Verilog HDL File        ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/Camera.v                   ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altpll.tdf                                             ;         ;
+; aglobal201.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/aglobal201.inc                                         ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/stratix_pll.inc                                        ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/stratixii_pll.inc                                      ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/cycloneii_pll.inc                                      ;         ;
+; db/pll_altpll.v                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/pll_altpll.v            ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altsyncram.tdf                                         ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                  ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mux.inc                                            ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_decode.inc                                         ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/a_rdenreg.inc                                          ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altrom.inc                                             ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altram.inc                                             ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altdpram.inc                                           ;         ;
+; db/altsyncram_2cd1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf     ;         ;
+; db/decode_lsa.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/decode_lsa.tdf          ;         ;
+; db/decode_e8a.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/decode_e8a.tdf          ;         ;
+; db/mux_kob.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/mux_kob.tdf             ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_divide.tdf                                         ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/abs_divider.inc                                        ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                    ;         ;
+; db/lpm_divide_nhm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_nhm.tdf      ;         ;
+; db/sign_div_unsign_fkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/sign_div_unsign_fkh.tdf ;         ;
+; db/alt_u_div_i4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_i4f.tdf       ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/add_sub_7pc.tdf         ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/add_sub_8pc.tdf         ;         ;
+; db/lpm_divide_khm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_khm.tdf      ;         ;
+; db/sign_div_unsign_ckh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/sign_div_unsign_ckh.tdf ;         ;
+; db/alt_u_div_c4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_c4f.tdf       ;         ;
+; db/lpm_divide_n9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_n9m.tdf      ;         ;
+; db/lpm_divide_4bm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_4bm.tdf      ;         ;
+; db/sign_div_unsign_plh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/sign_div_unsign_plh.tdf ;         ;
+; db/alt_u_div_67f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_67f.tdf       ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mult.tdf                                           ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_add_sub.inc                                        ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/multcore.inc                                           ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/bypassff.inc                                           ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altshift.inc                                           ;         ;
+; multcore.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/multcore.tdf                                           ;         ;
+; csa_add.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/csa_add.inc                                            ;         ;
+; mpar_add.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mpar_add.inc                                           ;         ;
+; muleabz.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/muleabz.inc                                            ;         ;
+; mul_lfrg.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mul_lfrg.inc                                           ;         ;
+; mul_boothc.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mul_boothc.inc                                         ;         ;
+; alt_ded_mult.inc                 ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/alt_ded_mult.inc                                       ;         ;
+; alt_ded_mult_y.inc               ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/alt_ded_mult_y.inc                                     ;         ;
+; dffpipe.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/dffpipe.inc                                            ;         ;
+; mpar_add.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mpar_add.tdf                                           ;         ;
+; lpm_add_sub.tdf                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_add_sub.tdf                                        ;         ;
+; addcore.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/addcore.inc                                            ;         ;
+; look_add.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/look_add.inc                                           ;         ;
+; alt_stratix_add_sub.inc          ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/alt_stratix_add_sub.inc                                ;         ;
+; db/add_sub_lgh.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/add_sub_lgh.tdf         ;         ;
+; db/add_sub_pgh.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/add_sub_pgh.tdf         ;         ;
+; altshift.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altshift.tdf                                           ;         ;
+; db/lpm_divide_dcm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_dcm.tdf      ;         ;
+; db/sign_div_unsign_2nh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/sign_div_unsign_2nh.tdf ;         ;
+; db/alt_u_div_o9f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_o9f.tdf       ;         ;
++----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                ;
-+---------------------------------------------+--------------+
-; Resource                                    ; Usage        ;
-+---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 492          ;
-;                                             ;              ;
-; Total combinational functions               ; 451          ;
-; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 133          ;
-;     -- 3 input functions                    ; 93           ;
-;     -- <=2 input functions                  ; 225          ;
-;                                             ;              ;
-; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 258          ;
-;     -- arithmetic mode                      ; 193          ;
-;                                             ;              ;
-; Total registers                             ; 194          ;
-;     -- Dedicated logic registers            ; 194          ;
-;     -- I/O registers                        ; 0            ;
-;                                             ;              ;
-; I/O pins                                    ; 53           ;
-; Total memory bits                           ; 180000       ;
-;                                             ;              ;
-; Embedded Multiplier 9-bit elements          ; 0            ;
-;                                             ;              ;
-; Total PLLs                                  ; 1            ;
-;     -- PLLs                                 ; 1            ;
-;                                             ;              ;
-; Maximum fan-out node                        ; clk_50~input ;
-; Maximum fan-out                             ; 108          ;
-; Total fan-out                               ; 2616         ;
-; Average fan-out                             ; 3.37         ;
-+---------------------------------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                                   ;
++---------------------------------------------+---------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                           ;
++---------------------------------------------+---------------------------------------------------------------------------------+
+; Estimated Total logic elements              ; 860                                                                             ;
+;                                             ;                                                                                 ;
+; Total combinational functions               ; 801                                                                             ;
+; Logic element usage by number of LUT inputs ;                                                                                 ;
+;     -- 4 input functions                    ; 304                                                                             ;
+;     -- 3 input functions                    ; 162                                                                             ;
+;     -- <=2 input functions                  ; 335                                                                             ;
+;                                             ;                                                                                 ;
+; Logic elements by mode                      ;                                                                                 ;
+;     -- normal mode                          ; 572                                                                             ;
+;     -- arithmetic mode                      ; 229                                                                             ;
+;                                             ;                                                                                 ;
+; Total registers                             ; 257                                                                             ;
+;     -- Dedicated logic registers            ; 257                                                                             ;
+;     -- I/O registers                        ; 0                                                                               ;
+;                                             ;                                                                                 ;
+; I/O pins                                    ; 83                                                                              ;
+; Total memory bits                           ; 131072                                                                          ;
+;                                             ;                                                                                 ;
+; Embedded Multiplier 9-bit elements          ; 0                                                                               ;
+;                                             ;                                                                                 ;
+; Total PLLs                                  ; 1                                                                               ;
+;     -- PLLs                                 ; 1                                                                               ;
+;                                             ;                                                                                 ;
+; Maximum fan-out node                        ; pll:comb_109|altpll:altpll_component|pll_altpll:auto_generated|wire_pll1_clk[0] ;
+; Maximum fan-out                             ; 120                                                                             ;
+; Total fan-out                               ; 3511                                                                            ;
+; Average fan-out                             ; 2.83                                                                            ;
++---------------------------------------------+---------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -291,27 +305,42 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
 ; Compilation Hierarchy Node                     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                            ; Entity Name            ; Library Name ;
 +------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; |Edge_detection_project                        ; 451 (230)           ; 194 (132)                 ; 180000      ; 0            ; 0       ; 0         ; 53   ; 0            ; |Edge_detection_project                                                                                                                        ; Edge_detection_project ; work         ;
-;    |Buffer:comb_105|                           ; 25 (0)              ; 14 (8)                    ; 180000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_105                                                                                                        ; Buffer                 ; work         ;
-;       |altsyncram:data_a_rtl_0|                ; 25 (0)              ; 6 (0)                     ; 180000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_105|altsyncram:data_a_rtl_0                                                                                ; altsyncram             ; work         ;
-;          |altsyncram_boe1:auto_generated|      ; 25 (3)              ; 6 (6)                     ; 180000      ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_105|altsyncram:data_a_rtl_0|altsyncram_boe1:auto_generated                                                 ; altsyncram_boe1        ; work         ;
-;             |decode_e8a:rden_decode_b|         ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_105|altsyncram:data_a_rtl_0|altsyncram_boe1:auto_generated|decode_e8a:rden_decode_b                        ; decode_e8a             ; work         ;
-;             |decode_lsa:decode2|               ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_105|altsyncram:data_a_rtl_0|altsyncram_boe1:auto_generated|decode_lsa:decode2                              ; decode_lsa             ; work         ;
-;             |mux_5nb:mux3|                     ; 16 (16)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_105|altsyncram:data_a_rtl_0|altsyncram_boe1:auto_generated|mux_5nb:mux3                                    ; mux_5nb                ; work         ;
-;    |Camera:comb_104|                           ; 5 (5)               ; 14 (14)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Camera:comb_104                                                                                                        ; Camera                 ; work         ;
-;    |VGA:comb_107|                              ; 52 (52)             ; 34 (34)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|VGA:comb_107                                                                                                           ; VGA                    ; work         ;
-;    |lpm_divide:Mod0|                           ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0                                                                                                        ; lpm_divide             ; work         ;
-;       |lpm_divide_4bm:auto_generated|          ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_4bm:auto_generated                                                                          ; lpm_divide_4bm         ; work         ;
-;          |sign_div_unsign_plh:divider|         ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_4bm:auto_generated|sign_div_unsign_plh:divider                                              ; sign_div_unsign_plh    ; work         ;
-;             |alt_u_div_67f:divider|            ; 25 (25)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_4bm:auto_generated|sign_div_unsign_plh:divider|alt_u_div_67f:divider                        ; alt_u_div_67f          ; work         ;
-;    |lpm_divide:Mod1|                           ; 16 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1                                                                                                        ; lpm_divide             ; work         ;
-;       |lpm_divide_g9m:auto_generated|          ; 16 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_g9m:auto_generated                                                                          ; lpm_divide_g9m         ; work         ;
-;          |sign_div_unsign_5kh:divider|         ; 16 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_g9m:auto_generated|sign_div_unsign_5kh:divider                                              ; sign_div_unsign_5kh    ; work         ;
-;             |alt_u_div_u3f:divider|            ; 16 (16)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_g9m:auto_generated|sign_div_unsign_5kh:divider|alt_u_div_u3f:divider                        ; alt_u_div_u3f          ; work         ;
-;    |lpm_divide:Mod2|                           ; 34 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod2                                                                                                        ; lpm_divide             ; work         ;
-;       |lpm_divide_r9m:auto_generated|          ; 34 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod2|lpm_divide_r9m:auto_generated                                                                          ; lpm_divide_r9m         ; work         ;
-;          |sign_div_unsign_gkh:divider|         ; 34 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod2|lpm_divide_r9m:auto_generated|sign_div_unsign_gkh:divider                                              ; sign_div_unsign_gkh    ; work         ;
-;             |alt_u_div_k4f:divider|            ; 34 (34)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod2|lpm_divide_r9m:auto_generated|sign_div_unsign_gkh:divider|alt_u_div_k4f:divider                        ; alt_u_div_k4f          ; work         ;
+; |Edge_detection_project                        ; 801 (131)           ; 257 (116)                 ; 131072      ; 0            ; 0       ; 0         ; 83   ; 0            ; |Edge_detection_project                                                                                                                        ; Edge_detection_project ; work         ;
+;    |Buffer:comb_111|                           ; 2 (1)               ; 1 (1)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_111                                                                                                        ; Buffer                 ; work         ;
+;       |altsyncram:data_a_rtl_0|                ; 1 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_111|altsyncram:data_a_rtl_0                                                                                ; altsyncram             ; work         ;
+;          |altsyncram_2cd1:auto_generated|      ; 1 (0)               ; 0 (0)                     ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated                                                 ; altsyncram_2cd1        ; work         ;
+;             |decode_lsa:decode2|               ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|decode_lsa:decode2                              ; decode_lsa             ; work         ;
+;    |Camera:comb_110|                           ; 5 (5)               ; 19 (19)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Camera:comb_110                                                                                                        ; Camera                 ; work         ;
+;    |Seg7:Seg100|                               ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Seg7:Seg100                                                                                                            ; Seg7                   ; work         ;
+;    |Seg7:Seg10|                                ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Seg7:Seg10                                                                                                             ; Seg7                   ; work         ;
+;    |Seg7:Seg1|                                 ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Seg7:Seg1                                                                                                              ; Seg7                   ; work         ;
+;    |VGA:comb_112|                              ; 59 (59)             ; 42 (42)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|VGA:comb_112                                                                                                           ; VGA                    ; work         ;
+;    |camera_interface:m0|                       ; 277 (189)           ; 79 (47)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|camera_interface:m0                                                                                                    ; camera_interface       ; work         ;
+;       |i2c_top:m0|                             ; 88 (88)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|camera_interface:m0|i2c_top:m0                                                                                         ; i2c_top                ; work         ;
+;    |lpm_divide:Div0|                           ; 69 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div0                                                                                                        ; lpm_divide             ; work         ;
+;       |lpm_divide_khm:auto_generated|          ; 69 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div0|lpm_divide_khm:auto_generated                                                                          ; lpm_divide_khm         ; work         ;
+;          |sign_div_unsign_ckh:divider|         ; 69 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div0|lpm_divide_khm:auto_generated|sign_div_unsign_ckh:divider                                              ; sign_div_unsign_ckh    ; work         ;
+;             |alt_u_div_c4f:divider|            ; 69 (69)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div0|lpm_divide_khm:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider                        ; alt_u_div_c4f          ; work         ;
+;    |lpm_divide:Div1|                           ; 47 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div1                                                                                                        ; lpm_divide             ; work         ;
+;       |lpm_divide_nhm:auto_generated|          ; 47 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div1|lpm_divide_nhm:auto_generated                                                                          ; lpm_divide_nhm         ; work         ;
+;          |sign_div_unsign_fkh:divider|         ; 47 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div1|lpm_divide_nhm:auto_generated|sign_div_unsign_fkh:divider                                              ; sign_div_unsign_fkh    ; work         ;
+;             |alt_u_div_i4f:divider|            ; 47 (47)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div1|lpm_divide_nhm:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider                        ; alt_u_div_i4f          ; work         ;
+;    |lpm_divide:Mod0|                           ; 72 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0                                                                                                        ; lpm_divide             ; work         ;
+;       |lpm_divide_n9m:auto_generated|          ; 72 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_n9m:auto_generated                                                                          ; lpm_divide_n9m         ; work         ;
+;          |sign_div_unsign_ckh:divider|         ; 72 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider                                              ; sign_div_unsign_ckh    ; work         ;
+;             |alt_u_div_c4f:divider|            ; 72 (72)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider                        ; alt_u_div_c4f          ; work         ;
+;    |lpm_divide:Mod1|                           ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1                                                                                                        ; lpm_divide             ; work         ;
+;       |lpm_divide_n9m:auto_generated|          ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_n9m:auto_generated                                                                          ; lpm_divide_n9m         ; work         ;
+;          |sign_div_unsign_ckh:divider|         ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider                                              ; sign_div_unsign_ckh    ; work         ;
+;             |alt_u_div_c4f:divider|            ; 38 (38)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider                        ; alt_u_div_c4f          ; work         ;
+;    |lpm_divide:Mod2|                           ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod2                                                                                                        ; lpm_divide             ; work         ;
+;       |lpm_divide_4bm:auto_generated|          ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod2|lpm_divide_4bm:auto_generated                                                                          ; lpm_divide_4bm         ; work         ;
+;          |sign_div_unsign_plh:divider|         ; 25 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod2|lpm_divide_4bm:auto_generated|sign_div_unsign_plh:divider                                              ; sign_div_unsign_plh    ; work         ;
+;             |alt_u_div_67f:divider|            ; 25 (25)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod2|lpm_divide_4bm:auto_generated|sign_div_unsign_plh:divider|alt_u_div_67f:divider                        ; alt_u_div_67f          ; work         ;
+;    |lpm_divide:Mod3|                           ; 20 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod3                                                                                                        ; lpm_divide             ; work         ;
+;       |lpm_divide_dcm:auto_generated|          ; 20 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod3|lpm_divide_dcm:auto_generated                                                                          ; lpm_divide_dcm         ; work         ;
+;          |sign_div_unsign_2nh:divider|         ; 20 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod3|lpm_divide_dcm:auto_generated|sign_div_unsign_2nh:divider                                              ; sign_div_unsign_2nh    ; work         ;
+;             |alt_u_div_o9f:divider|            ; 20 (20)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod3|lpm_divide_dcm:auto_generated|sign_div_unsign_2nh:divider|alt_u_div_o9f:divider                        ; alt_u_div_o9f          ; work         ;
 ;    |lpm_mult:Mult0|                            ; 35 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult0                                                                                                         ; lpm_mult               ; work         ;
 ;       |multcore:mult_core|                     ; 35 (19)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult0|multcore:mult_core                                                                                      ; multcore               ; work         ;
 ;          |mpar_add:padder|                     ; 16 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder                                                                      ; mpar_add               ; work         ;
@@ -320,14 +349,9 @@ https://fpgasoftware.intel.com/eula.
 ;             |mpar_add:sub_par_add|             ; 6 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add                                                 ; mpar_add               ; work         ;
 ;                |lpm_add_sub:adder[0]|          ; 6 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]                            ; lpm_add_sub            ; work         ;
 ;                   |add_sub_pgh:auto_generated| ; 6 (6)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]|add_sub_pgh:auto_generated ; add_sub_pgh            ; work         ;
-;    |lpm_mult:Mult1|                            ; 29 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult1                                                                                                         ; lpm_mult               ; work         ;
-;       |multcore:mult_core|                     ; 29 (19)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult1|multcore:mult_core                                                                                      ; multcore               ; work         ;
-;          |mpar_add:padder|                     ; 10 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder                                                                      ; mpar_add               ; work         ;
-;             |lpm_add_sub:adder[0]|             ; 10 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]                                                 ; lpm_add_sub            ; work         ;
-;                |add_sub_lgh:auto_generated|    ; 10 (10)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_mult:Mult1|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]|add_sub_lgh:auto_generated                      ; add_sub_lgh            ; work         ;
-;    |pll:comb_103|                              ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|pll:comb_103                                                                                                           ; pll                    ; work         ;
-;       |altpll:altpll_component|                ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|pll:comb_103|altpll:altpll_component                                                                                   ; altpll                 ; work         ;
-;          |pll_altpll:auto_generated|           ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|pll:comb_103|altpll:altpll_component|pll_altpll:auto_generated                                                         ; pll_altpll             ; work         ;
+;    |pll:comb_109|                              ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|pll:comb_109                                                                                                           ; pll                    ; work         ;
+;       |altpll:altpll_component|                ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|pll:comb_109|altpll:altpll_component                                                                                   ; altpll                 ; work         ;
+;          |pll_altpll:auto_generated|           ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|pll:comb_109|altpll:altpll_component|pll_altpll:auto_generated                                                         ; pll_altpll             ; work         ;
 +------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -337,7 +361,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
 ; Name                                                                              ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF  ;
 +-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
-; Buffer:comb_105|altsyncram:data_a_rtl_0|altsyncram_boe1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 22500        ; 8            ; 22500        ; 8            ; 180000 ; None ;
+; Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 22500        ; 16           ; 22500        ; 16           ; 360000 ; None ;
 +-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
 
 
@@ -346,46 +370,114 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+--------------------------------------+-----------------+
 ; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                      ; IP Include File ;
 +--------+--------------+---------+--------------+--------------+--------------------------------------+-----------------+
-; Altera ; ALTPLL       ; 17.1    ; N/A          ; N/A          ; |Edge_detection_project|pll:comb_103 ; pll.v           ;
+; Altera ; ALTPLL       ; 17.1    ; N/A          ; N/A          ; |Edge_detection_project|pll:comb_109 ; pll.v           ;
 +--------+--------------+---------+--------------+--------------+--------------------------------------+-----------------+
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; pixel_cam_counterh[7]                  ; Stuck at GND due to stuck port data_in ;
-; pixel_VGA_G[0,1]                       ; Stuck at GND due to stuck port data_in ;
-; pixel_cam_counterh[8,9]                ; Stuck at GND due to stuck port data_in ;
-; VGA:comb_107|green_r[0,1]              ; Stuck at GND due to stuck port data_in ;
-; Buffer:comb_105|d_out_a[8..15]         ; Stuck at GND due to stuck port data_in ;
-; pixel_VGA_G[5..7]                      ; Stuck at GND due to stuck port data_in ;
-; VGA:comb_107|green_r[5..7]             ; Stuck at GND due to stuck port data_in ;
-; VGA:comb_107|blue_r[1..7]              ; Merged with VGA:comb_107|blue_r[0]     ;
-; VGA:comb_107|red_r[0..2]               ; Merged with VGA:comb_107|blue_r[0]     ;
-; pixel_VGA_B[1..7]                      ; Merged with pixel_VGA_B[0]             ;
-; pixel_VGA_R[0..2]                      ; Merged with pixel_VGA_B[0]             ;
-; Total Number of Removed Registers = 41 ;                                        ;
-+----------------------------------------+----------------------------------------+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Edge_detection_project|camera_interface:m0|sccb_state_q                                                                                  ;
++---------------------------+------------------------+---------------------------+------------------------+------------------------+------------------------+
+; Name                      ; sccb_state_q.sccb_data ; sccb_state_q.sccb_address ; sccb_state_q.sccb_idle ; sccb_state_q.wait_init ; sccb_state_q.sccb_stop ;
++---------------------------+------------------------+---------------------------+------------------------+------------------------+------------------------+
+; sccb_state_q.wait_init    ; 0                      ; 0                         ; 0                      ; 0                      ; 0                      ;
+; sccb_state_q.sccb_idle    ; 0                      ; 0                         ; 1                      ; 1                      ; 0                      ;
+; sccb_state_q.sccb_address ; 0                      ; 1                         ; 0                      ; 1                      ; 0                      ;
+; sccb_state_q.sccb_data    ; 1                      ; 0                         ; 0                      ; 1                      ; 0                      ;
+; sccb_state_q.sccb_stop    ; 0                      ; 0                         ; 0                      ; 1                      ; 1                      ;
++---------------------------+------------------------+---------------------------+------------------------+------------------------+------------------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                       ;
-+-----------------------------+---------------------------+-----------------------------------------+
-; Register name               ; Reason for Removal        ; Registers Removed due to This Register  ;
-+-----------------------------+---------------------------+-----------------------------------------+
-; Buffer:comb_105|d_out_a[8]  ; Stuck at GND              ; pixel_VGA_G[5], VGA:comb_107|green_r[5] ;
-;                             ; due to stuck port data_in ;                                         ;
-; Buffer:comb_105|d_out_a[9]  ; Stuck at GND              ; pixel_VGA_G[6], VGA:comb_107|green_r[6] ;
-;                             ; due to stuck port data_in ;                                         ;
-; Buffer:comb_105|d_out_a[10] ; Stuck at GND              ; pixel_VGA_G[7], VGA:comb_107|green_r[7] ;
-;                             ; due to stuck port data_in ;                                         ;
-; pixel_VGA_G[1]              ; Stuck at GND              ; VGA:comb_107|green_r[1]                 ;
-;                             ; due to stuck port data_in ;                                         ;
-; pixel_VGA_G[0]              ; Stuck at GND              ; VGA:comb_107|green_r[0]                 ;
-;                             ; due to stuck port data_in ;                                         ;
-+-----------------------------+---------------------------+-----------------------------------------+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Edge_detection_project|camera_interface:m0|state_q                                                                                               ;
++-----------------------+--------------------+---------------+---------------------+--------------------+-----------------------+--------------------+--------------+
+; Name                  ; state_q.digest_end ; state_q.delay ; state_q.digest_loop ; state_q.write_data ; state_q.write_address ; state_q.start_sccb ; state_q.idle ;
++-----------------------+--------------------+---------------+---------------------+--------------------+-----------------------+--------------------+--------------+
+; state_q.idle          ; 0                  ; 0             ; 0                   ; 0                  ; 0                     ; 0                  ; 0            ;
+; state_q.start_sccb    ; 0                  ; 0             ; 0                   ; 0                  ; 0                     ; 1                  ; 1            ;
+; state_q.write_address ; 0                  ; 0             ; 0                   ; 0                  ; 1                     ; 0                  ; 1            ;
+; state_q.write_data    ; 0                  ; 0             ; 0                   ; 1                  ; 0                     ; 0                  ; 1            ;
+; state_q.digest_loop   ; 0                  ; 0             ; 1                   ; 0                  ; 0                     ; 0                  ; 1            ;
+; state_q.delay         ; 0                  ; 1             ; 0                   ; 0                  ; 0                     ; 0                  ; 1            ;
+; state_q.digest_end    ; 1                  ; 0             ; 0                   ; 0                  ; 0                     ; 0                  ; 1            ;
++-----------------------+--------------------+---------------+---------------------+--------------------+-----------------------+--------------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Edge_detection_project|camera_interface:m0|i2c_top:m0|state_q                                                                                                          ;
++---------------------+----------------+--------------------+--------------+--------------------+---------------------+----------------+------------------+--------------+----------------+
+; Name                ; state_q.stop_1 ; state_q.ack_master ; state_q.read ; state_q.renew_data ; state_q.ack_servant ; state_q.packet ; state_q.starting ; state_q.idle ; state_q.stop_2 ;
++---------------------+----------------+--------------------+--------------+--------------------+---------------------+----------------+------------------+--------------+----------------+
+; state_q.idle        ; 0              ; 0                  ; 0            ; 0                  ; 0                   ; 0              ; 0                ; 0            ; 0              ;
+; state_q.starting    ; 0              ; 0                  ; 0            ; 0                  ; 0                   ; 0              ; 1                ; 1            ; 0              ;
+; state_q.packet      ; 0              ; 0                  ; 0            ; 0                  ; 0                   ; 1              ; 0                ; 1            ; 0              ;
+; state_q.ack_servant ; 0              ; 0                  ; 0            ; 0                  ; 1                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.renew_data  ; 0              ; 0                  ; 0            ; 1                  ; 0                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.read        ; 0              ; 0                  ; 1            ; 0                  ; 0                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.ack_master  ; 0              ; 1                  ; 0            ; 0                  ; 0                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.stop_1      ; 1              ; 0                  ; 0            ; 0                  ; 0                   ; 0              ; 0                ; 1            ; 0              ;
+; state_q.stop_2      ; 0              ; 0                  ; 0            ; 0                  ; 0                   ; 0              ; 0                ; 1            ; 1              ;
++---------------------+----------------+--------------------+--------------+--------------------+---------------------+----------------+------------------+--------------+----------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                    ;
++-------------------------------------------------------------------------------------------+-------------------------------------------+
+; Register name                                                                             ; Reason for Removal                        ;
++-------------------------------------------------------------------------------------------+-------------------------------------------+
+; pixel_VGA_B[0]                                                                            ; Stuck at GND due to stuck port data_in    ;
+; pixel_VGA_G[0]                                                                            ; Stuck at GND due to stuck port data_in    ;
+; pixel_VGA_R[0]                                                                            ; Stuck at GND due to stuck port data_in    ;
+; VGA:comb_112|red_r[0]                                                                     ; Stuck at GND due to stuck port data_in    ;
+; VGA:comb_112|green_r[0]                                                                   ; Stuck at GND due to stuck port data_in    ;
+; VGA:comb_112|blue_r[0]                                                                    ; Stuck at GND due to stuck port data_in    ;
+; VGA:comb_112|blue_r[2]                                                                    ; Merged with VGA:comb_112|blue_r[1]        ;
+; VGA:comb_112|green_r[1]                                                                   ; Merged with VGA:comb_112|blue_r[1]        ;
+; VGA:comb_112|red_r[1,2]                                                                   ; Merged with VGA:comb_112|blue_r[1]        ;
+; pixel_VGA_B[2]                                                                            ; Merged with pixel_VGA_B[1]                ;
+; pixel_VGA_G[1]                                                                            ; Merged with pixel_VGA_B[1]                ;
+; pixel_VGA_R[1,2]                                                                          ; Merged with pixel_VGA_B[1]                ;
+; camera_interface:m0|addr_q[1..7]                                                          ; Merged with camera_interface:m0|addr_q[0] ;
+; camera_interface:m0|data_q[0..7]                                                          ; Merged with camera_interface:m0|addr_q[0] ;
+; camera_interface:m0|addr_q[0]                                                             ; Stuck at GND due to stuck port data_in    ;
+; camera_interface:m0|sccb_state_q~4                                                        ; Lost fanout                               ;
+; camera_interface:m0|sccb_state_q~5                                                        ; Lost fanout                               ;
+; camera_interface:m0|state_q~4                                                             ; Lost fanout                               ;
+; camera_interface:m0|state_q~5                                                             ; Lost fanout                               ;
+; camera_interface:m0|state_q~6                                                             ; Lost fanout                               ;
+; camera_interface:m0|state_q~7                                                             ; Lost fanout                               ;
+; camera_interface:m0|i2c_top:m0|state_q~4                                                  ; Lost fanout                               ;
+; camera_interface:m0|i2c_top:m0|state_q~5                                                  ; Lost fanout                               ;
+; camera_interface:m0|i2c_top:m0|state_q~6                                                  ; Lost fanout                               ;
+; camera_interface:m0|sccb_state_q.sccb_address                                             ; Stuck at GND due to stuck port data_in    ;
+; camera_interface:m0|sccb_state_q.sccb_data                                                ; Stuck at GND due to stuck port data_in    ;
+; camera_interface:m0|sccb_state_q.sccb_stop                                                ; Stuck at GND due to stuck port data_in    ;
+; camera_interface:m0|sccb_state_q.wait_init                                                ; Lost fanout                               ;
+; camera_interface:m0|sccb_state_q.sccb_idle                                                ; Lost fanout                               ;
+; camera_interface:m0|delay_q[27]                                                           ; Lost fanout                               ;
+; Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|address_reg_b[0,1] ; Stuck at GND due to stuck port data_in    ;
+; Total Number of Removed Registers = 47                                                    ;                                           ;
++-------------------------------------------------------------------------------------------+-------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                             ;
++-----------------------------------------------+---------------------------+---------------------------------------------+
+; Register name                                 ; Reason for Removal        ; Registers Removed due to This Register      ;
++-----------------------------------------------+---------------------------+---------------------------------------------+
+; camera_interface:m0|sccb_state_q~5            ; Lost Fanouts              ; camera_interface:m0|sccb_state_q.wait_init, ;
+;                                               ;                           ; camera_interface:m0|sccb_state_q.sccb_idle  ;
+; pixel_VGA_B[0]                                ; Stuck at GND              ; VGA:comb_112|blue_r[0]                      ;
+;                                               ; due to stuck port data_in ;                                             ;
+; pixel_VGA_G[0]                                ; Stuck at GND              ; VGA:comb_112|green_r[0]                     ;
+;                                               ; due to stuck port data_in ;                                             ;
+; pixel_VGA_R[0]                                ; Stuck at GND              ; VGA:comb_112|red_r[0]                       ;
+;                                               ; due to stuck port data_in ;                                             ;
+; camera_interface:m0|sccb_state_q.sccb_address ; Stuck at GND              ; camera_interface:m0|sccb_state_q.sccb_stop  ;
+;                                               ; due to stuck port data_in ;                                             ;
++-----------------------------------------------+---------------------------+---------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -393,30 +485,43 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 194   ;
-; Number of registers using Synchronous Clear  ; 8     ;
+; Total registers                              ; 257   ;
+; Number of registers using Synchronous Clear  ; 27    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 32    ;
+; Number of registers using Asynchronous Clear ; 115   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 111   ;
+; Number of registers using Clock Enable       ; 118   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Edge_detection_project|pixel_VGA_R[6] ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |Edge_detection_project|i_sobel[1]     ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Edge_detection_project|j_sobel[7]     ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; No         ; |Edge_detection_project|Mux2           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
++----------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                         ;
++--------------------------------+------------------------------+------+
+; Register Name                  ; Megafunction                 ; Type ;
++--------------------------------+------------------------------+------+
+; Buffer:comb_111|d_out_a[0..15] ; Buffer:comb_111|data_a_rtl_0 ; RAM  ;
++--------------------------------+------------------------------+------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
+; 3:1                ; 28 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:m0|delay_q[13]             ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Edge_detection_project|pixel_VGA_G[7]                              ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 5 LEs                ; 15 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:m0|i2c_top:m0|wr_data_q[6] ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:m0|i2c_top:m0|idx_q[3]     ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Edge_detection_project|camera_interface:m0|i2c_top:m0|wr_data_q[7] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; No         ; |Edge_detection_project|camera_interface:m0|Selector28              ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |Edge_detection_project|camera_interface:m0|Selector6               ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 6 LEs                ; 8 LEs                  ; No         ; |Edge_detection_project|camera_interface:m0|i2c_top:m0|Selector19   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------+
-; Source assignments for Buffer:comb_105|altsyncram:data_a_rtl_0|altsyncram_boe1:auto_generated ;
+; Source assignments for Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated ;
 +---------------------------------+--------------------+------+---------------------------------+
 ; Assignment                      ; Value              ; From ; To                              ;
 +---------------------------------+--------------------+------+---------------------------------+
@@ -425,7 +530,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +-----------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: pll:comb_103|altpll:altpll_component ;
+; Parameter Settings for User Entity Instance: pll:comb_109|altpll:altpll_component ;
 +-------------------------------+-----------------------+---------------------------+
 ; Parameter Name                ; Value                 ; Type                      ;
 +-------------------------------+-----------------------+---------------------------+
@@ -798,8 +903,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: camera_interface:m0|i2c_top:m0 ;
++----------------+--------+---------------------------------------------------+
+; Parameter Name ; Value  ; Type                                              ;
++----------------+--------+---------------------------------------------------+
+; freq           ; 100000 ; Signed Integer                                    ;
++----------------+--------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Buffer:comb_105|altsyncram:data_a_rtl_0 ;
+; Parameter Settings for Inferred Entity Instance: Buffer:comb_111|altsyncram:data_a_rtl_0 ;
 +------------------------------------+----------------------+------------------------------+
 ; Parameter Name                     ; Value                ; Type                         ;
 +------------------------------------+----------------------+------------------------------+
@@ -810,7 +925,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE               ;
 ; WIDTH_BYTEENA                      ; 1                    ; Untyped                      ;
 ; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                      ;
-; WIDTH_A                            ; 8                    ; Untyped                      ;
+; WIDTH_A                            ; 16                   ; Untyped                      ;
 ; WIDTHAD_A                          ; 15                   ; Untyped                      ;
 ; NUMWORDS_A                         ; 22500                ; Untyped                      ;
 ; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                      ;
@@ -819,7 +934,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                      ;
 ; INDATA_ACLR_A                      ; NONE                 ; Untyped                      ;
 ; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                      ;
-; WIDTH_B                            ; 8                    ; Untyped                      ;
+; WIDTH_B                            ; 16                   ; Untyped                      ;
 ; WIDTHAD_B                          ; 15                   ; Untyped                      ;
 ; NUMWORDS_B                         ; 22500                ; Untyped                      ;
 ; INDATA_REG_B                       ; CLOCK1               ; Untyped                      ;
@@ -854,8 +969,54 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                      ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                      ;
 ; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                      ;
-; CBXI_PARAMETER                     ; altsyncram_boe1      ; Untyped                      ;
+; CBXI_PARAMETER                     ; altsyncram_2cd1      ; Untyped                      ;
 +------------------------------------+----------------------+------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                ;
+; LPM_WIDTHD             ; 7              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_nhm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_khm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -864,14 +1025,60 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------------+----------------+------------------------+
 ; Parameter Name         ; Value          ; Type                   ;
 +------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 4              ; Untyped                ;
-; LPM_WIDTHD             ; 2              ; Untyped                ;
+; LPM_WIDTHN             ; 9              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
 ; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
 ; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
 ; LPM_PIPELINE           ; 0              ; Untyped                ;
 ; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
 ; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_g9m ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_n9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_n9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                ;
+; LPM_WIDTHD             ; 9              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_4bm ; Untyped                ;
 ; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
 ; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
 ; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
@@ -918,76 +1125,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2 ;
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod3 ;
 +------------------------+----------------+------------------------+
 ; Parameter Name         ; Value          ; Type                   ;
 +------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 9              ; Untyped                ;
-; LPM_WIDTHD             ; 8              ; Untyped                ;
+; LPM_WIDTHN             ; 11             ; Untyped                ;
+; LPM_WIDTHD             ; 10             ; Untyped                ;
 ; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
 ; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
 ; LPM_PIPELINE           ; 0              ; Untyped                ;
 ; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
 ; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_r9m ; Untyped                ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
-+------------------------+----------------+------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult1                     ;
-+------------------------------------------------+--------------+---------------------+
-; Parameter Name                                 ; Value        ; Type                ;
-+------------------------------------------------+--------------+---------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
-; LPM_WIDTHA                                     ; 8            ; Untyped             ;
-; LPM_WIDTHB                                     ; 8            ; Untyped             ;
-; LPM_WIDTHP                                     ; 16           ; Untyped             ;
-; LPM_WIDTHR                                     ; 16           ; Untyped             ;
-; LPM_WIDTHS                                     ; 1            ; Untyped             ;
-; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped             ;
-; LPM_PIPELINE                                   ; 0            ; Untyped             ;
-; LATENCY                                        ; 0            ; Untyped             ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
-; INPUT_B_IS_CONSTANT                            ; YES          ; Untyped             ;
-; USE_EAB                                        ; OFF          ; Untyped             ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
-; CBXI_PARAMETER                                 ; NOTHING      ; Untyped             ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
-+------------------------------------------------+--------------+---------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
-+------------------------+----------------+------------------------+
-; Parameter Name         ; Value          ; Type                   ;
-+------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 10             ; Untyped                ;
-; LPM_WIDTHD             ; 9              ; Untyped                ;
-; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
-; LPM_PIPELINE           ; 0              ; Untyped                ;
-; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_4bm ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_dcm ; Untyped                ;
 ; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
 ; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
 ; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
@@ -1004,7 +1153,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Name                          ; Value                                ;
 +-------------------------------+--------------------------------------+
 ; Number of entity instances    ; 1                                    ;
-; Entity Instance               ; pll:comb_103|altpll:altpll_component ;
+; Entity Instance               ; pll:comb_109|altpll:altpll_component ;
 ;     -- OPERATION_MODE         ; NORMAL                               ;
 ;     -- PLL_TYPE               ; AUTO                                 ;
 ;     -- PRIMARY_CLOCK          ; INCLK0                               ;
@@ -1021,12 +1170,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Name                                      ; Value                                   ;
 +-------------------------------------------+-----------------------------------------+
 ; Number of entity instances                ; 1                                       ;
-; Entity Instance                           ; Buffer:comb_105|altsyncram:data_a_rtl_0 ;
+; Entity Instance                           ; Buffer:comb_111|altsyncram:data_a_rtl_0 ;
 ;     -- OPERATION_MODE                     ; DUAL_PORT                               ;
-;     -- WIDTH_A                            ; 8                                       ;
+;     -- WIDTH_A                            ; 16                                      ;
 ;     -- NUMWORDS_A                         ; 22500                                   ;
 ;     -- OUTDATA_REG_A                      ; UNREGISTERED                            ;
-;     -- WIDTH_B                            ; 8                                       ;
+;     -- WIDTH_B                            ; 16                                      ;
 ;     -- NUMWORDS_B                         ; 22500                                   ;
 ;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
 ;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
@@ -1040,7 +1189,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+----------------+
 ; Name                                  ; Value          ;
 +---------------------------------------+----------------+
-; Number of entity instances            ; 2              ;
+; Number of entity instances            ; 1              ;
 ; Entity Instance                       ; lpm_mult:Mult0 ;
 ;     -- LPM_WIDTHA                     ; 9              ;
 ;     -- LPM_WIDTHB                     ; 8              ;
@@ -1052,40 +1201,40 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
 ;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
 ;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
-; Entity Instance                       ; lpm_mult:Mult1 ;
-;     -- LPM_WIDTHA                     ; 8              ;
-;     -- LPM_WIDTHB                     ; 8              ;
-;     -- LPM_WIDTHP                     ; 16             ;
-;     -- LPM_REPRESENTATION             ; UNSIGNED       ;
-;     -- INPUT_A_IS_CONSTANT            ; NO             ;
-;     -- INPUT_B_IS_CONSTANT            ; YES            ;
-;     -- USE_EAB                        ; OFF            ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
 +---------------------------------------+----------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Buffer:comb_105"                                                                             ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port          ; Type   ; Severity ; Details                                                                             ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; d_in_a[15..8] ; Input  ; Info     ; Stuck at GND                                                                        ;
-; err_w_a       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; d_out_b       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; err_w_b       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Buffer:comb_111"                                                                        ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; r_addr_a ; Input  ; Info     ; Stuck at GND                                                                        ;
+; d_in_b   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; w_addr_b ; Input  ; Info     ; Stuck at GND                                                                        ;
+; w_en_b   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; d_out_b  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; err_w_b  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Camera:comb_104"                                                                              ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port           ; Type   ; Severity ; Details                                                                             ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
-; p_data[15..11] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; f_done         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+----------------+--------+----------+-------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "camera_interface:m0|i2c_top:m0"                                                        ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; rd_tick ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; rd_data ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Camera:comb_110"                                                                      ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; f_done ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -1093,28 +1242,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 53                          ;
-; cycloneiii_ff         ; 194                         ;
-;     CLR               ; 12                          ;
-;     ENA               ; 83                          ;
-;     ENA CLR           ; 20                          ;
-;     ENA SCLR          ; 8                           ;
-;     plain             ; 71                          ;
-; cycloneiii_lcell_comb ; 453                         ;
-;     arith             ; 193                         ;
-;         2 data inputs ; 143                         ;
-;         3 data inputs ; 50                          ;
-;     normal            ; 260                         ;
-;         0 data inputs ; 9                           ;
-;         1 data inputs ; 24                          ;
-;         2 data inputs ; 51                          ;
-;         3 data inputs ; 43                          ;
-;         4 data inputs ; 133                         ;
+; boundary_port         ; 83                          ;
+; cycloneiii_ff         ; 257                         ;
+;     CLR               ; 46                          ;
+;     CLR SCLR          ; 27                          ;
+;     ENA               ; 76                          ;
+;     ENA CLR           ; 42                          ;
+;     plain             ; 66                          ;
+; cycloneiii_io_obuf    ; 1                           ;
+; cycloneiii_lcell_comb ; 805                         ;
+;     arith             ; 229                         ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 134                         ;
+;         3 data inputs ; 94                          ;
+;     normal            ; 576                         ;
+;         0 data inputs ; 25                          ;
+;         1 data inputs ; 25                          ;
+;         2 data inputs ; 154                         ;
+;         3 data inputs ; 68                          ;
+;         4 data inputs ; 304                         ;
 ; cycloneiii_pll        ; 1                           ;
-; cycloneiii_ram_block  ; 24                          ;
+; cycloneiii_ram_block  ; 16                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.40                        ;
-; Average LUT depth     ; 4.22                        ;
+; Max LUT depth         ; 17.30                       ;
+; Average LUT depth     ; 6.19                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1123,7 +1274,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:03     ;
 +----------------+--------------+
 
 
@@ -1133,50 +1284,56 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Tue Oct 18 17:18:47 2022
+    Info: Processing started: Tue Oct 18 19:04:03 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Edge_detection_project -c Edge_detection_project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file seg7.v
+    Info (12023): Found entity 1: Seg7 File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/Seg7.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file camera_interface.v
+    Info (12023): Found entity 1: camera_interface File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file i2c_top.v
+    Info (12023): Found entity 1: i2c_top File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file dcm24.v
-    Info (12023): Found entity 1: dcm24 File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/dcm24.v Line: 40
-Warning (10275): Verilog HDL Module Instantiation warning at main.v(159): ignored dangling comma in List of Port Connections File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 159
-Warning (10229): Verilog HDL Expression warning at main.v(185): truncated literal to match 9 bits File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 185
-Warning (10229): Verilog HDL Expression warning at main.v(186): truncated literal to match 9 bits File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 186
+    Info (12023): Found entity 1: dcm24 File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/dcm24.v Line: 40
+Warning (10275): Verilog HDL Module Instantiation warning at main.v(180): ignored dangling comma in List of Port Connections File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 180
 Info (12021): Found 1 design units, including 1 entities, in source file main.v
-    Info (12023): Found entity 1: Edge_detection_project File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 1
+    Info (12023): Found entity 1: Edge_detection_project File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer.v
-    Info (12023): Found entity 1: Buffer File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/Buffer.v Line: 4
+    Info (12023): Found entity 1: Buffer File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/Buffer.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file pll.v
-    Info (12023): Found entity 1: pll File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/pll.v Line: 39
+    Info (12023): Found entity 1: pll File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/pll.v Line: 39
 Info (12021): Found 1 design units, including 1 entities, in source file vga.v
-    Info (12023): Found entity 1: VGA File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/VGA.v Line: 2
+    Info (12023): Found entity 1: VGA File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/VGA.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file core_sobel.v
-    Info (12023): Found entity 1: core_sobel File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/core_sobel.v Line: 1
+    Info (12023): Found entity 1: core_sobel File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/core_sobel.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file camera.v
-    Info (12023): Found entity 1: Camera File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/Camera.v Line: 6
-Critical Warning (10846): Verilog HDL Instantiation warning at main.v(103): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 103
-Critical Warning (10846): Verilog HDL Instantiation warning at main.v(114): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 114
-Critical Warning (10846): Verilog HDL Instantiation warning at main.v(131): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 131
-Critical Warning (10846): Verilog HDL Instantiation warning at main.v(143): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 143
-Critical Warning (10846): Verilog HDL Instantiation warning at main.v(159): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 159
+    Info (12023): Found entity 1: Camera File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/Camera.v Line: 6
+Warning (10236): Verilog HDL Implicit Net warning at camera_interface.v(328): created implicit net for "cmos_pwdn" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 328
+Warning (10236): Verilog HDL Implicit Net warning at camera_interface.v(329): created implicit net for "cmos_rst_n" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 329
+Critical Warning (10846): Verilog HDL Instantiation warning at main.v(123): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 123
+Critical Warning (10846): Verilog HDL Instantiation warning at main.v(134): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 134
+Critical Warning (10846): Verilog HDL Instantiation warning at main.v(163): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 163
+Critical Warning (10846): Verilog HDL Instantiation warning at main.v(180): instance has no name File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 180
 Info (12127): Elaborating entity "Edge_detection_project" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at main.v(31): object "gray_value" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 31
-Warning (10230): Verilog HDL assignment warning at main.v(175): truncated value with size 16 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 175
-Warning (10230): Verilog HDL assignment warning at main.v(185): truncated value with size 10 to match size of target (9) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 185
-Warning (10230): Verilog HDL assignment warning at main.v(197): truncated value with size 32 to match size of target (15) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 197
-Warning (10230): Verilog HDL assignment warning at main.v(198): truncated value with size 32 to match size of target (15) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 198
-Warning (10230): Verilog HDL assignment warning at main.v(201): truncated value with size 32 to match size of target (15) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 201
-Warning (10230): Verilog HDL assignment warning at main.v(202): truncated value with size 32 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 202
-Warning (10230): Verilog HDL assignment warning at main.v(203): truncated value with size 32 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 203
-Warning (10230): Verilog HDL assignment warning at main.v(209): truncated value with size 16 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 209
-Warning (10230): Verilog HDL assignment warning at main.v(210): truncated value with size 32 to match size of target (4) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 210
-Warning (10230): Verilog HDL assignment warning at main.v(214): truncated value with size 32 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 214
-Warning (10230): Verilog HDL assignment warning at main.v(245): truncated value with size 32 to match size of target (15) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 245
-Warning (10034): Output port "ledt[3]" at main.v(16) has no driver File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 16
-Info (12128): Elaborating entity "pll" for hierarchy "pll:comb_103" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 103
-Info (12128): Elaborating entity "altpll" for hierarchy "pll:comb_103|altpll:altpll_component" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/pll.v Line: 90
-Info (12130): Elaborated megafunction instantiation "pll:comb_103|altpll:altpll_component" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/pll.v Line: 90
-Info (12133): Instantiated megafunction "pll:comb_103|altpll:altpll_component" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/pll.v Line: 90
+Warning (10036): Verilog HDL or VHDL warning at main.v(37): object "gray_value" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 37
+Warning (10036): Verilog HDL or VHDL warning at main.v(69): object "i_sobel" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 69
+Warning (10036): Verilog HDL or VHDL warning at main.v(70): object "j_sobel" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 70
+Warning (10036): Verilog HDL or VHDL warning at main.v(71): object "counter_sobel" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 71
+Warning (10036): Verilog HDL or VHDL warning at main.v(72): object "target_sobel_addr" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 72
+Warning (10230): Verilog HDL assignment warning at main.v(114): truncated value with size 32 to match size of target (4) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 114
+Warning (10230): Verilog HDL assignment warning at main.v(115): truncated value with size 32 to match size of target (4) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 115
+Warning (10230): Verilog HDL assignment warning at main.v(116): truncated value with size 32 to match size of target (4) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 116
+Warning (10230): Verilog HDL assignment warning at main.v(204): truncated value with size 32 to match size of target (15) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 204
+Warning (10230): Verilog HDL assignment warning at main.v(208): truncated value with size 32 to match size of target (9) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 208
+Warning (10230): Verilog HDL assignment warning at main.v(209): truncated value with size 32 to match size of target (10) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 209
+Warning (10230): Verilog HDL assignment warning at main.v(227): truncated value with size 32 to match size of target (15) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 227
+Warning (10034): Output port "ledt[3]" at main.v(22) has no driver File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 22
+Info (12128): Elaborating entity "Seg7" for hierarchy "Seg7:Seg100" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 118
+Info (12128): Elaborating entity "pll" for hierarchy "pll:comb_109" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 123
+Info (12128): Elaborating entity "altpll" for hierarchy "pll:comb_109|altpll:altpll_component" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/pll.v Line: 90
+Info (12130): Elaborated megafunction instantiation "pll:comb_109|altpll:altpll_component" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/pll.v Line: 90
+Info (12133): Instantiated megafunction "pll:comb_109|altpll:altpll_component" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/pll.v Line: 90
     Info (12134): Parameter "bandwidth_type" = "AUTO"
     Info (12134): Parameter "clk0_divide_by" = "2"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
@@ -1232,22 +1389,50 @@ Info (12133): Instantiated megafunction "pll:comb_103|altpll:altpll_component" w
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
     Info (12134): Parameter "width_clock" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/pll_altpll.v
-    Info (12023): Found entity 1: pll_altpll File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/pll_altpll.v Line: 30
-Info (12128): Elaborating entity "pll_altpll" for hierarchy "pll:comb_103|altpll:altpll_component|pll_altpll:auto_generated" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "Camera" for hierarchy "Camera:comb_104" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 114
-Info (12128): Elaborating entity "Buffer" for hierarchy "Buffer:comb_105" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 131
-Info (12128): Elaborating entity "core_sobel" for hierarchy "core_sobel:comb_106" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 143
-Warning (10230): Verilog HDL assignment warning at core_sobel.v(14): truncated value with size 32 to match size of target (11) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/core_sobel.v Line: 14
-Warning (10230): Verilog HDL assignment warning at core_sobel.v(15): truncated value with size 32 to match size of target (11) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/core_sobel.v Line: 15
-Info (12128): Elaborating entity "VGA" for hierarchy "VGA:comb_107" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 159
-Warning (276027): Inferred dual-clock RAM node "Buffer:comb_105|data_a_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+    Info (12023): Found entity 1: pll_altpll File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/pll_altpll.v Line: 30
+Info (12128): Elaborating entity "pll_altpll" for hierarchy "pll:comb_109|altpll:altpll_component|pll_altpll:auto_generated" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
+Info (12128): Elaborating entity "Camera" for hierarchy "Camera:comb_110" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 134
+Info (12128): Elaborating entity "camera_interface" for hierarchy "camera_interface:m0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 146
+Warning (10036): Verilog HDL or VHDL warning at camera_interface.v(328): object "cmos_pwdn" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 328
+Warning (10036): Verilog HDL or VHDL warning at camera_interface.v(329): object "cmos_rst_n" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 329
+Warning (10036): Verilog HDL or VHDL warning at camera_interface.v(50): object "pixel_d" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 50
+Warning (10036): Verilog HDL or VHDL warning at camera_interface.v(51): object "wr_en" assigned a value but never read File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 51
+Warning (10858): Verilog HDL warning at camera_interface.v(53): object key0_tick used but never assigned File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 53
+Warning (10858): Verilog HDL warning at camera_interface.v(53): object key1_tick used but never assigned File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 53
+Warning (10858): Verilog HDL warning at camera_interface.v(53): object key2_tick used but never assigned File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 53
+Warning (10858): Verilog HDL warning at camera_interface.v(53): object key3_tick used but never assigned File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 53
+Warning (10240): Verilog HDL Always Construct warning at camera_interface.v(147): inferring latch(es) for variable "pixel_q", which holds its previous value in one or more paths through the always construct File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 147
+Warning (10230): Verilog HDL assignment warning at camera_interface.v(272): truncated value with size 32 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 272
+Warning (10230): Verilog HDL assignment warning at camera_interface.v(282): truncated value with size 32 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 282
+Warning (10230): Verilog HDL assignment warning at camera_interface.v(292): truncated value with size 32 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 292
+Warning (10230): Verilog HDL assignment warning at camera_interface.v(301): truncated value with size 32 to match size of target (8) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 301
+Warning (10030): Net "message.data_a" at camera_interface.v(48) has no driver or initial value, using a default initial value '0' File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 48
+Warning (10030): Net "message.waddr_a" at camera_interface.v(48) has no driver or initial value, using a default initial value '0' File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 48
+Warning (10030): Net "message.we_a" at camera_interface.v(48) has no driver or initial value, using a default initial value '0' File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 48
+Warning (10030): Net "key0_tick" at camera_interface.v(53) has no driver or initial value, using a default initial value '0' File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 53
+Warning (10030): Net "key1_tick" at camera_interface.v(53) has no driver or initial value, using a default initial value '0' File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 53
+Warning (10030): Net "key2_tick" at camera_interface.v(53) has no driver or initial value, using a default initial value '0' File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 53
+Warning (10030): Net "key3_tick" at camera_interface.v(53) has no driver or initial value, using a default initial value '0' File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 53
+Info (12128): Elaborating entity "i2c_top" for hierarchy "camera_interface:m0|i2c_top:m0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/camera_interface.v Line: 346
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(92): truncated value with size 32 to match size of target (7) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v Line: 92
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(120): truncated value with size 32 to match size of target (1) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v Line: 120
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(132): truncated value with size 32 to match size of target (1) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v Line: 132
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(133): truncated value with size 32 to match size of target (4) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v Line: 133
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(164): truncated value with size 32 to match size of target (4) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v Line: 164
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(204): truncated value with size 32 to match size of target (1) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v Line: 204
+Warning (10230): Verilog HDL assignment warning at i2c_top.v(205): truncated value with size 32 to match size of target (1) File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/i2c_top.v Line: 205
+Info (12128): Elaborating entity "Buffer" for hierarchy "Buffer:comb_111" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 163
+Info (12128): Elaborating entity "VGA" for hierarchy "VGA:comb_112" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 180
+Warning (276027): Inferred dual-clock RAM node "Buffer:comb_111|data_a_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Critical Warning (127005): Memory depth (256) in the design file differs from memory depth (251) in the Memory Initialization File "C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/Edge_detection_project.ram0_camera_interface_13f3216d.hdl.mif" -- setting initial value for remaining addresses to 0
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/Edge_detection_project.ram0_camera_interface_13f3216d.hdl.mif" contains "don't care" values -- overwriting them with 0s
 Info (19000): Inferred 1 megafunctions from design logic
-    Info (276029): Inferred altsyncram megafunction from the following design logic: "Buffer:comb_105|data_a_rtl_0" 
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "Buffer:comb_111|data_a_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
-        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTH_A set to 16
         Info (286033): Parameter WIDTHAD_A set to 15
         Info (286033): Parameter NUMWORDS_A set to 22500
-        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTH_B set to 16
         Info (286033): Parameter WIDTHAD_B set to 15
         Info (286033): Parameter NUMWORDS_B set to 22500
         Info (286033): Parameter ADDRESS_ACLR_A set to NONE
@@ -1257,19 +1442,21 @@ Info (19000): Inferred 1 megafunctions from design logic
         Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
-Info (278001): Inferred 5 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 196
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 182
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 203
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult1" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 201
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 185
-Info (12130): Elaborated megafunction instantiation "Buffer:comb_105|altsyncram:data_a_rtl_0"
-Info (12133): Instantiated megafunction "Buffer:comb_105|altsyncram:data_a_rtl_0" with the following parameter:
+Info (278001): Inferred 7 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 116
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 115
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 115
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 114
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 208
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 204
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod3" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 209
+Info (12130): Elaborated megafunction instantiation "Buffer:comb_111|altsyncram:data_a_rtl_0"
+Info (12133): Instantiated megafunction "Buffer:comb_111|altsyncram:data_a_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
-    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTH_A" = "16"
     Info (12134): Parameter "WIDTHAD_A" = "15"
     Info (12134): Parameter "NUMWORDS_A" = "22500"
-    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTH_B" = "16"
     Info (12134): Parameter "WIDTHAD_B" = "15"
     Info (12134): Parameter "NUMWORDS_B" = "22500"
     Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
@@ -1279,32 +1466,64 @@ Info (12133): Instantiated megafunction "Buffer:comb_105|altsyncram:data_a_rtl_0
     Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_boe1.tdf
-    Info (12023): Found entity 1: altsyncram_boe1 File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/altsyncram_boe1.tdf Line: 34
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_2cd1.tdf
+    Info (12023): Found entity 1: altsyncram_2cd1 File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 34
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_lsa.tdf
-    Info (12023): Found entity 1: decode_lsa File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/decode_lsa.tdf Line: 23
+    Info (12023): Found entity 1: decode_lsa File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/decode_lsa.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_e8a.tdf
-    Info (12023): Found entity 1: decode_e8a File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/decode_e8a.tdf Line: 23
-Info (12021): Found 1 design units, including 1 entities, in source file db/mux_5nb.tdf
-    Info (12023): Found entity 1: mux_5nb File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/mux_5nb.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 196
-Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 196
-    Info (12134): Parameter "LPM_WIDTHN" = "4"
-    Info (12134): Parameter "LPM_WIDTHD" = "2"
+    Info (12023): Found entity 1: decode_e8a File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/decode_e8a.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_kob.tdf
+    Info (12023): Found entity 1: mux_kob File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/mux_kob.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 116
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 116
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_g9m.tdf
-    Info (12023): Found entity 1: lpm_divide_g9m File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/lpm_divide_g9m.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_5kh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_5kh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/sign_div_unsign_5kh.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_u3f.tdf
-    Info (12023): Found entity 1: alt_u_div_u3f File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/alt_u_div_u3f.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_nhm.tdf
+    Info (12023): Found entity 1: lpm_divide_nhm File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_nhm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_fkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_fkh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/sign_div_unsign_fkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i4f.tdf
+    Info (12023): Found entity 1: alt_u_div_i4f File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_i4f.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
-    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/add_sub_7pc.tdf Line: 23
+    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/add_sub_7pc.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
-    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/add_sub_8pc.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 182
-Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 182
+    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/add_sub_8pc.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 115
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 115
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_khm.tdf
+    Info (12023): Found entity 1: lpm_divide_khm File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_khm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ckh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_ckh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/sign_div_unsign_ckh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_c4f.tdf
+    Info (12023): Found entity 1: alt_u_div_c4f File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_c4f.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 115
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 115
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_n9m.tdf
+    Info (12023): Found entity 1: lpm_divide_n9m File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_n9m.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod2" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 208
+Info (12133): Instantiated megafunction "lpm_divide:Mod2" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 208
+    Info (12134): Parameter "LPM_WIDTHN" = "10"
+    Info (12134): Parameter "LPM_WIDTHD" = "9"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_4bm.tdf
+    Info (12023): Found entity 1: lpm_divide_4bm File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_4bm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_plh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_plh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/sign_div_unsign_plh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_67f.tdf
+    Info (12023): Found entity 1: alt_u_div_67f File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_67f.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 204
+Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 204
     Info (12134): Parameter "LPM_WIDTHA" = "9"
     Info (12134): Parameter "LPM_WIDTHB" = "8"
     Info (12134): Parameter "LPM_WIDTHP" = "17"
@@ -1318,72 +1537,83 @@ Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mul
 Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/multcore.tdf Line: 229
 Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_lgh.tdf
-    Info (12023): Found entity 1: add_sub_lgh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/add_sub_lgh.tdf Line: 23
+    Info (12023): Found entity 1: add_sub_lgh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/add_sub_lgh.tdf Line: 23
 Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mpar_add.tdf Line: 138
 Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|multcore:mult_core|mpar_add:padder|mpar_add:sub_par_add|lpm_add_sub:adder[0]", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/mpar_add.tdf Line: 78
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_pgh.tdf
-    Info (12023): Found entity 1: add_sub_pgh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/add_sub_pgh.tdf Line: 23
+    Info (12023): Found entity 1: add_sub_pgh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/add_sub_pgh.tdf Line: 23
 Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult0|altshift:external_latency_ffs", which is child of megafunction instantiation "lpm_mult:Mult0" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod2" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 203
-Info (12133): Instantiated megafunction "lpm_divide:Mod2" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 203
-    Info (12134): Parameter "LPM_WIDTHN" = "9"
-    Info (12134): Parameter "LPM_WIDTHD" = "8"
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod3" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 209
+Info (12133): Instantiated megafunction "lpm_divide:Mod3" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 209
+    Info (12134): Parameter "LPM_WIDTHN" = "11"
+    Info (12134): Parameter "LPM_WIDTHD" = "10"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_r9m.tdf
-    Info (12023): Found entity 1: lpm_divide_r9m File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/lpm_divide_r9m.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_gkh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_gkh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/sign_div_unsign_gkh.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_k4f.tdf
-    Info (12023): Found entity 1: alt_u_div_k4f File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/alt_u_div_k4f.tdf Line: 27
-Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult1" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 201
-Info (12133): Instantiated megafunction "lpm_mult:Mult1" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 201
-    Info (12134): Parameter "LPM_WIDTHA" = "8"
-    Info (12134): Parameter "LPM_WIDTHB" = "8"
-    Info (12134): Parameter "LPM_WIDTHP" = "16"
-    Info (12134): Parameter "LPM_WIDTHR" = "16"
-    Info (12134): Parameter "LPM_WIDTHS" = "1"
-    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "YES"
-    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult1|multcore:mult_core", which is child of megafunction instantiation "lpm_mult:Mult1" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mult.tdf Line: 309
-Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult1|multcore:mult_core|mpar_add:padder", which is child of megafunction instantiation "lpm_mult:Mult1" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/multcore.tdf Line: 229
-Info (12131): Elaborated megafunction instantiation "lpm_mult:Mult1|altshift:external_latency_ffs", which is child of megafunction instantiation "lpm_mult:Mult1" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mult.tdf Line: 352
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 185
-Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 185
-    Info (12134): Parameter "LPM_WIDTHN" = "10"
-    Info (12134): Parameter "LPM_WIDTHD" = "9"
-    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
-    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_4bm.tdf
-    Info (12023): Found entity 1: lpm_divide_4bm File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/lpm_divide_4bm.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_plh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_plh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/sign_div_unsign_plh.tdf Line: 25
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_67f.tdf
-    Info (12023): Found entity 1: alt_u_div_67f File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/alt_u_div_67f.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_dcm.tdf
+    Info (12023): Found entity 1: lpm_divide_dcm File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/lpm_divide_dcm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_2nh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_2nh File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/sign_div_unsign_2nh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_o9f.tdf
+    Info (12023): Found entity 1: alt_u_div_o9f File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_o9f.tdf Line: 27
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a16" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 530
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a17" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 560
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a18" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 590
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a19" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 620
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a20" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 650
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a21" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 680
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a22" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 710
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a23" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 740
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a24" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 770
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a25" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 800
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a26" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 830
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a27" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 860
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a28" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 890
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a29" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 920
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a30" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 950
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a31" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 980
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a32" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1010
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a33" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1040
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a34" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1070
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a35" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1100
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a36" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1130
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a37" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1160
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a38" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1190
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a39" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1220
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a40" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1250
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a41" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1280
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a42" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1310
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a43" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1340
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a44" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1370
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a45" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1400
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a46" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1430
+        Warning (14320): Synthesized away node "Buffer:comb_111|altsyncram:data_a_rtl_0|altsyncram_2cd1:auto_generated|ram_block1a47" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/altsyncram_2cd1.tdf Line: 1460
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_green[0]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 5
-    Warning (13410): Pin "VGA_green[1]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 5
-    Warning (13410): Pin "VGA_green[5]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 5
-    Warning (13410): Pin "VGA_green[6]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 5
-    Warning (13410): Pin "VGA_green[7]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 5
-    Warning (13410): Pin "ledt[3]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/main.v Line: 16
+    Warning (13410): Pin "led_err[1]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 6
+    Warning (13410): Pin "VGA_red[0]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 9
+    Warning (13410): Pin "VGA_green[0]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 9
+    Warning (13410): Pin "VGA_blue[0]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 9
+    Warning (13410): Pin "ledt[3]" is stuck at GND File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 22
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 12 registers lost all their fanouts during netlist optimizations.
 Info (17016): Found the following redundant logic cells in design
-    Info (17048): Logic cell "lpm_divide:Mod2|lpm_divide_r9m:auto_generated|sign_div_unsign_gkh:divider|alt_u_div_k4f:divider|add_sub_8_result_int[0]~18" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/Real-time-edge-detection-on-FPGA-master/db/alt_u_div_k4f.tdf Line: 67
+    Info (17048): Logic cell "lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider|add_sub_8_result_int[0]~0" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_c4f.tdf Line: 67
+    Info (17048): Logic cell "lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider|add_sub_6_result_int[0]~10" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_c4f.tdf Line: 57
+    Info (17048): Logic cell "lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider|add_sub_7_result_int[0]~10" File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/db/alt_u_div_c4f.tdf Line: 62
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 585 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 13 input pins
-    Info (21059): Implemented 40 output pins
-    Info (21061): Implemented 507 logic cells
-    Info (21064): Implemented 24 RAM segments
+Info (21057): Implemented 961 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 68 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 861 logic cells
+    Info (21064): Implemented 16 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 32 warnings
-    Info: Peak virtual memory: 4808 megabytes
-    Info: Processing ended: Tue Oct 18 17:19:00 2022
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:24
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 91 warnings
+    Info: Peak virtual memory: 4817 megabytes
+    Info: Processing ended: Tue Oct 18 19:04:17 2022
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:25
 
 
