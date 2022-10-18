@@ -153,14 +153,15 @@
   end
 	 
 	 //register operations
-	 always @(posedge clk_100,negedge rst_n) begin
+	 always @(posedge clk,negedge rst_n) begin
 		if(!rst_n) begin
 			state_q<=0;
-			led_q<=4'b1010;
+			//led_q<=4'b1010;
 			delay_q<=0;
 			start_delay_q<=0;
 			message_index_q<=0;
 			pixel_q<=0;
+			
 			
 			sccb_state_q<=0;
 			addr_q<=0;
@@ -228,16 +229,18 @@
 		
 					////////Begin: Setting register values of the camera via SCCB///////////
 					
-			  idle:  if(delay_finish) begin //idle for 0.6s to start-up the camera
+			  idle:  begin
+						if(delay_finish) begin //idle for 0.6s to start-up the camera
 							state_d=start_sccb; 
 							start_delay_d=0;
 						end
 						else start_delay_d=1;
+						end
 
 		start_sccb:  begin   //start of SCCB transmission
 							start=1;
 							wr_data=8'h42; //slave address of OV7670 for write
-							state_d=write_address;						
+							state_d=write_address;	
 						end
 	 write_address: if(ack==2'b11) begin 
 							wr_data=message[message_index_q][15:8]; //write address
@@ -256,7 +259,6 @@
 			  delay: begin
 							if(message_index_q==(MSG_INDEX+1) && delay_finish) begin 
 								state_d=vsync_fedge; //if all messages are already digested, proceed to retrieving camera pixel data
-								led_d=4'b0110;
 							end
 							else if(state==0 && delay_finish) state_d=start_sccb; //small delay before next SCCB transmission(if all messages are not yet digested)
 						end
@@ -348,7 +350,6 @@
 		  sccb_stop: if(ack==2'b11) begin //stop
 							stop=1;
 							sccb_state_d=sccb_idle;
-							led_d=4'b1001;
 						 end
 			 default: sccb_state_d=wait_init;
 		endcase
@@ -363,7 +364,7 @@
 	 //module instantiations
 	 i2c_top #(.freq(100_000)) m0
 	(
-		.clk(clk_100),
+		.clk(clk),
 		.rst_n(rst_n),
 		.start(start),
 		.stop(stop),
@@ -403,7 +404,7 @@
 	asyn_fifo #(.DATA_WIDTH(16),.FIFO_DEPTH_WIDTH(10)) m2 //1024x16 FIFO mem
 	(
 		.rst_n(rst_n),
-		.clk_write(clk_100),
+		.clk_write(clk),
 		.clk_read(clk_100), //clock input from both domains
 		.write(wr_en),
 		.read(rd_en), 

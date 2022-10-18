@@ -69,6 +69,6 @@ module vga_core(
 		assign pixel_x=hctr_q;
 		assign pixel_y=vctr_q;
 		assign blank = vblank_q & hblank_q;
-		assign sync = vsync_q * hsync_q;
+		assign sync = vsync_q & hsync_q;
 
 endmodule

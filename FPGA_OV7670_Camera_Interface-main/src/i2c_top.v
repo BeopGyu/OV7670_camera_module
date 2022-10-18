@@ -29,7 +29,7 @@ module i2c_top //works on both i2c and SCCB mode(no pullups resistors needed)
     ); 
 	 */
 	 
-	 localparam full= (100_000_000)/(2*freq),
+	 localparam full= (25_000_000)/(2*freq),
 					half= full/2,
 					counter_width=log2(full);
 					
@@ -91,6 +91,7 @@ module i2c_top //works on both i2c and SCCB mode(no pullups resistors needed)
 	 always @* begin
 		counter_d=counter_q+1;
 		scl_d=scl_q;
+//		if(state_q==starting) scl_d=1'b1;
 		if(state_q==idle || state_q==starting) scl_d=1'b1;
 		else if(counter_q==full) begin
 			counter_d=0;
@@ -112,6 +113,8 @@ module i2c_top //works on both i2c and SCCB mode(no pullups resistors needed)
 		case(state_q)
 					idle: begin		//wait for the "start" to assert
 								sda_d=1'b1;
+							 
+								ack[1]=1;
 								if(start==1'b1) begin
 									wr_data_d={wr_data,1'b1}; //the last 1'b1 is for the ACK coming from the servant("1" means high impedance or "reading")
 									start_d= (wr_data[0])? 1:0; // if last bit(R/W bit) is one:read after writing servant address, else write again after writing servant address

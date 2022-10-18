@@ -20,9 +20,9 @@
 	output wire[1:0] sdram_dqm, 
 	inout[15:0] sdram_dq,
 	//VGA output
-	output wire[4:0] vga_out_r,
-	output wire[5:0] vga_out_g,
-	output wire[4:0] vga_out_b,
+	output wire[7:0] vga_out_r,
+	output wire[7:0] vga_out_g,
+	output wire[7:0] vga_out_b,
 	output wire vga_out_vs,vga_out_hs,vga_out_bl,vga_out_sy,clk_out
     );
 	 
@@ -30,21 +30,25 @@
 	 wire[9:0] data_count_r;
 	 wire[15:0] dout,din;
 	 wire clk_sdram;
+	 wire clk_100;
 	 wire empty_fifo;
 	 wire clk_vga;
 	 wire state;
 	 wire rd_en;
-	 wire [4:0] t1,t3;
-	 wire [5:0] t2;
+	 wire [4:0] tr,tb;
+	 wire [5:0] tg;
 	 assign sdram_clk = clk_sdram;
 	 assign ledtt = vga_out_r[3];
-	 //assign vga_out_r = 5'b0;
-	 //assign vga_out_g = 6'b111111;
-	 //assign vga_out_b = 5'b0;
+//	 assign vga_out_r = {3'b0,tr};		
+//	 assign vga_out_g = {2'b0,tg};
+//	 assign vga_out_b = {3'b0,tb};
+	 assign vga_out_r = {tr,3'b0};		
+	 assign vga_out_g = {tg,2'b0};
+	 assign vga_out_b = {tb,3'b0};	
 	 
 	camera_interface m0 //control logic for retrieving data from camera, storing data to asyn_fifo, and  sending data to sdram
 	(
-		.clk(clk),
+		.clk(clk_out),
 		.clk_100(clk_sdram),
 		.rst_n(rst_n),
 		.key(key),
@@ -100,9 +104,9 @@
 		.clk_vga(clk_vga),
 		.rd_en(rd_en),
 		//VGA output
-		.vga_out_r(vga_out_r),
-		.vga_out_g(vga_out_g),
-		.vga_out_b(vga_out_b),
+		.vga_out_r(tr),
+		.vga_out_g(tg),
+		.vga_out_b(tb),
 		.vga_out_vs(vga_out_vs),
 		.vga_out_hs(vga_out_hs),
 		.vga_out_bl(vga_out_bl),
@@ -125,6 +129,12 @@
     .c0(clk_out),     // OUT
     // Status and control signals
     );   
+	 
+	 clk_100MHz m5
+	 (
+	  .inclk0(clk),
+	  .c0(clk_100)
+	  );
 
 
 endmodule
