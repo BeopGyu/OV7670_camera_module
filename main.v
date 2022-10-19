@@ -80,6 +80,7 @@ module Edge_detection_project(
 	reg	[7:0]	pixel_VGA_R;			// Current pixel's RGB value
 	reg	[7:0]	pixel_VGA_G;
 	reg	[7:0]	pixel_VGA_B;
+	reg 			ck = 1;
 	//-----------------------------------------------------------------------------------------------------
 	
 	reg [2:0] led_test;
@@ -120,8 +121,8 @@ module Edge_detection_project(
 	Seg7 Seg1(.num(S1), .seg(seg_1));
 	
 	
-	pll(clk_50, clk_25);		// Instance of pll module
-	
+	clock_25(.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
+
 		
 	Camera(						// Instance of Camera module
 	.clock(cam_clock),
@@ -187,9 +188,9 @@ module Edge_detection_project(
 		// This is to check the button to stop the real-time at specific frame or to display the static image in the begining
 		if(button == 1)
 		begin
-			red_channel_gray 	<=	cam_pixel_data[4:0];			// Store the red bits (first 5-bits) in temp register
-			green_channel_gray <= cam_pixel_data[10:5];			// Store the green bits (second 6-bits) in temp register
-			blue_channel_gray <= cam_pixel_data[15:11];			// Store the blue bits (third 5-bits) in temp register
+			red_channel_gray 	<=	cam_pixel_data[7:3];			// Store the red bits (first 5-bits) in temp register
+			green_channel_gray <= {cam_pixel_data[2:0],cam_pixel_data[15:13]};			// Store the green bits (second 6-bits) in temp register
+			blue_channel_gray <= cam_pixel_data[12:8];			// Store the blue bits (third 5-bits) in temp register
 			// 8-bits gray scale converter from RGB5565 format
 			gray_value <= (red_channel_gray >> 2) + (red_channel_gray >> 5)+ (green_channel_gray >> 4) + (green_channel_gray >> 1) + (blue_channel_gray >> 4) + (blue_channel_gray >> 5);
 			
@@ -224,11 +225,12 @@ module Edge_detection_project(
 			// Check if the pixel that is displayed in the available portion of the storage or not
 			if(VGA_vpos < 'd150 && VGA_hpos < 'd150)
 			begin	
-				read_addr_b <= (VGA_vpos[7:0])* 'd150 +(VGA_hpos[7:0]);	// Set the reading address from Buffer port B
-//				pixel_VGA_RGB <= outp_a;					// Set the value of displayed pixe; if the value is one it will display white
-				pixel_VGA_R <= {outp_a[4:0],3'd0};
-				pixel_VGA_G <= {outp_a[10:5],2'd0};
-				pixel_VGA_B <= {outp_a[15:11],3'd0};
+				read_addr_a <= (VGA_vpos[7:0])* 'd150 +(VGA_hpos[7:0]);
+				// Set the value of displayed pixe; if the value is one it will display white
+				pixel_VGA_R <= {outp_a[7:3],3'd0};
+				pixel_VGA_G <= {outp_a[2:0],outp_a[15:13],2'd0};
+				pixel_VGA_B <= {outp_a[12:8],3'd0};
+				
 			end
 			else
 				begin

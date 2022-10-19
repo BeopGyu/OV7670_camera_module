@@ -147,7 +147,7 @@
 	 always @(posedge clk,negedge rst_n) begin
 		if(!rst_n) begin
 			state_q<=0;
-			//led_q<=4'b1010;
+			led_q<=4'b0001;
 			delay_q<=0;
 			start_delay_q<=0;
 			message_index_q<=0;
@@ -242,7 +242,7 @@
 							start_delay_d=1;
 							message_index_d=message_index_q+1'b1;
 							state_d=delay;
-							led_d = 4'b0001;
+							
 						end
 			  delay: begin
 							if(message_index_q==(MSG_INDEX+1) && delay_finish) begin 
@@ -251,7 +251,7 @@
 							else if(state==0 && delay_finish) state_d=start_sccb; //small delay before next SCCB transmission(if all messages are not yet digested)
 						end
 			  digest_end:  begin
-							led_d = 4'b1010;
+							led_d = 4'b1111;
 								end
 			  
 
@@ -266,6 +266,7 @@
 							data_d=0;
 							brightness_d=8'h00; 
 							contrast_d=8'h40;
+							led_d = 4'b1111;
 						  end
 			sccb_idle: if(state==0) begin //wait for any pushbutton
 								if(key0_tick) begin//increase brightness
@@ -276,7 +277,7 @@
 									addr_d=8'h55; //brightness control address
 									data_d=brightness_d;
 									sccb_state_d=sccb_address;
-									led_d=0;
+									led_d=4'b1110;
 								end
 								if(key1_tick) begin //decrease brightness
 									brightness_d=(brightness_q[7]==1)? brightness_q+1:brightness_q-1;
@@ -286,7 +287,7 @@
 									addr_d=8'h55;
 									data_d=brightness_d;
 									sccb_state_d=sccb_address;
-									led_d=0;
+									led_d=4'b1101;
 								end
 								else if(key2_tick) begin //increase contrast
 									contrast_d=contrast_q+1;
@@ -295,7 +296,7 @@
 									addr_d=8'h56; //contrast control address
 									data_d=contrast_d;
 									sccb_state_d=sccb_address;
-									led_d=0;
+									led_d=4'b1011;
 								end
 								else if(key3_tick) begin //change contrast
 									contrast_d=contrast_q-1;
@@ -304,7 +305,7 @@
 									addr_d=8'h56;
 									data_d=contrast_d;
 									sccb_state_d=sccb_address;
-									led_d=0;
+									led_d=4'b1010;
 								end
 						  end
 		sccb_address: if(ack==2'b11) begin 
@@ -318,6 +319,7 @@
 		  sccb_stop: if(ack==2'b11) begin //stop
 							stop=1;
 							sccb_state_d=sccb_idle;
+							led_d = 4'b1001;
 						 end
 			 default: sccb_state_d=wait_init;
 		endcase
