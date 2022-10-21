@@ -36,6 +36,8 @@ module Camera(
 				// Recieving the pixel's color values
 				if (href) begin
 					p_half <= ~ p_half;								// Toggling the pixel half flag
+//					if (~p_half) p_data[7:0] <= data_wires;		// Recieving the first  byte of the pixel
+//					else p_data[15:8] <= data_wires;				// Recieving the second byte of the pixel
 					if (p_half) p_data[7:0] <= data_wires;		// Recieving the first  byte of the pixel
 					else p_data[15:8] <= data_wires;				// Recieving the second byte of the pixel
 				end

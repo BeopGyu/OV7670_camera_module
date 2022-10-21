@@ -272,6 +272,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "cam_vsync",
+					"strict" : false
+				},
+				{
 					"name" : "cam_data_wires[5]",
 					"strict" : false
 				},
@@ -293,10 +297,6 @@
 				},
 				{
 					"name" : "cam_data_wires[2]",
-					"strict" : false
-				},
-				{
-					"name" : "cam_vsync",
 					"strict" : false
 				},
 				{

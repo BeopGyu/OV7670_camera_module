@@ -86,7 +86,7 @@ module Edge_detection_project(
 	reg [2:0] led_test;
 	
 	assign ledt[0] = button;
-	assign ledG = green_channel_gray;
+	assign ledG = pixel_VGA_G[7:2];
 	assign VGA_clk = clk_25;
 	assign VGA_sync = VGA_hsync & VGA_vsync;
 	assign VGA_blank = VGA_active;
@@ -225,8 +225,11 @@ module Edge_detection_project(
 			// Check if the pixel that is displayed in the available portion of the storage or not
 			if(VGA_vpos < 'd150 && VGA_hpos < 'd150)
 			begin	
-				read_addr_a <= (VGA_vpos[7:0])* 'd150 +(VGA_hpos[7:0]);
+				read_addr_a = (VGA_vpos[7:0])* 'd150 +(VGA_hpos[7:0]);
 				// Set the value of displayed pixe; if the value is one it will display white
+//				pixel_VGA_R <= {outp_a[4:0],3'd0};
+//				pixel_VGA_G <= {outp_a[10:5],2'd0};
+//				pixel_VGA_B <= {outp_a[15:11],3'd0};
 				pixel_VGA_R <= {outp_a[7:3],3'd0};
 				pixel_VGA_G <= {outp_a[2:0],outp_a[15:13],2'd0};
 				pixel_VGA_B <= {outp_a[12:8],3'd0};

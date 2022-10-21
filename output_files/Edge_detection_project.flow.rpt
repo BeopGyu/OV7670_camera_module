@@ -1,5 +1,5 @@
 Flow report for Edge_detection_project
-Thu Oct 20 01:20:07 2022
+Fri Oct 21 16:54:55 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,17 +41,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Thu Oct 20 01:20:02 2022       ;
+; Flow Status                        ; Successful - Fri Oct 21 16:54:51 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; Edge_detection_project                      ;
 ; Top-level Entity Name              ; Edge_detection_project                      ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 918 / 114,480 ( < 1 % )                     ;
-;     Total combinational functions  ; 875 / 114,480 ( < 1 % )                     ;
-;     Dedicated logic registers      ; 281 / 114,480 ( < 1 % )                     ;
-; Total registers                    ; 281                                         ;
+; Total logic elements               ; 910 / 114,480 ( < 1 % )                     ;
+;     Total combinational functions  ; 876 / 114,480 ( < 1 % )                     ;
+;     Dedicated logic registers      ; 275 / 114,480 ( < 1 % )                     ;
+; Total registers                    ; 275                                         ;
 ; Total pins                         ; 83 / 529 ( 16 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 360,000 / 3,981,312 ( 9 % )                 ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+------------------------+
 ; Option            ; Setting                ;
 +-------------------+------------------------+
-; Start date & time ; 10/20/2022 01:19:26    ;
+; Start date & time ; 10/21/2022 16:54:14    ;
 ; Main task         ; Compilation            ;
 ; Revision Name     ; Edge_detection_project ;
 +-------------------+------------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 13718492068081.166619636517520         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 13718492068081.166633885405888         ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; pll.ppf                                ; --            ; --          ; --         ;
@@ -96,11 +96,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4803 MB             ; 00:00:25                           ;
-; Fitter               ; 00:00:17     ; 1.0                     ; 5716 MB             ; 00:00:28                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 4689 MB             ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:03     ; 1.1                     ; 4857 MB             ; 00:00:03                           ;
-; Total                ; 00:00:37     ; --                      ; --                  ; 00:00:59                           ;
+; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4816 MB             ; 00:00:26                           ;
+; Fitter               ; 00:00:17     ; 1.0                     ; 5708 MB             ; 00:00:26                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4690 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:03     ; 1.1                     ; 4859 MB             ; 00:00:03                           ;
+; Total                ; 00:00:37     ; --                      ; --                  ; 00:00:58                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
