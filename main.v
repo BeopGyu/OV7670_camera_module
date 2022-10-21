@@ -17,7 +17,7 @@ module Edge_detection_project(
 	inout cmos_sda,
 	//Clocks
 	input clk_50,									//Clock 50 MHz input from the board itself
-	output clk_25,									//Clock 25 MHz generated from PLL to be connected to Camera system clock pin
+	output cam_xclk,									//Clock 25 MHz generated from PLL to be connected to Camera system clock pin
 	//Debug
 	output [3:0] ledt,
 	output [5:0] ledG
@@ -42,22 +42,14 @@ module Edge_detection_project(
 	
 	//---------------------------Buffer---------------------------
 	// The interface for Buffer module
-	// Buffer port A 150x150x8: Used to store the grayscale frames
 	reg [15:0]data_buffer_in_a = 0;		//Input data for the port A
-	reg [14:0] read_addr_a = 0;			// Address of port A for reading
-	reg [14:0] write_addr_a = 0;			// Address of port A for writing
+	reg [7:0] read_addr_c = 0;			// Address of port A for reading
+	reg [7:0] write_addr_c = 0;			// Address of port A for writing
 	reg write_en_a = 0;						// Writing enable flag for port A
 	wire [15:0]outp_a;							// Output data from the port A (8-bits)
 	wire error_write_a;						// Writing error flag for port A
-	
-	// Buffer port B 150x150x1: Used to store the values results from Sobel operator and threshold
-	// The data in port B is the final data to be displayed on the monitor
-	reg data_buffer_in_b = 0;				// Input data for the port B
-	reg [14:0] read_addr_b = 0;			// Address of port B for reading
-	reg [14:0] write_addr_b =0 ;			// Address of port B for writing
-	reg write_en_b = 0;						// Writing enable flag for port B
-	wire outp_b;								// Output data from the port B (1-bit)
-	wire error_write_b;						// Writing error flag for port B
+	reg [7:0] read_addr_r = 0;			// Address of port B for reading
+	reg [7:0] write_addr_r =0 ;			// Address of port B for writing
 	//-----------------------------------------------------------------------------------------------------
 	
 	
@@ -84,30 +76,29 @@ module Edge_detection_project(
 	//-----------------------------------------------------------------------------------------------------
 	
 	reg [2:0] led_test;
-	
+	wire clk_24;
+	assign cam_xclk = clk_24;
 	assign ledt[0] = button;
 	assign ledG = pixel_VGA_G[7:2];
 	assign VGA_clk = clk_25;
 	assign VGA_sync = VGA_hsync & VGA_vsync;
 	assign VGA_blank = VGA_active;
 	
-	reg [20:0] cnt;
+	reg [25:0] cnt;
 	always@(posedge cam_clock)
 	begin
-		cnt <= cnt + 21'd1;
+		cnt <= cnt + 26'd1;
 	end
-	assign ledt[1] = cnt[20];
+	assign ledt[1] = cnt[25];
 	
 	
-	reg [20:0] cnt2;
-	always@(posedge clk_25)
+	reg [25:0] cnt2;
+	always@(posedge cam_xclk)
 	begin
-		cnt2 <= cnt2 + 21'd1;
+		cnt2 <= cnt2 + 26'd1;
 	end
-	assign ledt[2] = cnt2[20];
+	assign ledt[2] = cnt2[25];
 	
-	assign led_err[0] = write_en_a ? error_write_a : 1'b0;
-	assign led_err[1] = write_en_b ? error_write_b : 1'b0;
 	
 	
 	wire [3:0] S100, S10, S1;
@@ -121,8 +112,8 @@ module Edge_detection_project(
 	Seg7 Seg1(.num(S1), .seg(seg_1));
 	
 	
-	clock_25(.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
-
+	clock_25 n1 (.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
+	clk24 n2 (.inclk0(clk_50), .c0(clk_24));
 		
 	Camera(						// Instance of Camera module
 	.clock(cam_clock),
@@ -148,19 +139,15 @@ module Edge_detection_project(
 	
 	Buffer(						// Instance of Buffer module
 	.d_in_a(data_buffer_in_a),
-	.r_addr_a(read_addr_a),
-	.w_addr_a(write_addr_a),
-	.d_in_b(data_buffer_in_b),
-	.r_addr_b(read_addr_b),
-	.w_addr_b(write_addr_b),
+	.r_addr_r(read_addr_r),
+	.w_addr_r(write_addr_r),
+	.r_addr_c(read_addr_c),
+	.w_addr_c(write_addr_c),
 	.w_clk(clk_25),
 	.r_clk(clk_50),
 	.w_en_a(write_en_a),
 	.d_out_a(outp_a),
 	.err_w_a(error_write_a),
-	.w_en_b(write_en_b),
-	.d_out_b(outp_b),
-	.err_w_b(error_write_b)
 	);
 	
 	
@@ -188,26 +175,25 @@ module Edge_detection_project(
 		// This is to check the button to stop the real-time at specific frame or to display the static image in the begining
 		if(button == 1)
 		begin
-			red_channel_gray 	<=	cam_pixel_data[7:3];			// Store the red bits (first 5-bits) in temp register
-			green_channel_gray <= {cam_pixel_data[2:0],cam_pixel_data[15:13]};			// Store the green bits (second 6-bits) in temp register
-			blue_channel_gray <= cam_pixel_data[12:8];			// Store the blue bits (third 5-bits) in temp register
-			// 8-bits gray scale converter from RGB5565 format
-			gray_value <= (red_channel_gray >> 2) + (red_channel_gray >> 5)+ (green_channel_gray >> 4) + (green_channel_gray >> 1) + (blue_channel_gray >> 4) + (blue_channel_gray >> 5);
-			
 //			data_buffer_in_a <= 16'd0;					
 			data_buffer_in_a <= cam_pixel_data;
 
-			// Check if the current pixel in the needed portion of the image or not (150x150)
-			if(pixel_cam_counterv < 'd150 && pixel_cam_counterh < 'd150 )
+			// Check if the current pixel in the needed portion of the image or not (250x250)
+			if(pixel_cam_counterv < 'd250 && pixel_cam_counterh < 'd250 )
 			begin
 				// Start writing to the buffer port A
 				write_en_a <= 1;									// Set the Enable to write on the buffer
-				write_addr_a <= pixel_cam_counterv * 'd150 +pixel_cam_counterh;	// Set the address of the pixel in the buffer
+				write_addr_c <= pixel_cam_counterh;
+				write_addr_r <= pixel_cam_counterv;
 			end
 			else write_en_a <= 0;
 			// Increase the Vertical and Horizontal counter by one and check their limits
-			pixel_cam_counterv<= ((pixel_cam_counterh == 'd639)?((pixel_cam_counterv+'d1)%'d480):pixel_cam_counterv);		
-			pixel_cam_counterh<= (pixel_cam_counterh+'d1)%'d640;
+			if(pixel_cam_counterh == 'd638)begin
+				pixel_cam_counterh <= 'd0;
+				if(pixel_cam_counterv == 'd479)	pixel_cam_counterv <= 'd0;
+				else pixel_cam_counterv <= pixel_cam_counterv + 'd1;
+			end
+			else pixel_cam_counterh <= pixel_cam_counterh + 'd1;
 		end
 	end
 	
@@ -223,13 +209,11 @@ module Edge_detection_project(
 			end
 		else begin
 			// Check if the pixel that is displayed in the available portion of the storage or not
-			if(VGA_vpos < 'd150 && VGA_hpos < 'd150)
+			if(VGA_vpos < 'd250 && VGA_hpos < 'd250)
 			begin	
-				read_addr_a = (VGA_vpos[7:0])* 'd150 +(VGA_hpos[7:0]);
+				read_addr_c = VGA_hpos[7:0];
+				read_addr_r = VGA_vpos[7:0];
 				// Set the value of displayed pixe; if the value is one it will display white
-//				pixel_VGA_R <= {outp_a[4:0],3'd0};
-//				pixel_VGA_G <= {outp_a[10:5],2'd0};
-//				pixel_VGA_B <= {outp_a[15:11],3'd0};
 				pixel_VGA_R <= {outp_a[7:3],3'd0};
 				pixel_VGA_G <= {outp_a[2:0],outp_a[15:13],2'd0};
 				pixel_VGA_B <= {outp_a[12:8],3'd0};

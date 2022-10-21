@@ -20,10 +20,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "led_err[0]",
-					"strict" : false
-				},
-				{
 					"name" : "seg_100[0]",
 					"strict" : false
 				},

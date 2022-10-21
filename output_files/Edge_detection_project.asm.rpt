@@ -1,5 +1,5 @@
 Assembler report for Edge_detection_project
-Fri Oct 21 16:54:51 2022
+Fri Oct 21 19:21:33 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Fri Oct 21 16:54:51 2022 ;
+; Assembler Status      ; Successful - Fri Oct 21 19:21:33 2022 ;
 ; Revision Name         ; Edge_detection_project                ;
 ; Top-level Entity Name ; Edge_detection_project                ;
 ; Family                ; Cyclone IV E                          ;
@@ -67,8 +67,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------+-------------------------------------------------------------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                                                                             ;
 +----------------+-------------------------------------------------------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x00622852                                                                                                                          ;
-; Checksum       ; 0x00622852                                                                                                                          ;
+; JTAG usercode  ; 0x00698739                                                                                                                          ;
+; Checksum       ; 0x00698739                                                                                                                          ;
 +----------------+-------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -78,16 +78,14 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Fri Oct 21 16:54:48 2022
+    Info: Processing started: Fri Oct 21 19:21:30 2022
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Edge_detection_project -c Edge_detection_project
-Warning (125092): Tcl Script File clock_24.qip not found
-    Info (125063): set_global_assignment -name QIP_FILE clock_24.qip
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
-Info: Quartus Prime Assembler was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4691 megabytes
-    Info: Processing ended: Fri Oct 21 16:54:51 2022
+Info: Quartus Prime Assembler was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4700 megabytes
+    Info: Processing ended: Fri Oct 21 19:21:33 2022
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 
