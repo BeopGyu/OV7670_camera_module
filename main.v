@@ -50,19 +50,11 @@ module Edge_detection_project(
 	wire error_write_a;						// Writing error flag for port A
 	reg [7:0] read_addr_r = 0;			// Address of port B for reading
 	reg [7:0] write_addr_r =0 ;			// Address of port B for writing
+	
+	reg read_ready = 0;
+	reg [15:0] read_count;
 	//-----------------------------------------------------------------------------------------------------
 	
-	
-	//------------------------Sobel------------------------------------
-	//Interface for core_sobel module
-	reg[7:0] p_sobel [8:0];					//Pixels' values to be used in core_sobel module
-	wire[7:0] out_sobel;						//Output result pixel's value
-	//--------------------------
-	reg[7:0] i_sobel = 0;					//Rows counter to iterate over the frame
-	reg[7:0] j_sobel = 0;					//Columns counter to iterate over the frame
-	reg[3:0] counter_sobel = 0;			//Counter for pixels to take 3x3 pixels kernel
-	reg[14:0] target_sobel_addr = 0;		//target pixel address to store in it the sobel result which will be always in the middle
-	//-----------------------------------------------------------------------------------------------------
 	
 	//---------------------------VGA---------------------------
 	// Interface for VGA module
@@ -72,7 +64,8 @@ module Edge_detection_project(
 	reg	[7:0]	pixel_VGA_R;			// Current pixel's RGB value
 	reg	[7:0]	pixel_VGA_G;
 	reg	[7:0]	pixel_VGA_B;
-	reg 			ck = 1;
+	
+	reg [15:0] pixel_data_hold[249:0][249:0];
 	//-----------------------------------------------------------------------------------------------------
 	
 	reg [2:0] led_test;
@@ -182,18 +175,22 @@ module Edge_detection_project(
 			if(pixel_cam_counterv < 'd250 && pixel_cam_counterh < 'd250 )
 			begin
 				// Start writing to the buffer port A
-				write_en_a <= 1;									// Set the Enable to write on the buffer
+				if(!read_ready)	write_en_a <= 1;									// Set the Enable to write on the buffer
 				write_addr_c <= pixel_cam_counterh;
 				write_addr_r <= pixel_cam_counterv;
 			end
 			else write_en_a <= 0;
 			// Increase the Vertical and Horizontal counter by one and check their limits
-			if(pixel_cam_counterh == 'd638)begin
+			if(cam_frame_done) begin
+				pixel_cam_counterh <= 'd0;
+				pixel_cam_counterv <= 'd0;
+				end
+			else if(pixel_cam_counterh == 'd639)begin
 				pixel_cam_counterh <= 'd0;
 				if(pixel_cam_counterv == 'd479)	pixel_cam_counterv <= 'd0;
 				else pixel_cam_counterv <= pixel_cam_counterv + 'd1;
-			end
-			else pixel_cam_counterh <= pixel_cam_counterh + 'd1;
+				end
+				else pixel_cam_counterh <= pixel_cam_counterh + 'd1;
 		end
 	end
 	
@@ -208,15 +205,26 @@ module Edge_detection_project(
 			pixel_VGA_B <= 8'd0;
 			end
 		else begin
+			if(cam_frame_done) begin
+				read_ready = 1'b1;
+				read_count <= 16'd0;
+			end
+			
 			// Check if the pixel that is displayed in the available portion of the storage or not
 			if(VGA_vpos < 'd250 && VGA_hpos < 'd250)
 			begin	
 				read_addr_c = VGA_hpos[7:0];
 				read_addr_r = VGA_vpos[7:0];
+				
+				if(read_ready) begin
+					pixel_data_hold[read_addr_r][read_addr_c] <= outp_a;
+					read_count <= read_count + 16'd1;
+					if(read_count == 16'd62500) read_ready <= 1'b0;
+				end
 				// Set the value of displayed pixe; if the value is one it will display white
-				pixel_VGA_R <= {outp_a[7:3],3'd0};
-				pixel_VGA_G <= {outp_a[2:0],outp_a[15:13],2'd0};
-				pixel_VGA_B <= {outp_a[12:8],3'd0};
+				pixel_VGA_R <= {pixel_data_hold[read_addr_r][read_addr_c][7:3],3'd0};
+				pixel_VGA_G <= {pixel_data_hold[read_addr_r][read_addr_c][2:0],pixel_data_hold[read_addr_r][read_addr_c][15:13],2'd0};
+				pixel_VGA_B <= {pixel_data_hold[read_addr_r][read_addr_c][12:8],3'd0};
 				
 			end
 			else

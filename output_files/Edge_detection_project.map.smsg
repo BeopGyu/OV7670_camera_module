@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at main.v(202): always construct contains both blocking and non-blocking assignments File: C:/Users/IDEA/Desktop/Real-time-edge-detection-on-FPGA-master/OV7670_camera_module/main.v Line: 202
+Warning (10268): Verilog HDL information at main.v(199): always construct contains both blocking and non-blocking assignments File: C:/YJ/OV7670_camera_module/main.v Line: 199
