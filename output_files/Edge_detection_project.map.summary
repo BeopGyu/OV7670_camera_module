@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Tue Oct 25 19:14:43 2022
+Analysis & Synthesis Status : Successful - Wed Oct 26 16:54:47 2022
 Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 Revision Name : Edge_detection_project
 Top-level Entity Name : Edge_detection_project
 Family : Cyclone IV E
-Total logic elements : 1,732,709
-    Total combinational functions : 732,641
-    Dedicated logic registers : 1,000,300
-Total registers : 1000300
+Total logic elements : 8,015
+    Total combinational functions : 3,863
+    Dedicated logic registers : 4,394
+Total registers : 4394
 Total pins : 83
 Total virtual pins : 0
-Total memory bits : 1,008,016
+Total memory bits : 1,048,576
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 2

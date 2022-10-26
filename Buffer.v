@@ -3,10 +3,8 @@
 //This Buffer has two inside ports Buffer A(150x150x8) and B(150x150x1)
 module Buffer(
 	input [15:0]d_in_a,			// Port A input data
-	input [7:0] r_addr_r,		// Port A address for reading
-	input [7:0] r_addr_c,	
-	input [7:0] w_addr_r,		//	Port A address for writing		
-	input [7:0] w_addr_c,		
+	input [15:0] r_addr,		// Port A address for reading
+	input [15:0] w_addr,		//	Port A address for writing
 	input w_clk,					//	Write clock (25MHz)
 	input r_clk,					//	Read clock  (50MHz)
 	input w_en_a,					//	Port A write flag enable
@@ -14,7 +12,7 @@ module Buffer(
 	output reg err_w_a			// Port A error in writing
 );
 
-	reg [15:0] data_a[250:0][250:0]; //Registers array (150x150x8) 
+	reg [15:0] data_a[65535:0]; //Registers array (256x256x16) 
 	
 	
 	// This block is activated at the positive edge of the writing clock (25MHz)
@@ -25,7 +23,7 @@ module Buffer(
 		if(w_en_a)
 		begin
 			err_w_a <= 0;
-			data_a[w_addr_r][w_addr_c] <= d_in_a;
+			data_a[w_addr] <= d_in_a;
 		end
 		else
 			err_w_a <= 1;
@@ -37,7 +35,7 @@ module Buffer(
 	// Port B is read and writen at the same clock (50MHz) as it is read by VGA and writen by Sobel operator
 	always @(posedge r_clk)
 	begin
-		d_out_a <= data_a[r_addr_r][r_addr_c];		// Set the A out data from the registers of A
+		d_out_a <= data_a[r_addr];		// Set the A out data from the registers of A
 	end
 	
 endmodule

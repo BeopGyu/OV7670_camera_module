@@ -43,13 +43,11 @@ module Edge_detection_project(
 	//---------------------------Buffer---------------------------
 	// The interface for Buffer module
 	reg [15:0]data_buffer_in_a = 0;		//Input data for the port A
-	reg [7:0] read_addr_c = 0;			// Address of port A for reading
-	reg [7:0] write_addr_c = 0;			// Address of port A for writing
+	reg [15:0] read_addr = 0;			// Address of port A for reading
+	reg [15:0] write_addr = 0;			// Address of port A for writing
 	reg write_en_a = 0;						// Writing enable flag for port A
 	wire [15:0]outp_a;							// Output data from the port A (8-bits)
 	wire error_write_a;						// Writing error flag for port A
-	reg [7:0] read_addr_r = 0;			// Address of port B for reading
-	reg [7:0] write_addr_r =0 ;			// Address of port B for writing
 	
 	reg read_ready = 0;
 	reg [15:0] read_count;
@@ -65,7 +63,7 @@ module Edge_detection_project(
 	reg	[7:0]	pixel_VGA_G;
 	reg	[7:0]	pixel_VGA_B;
 	
-	reg [15:0] pixel_data_hold[249:0][249:0];
+	reg [15:0] pixel_data_hold[65535:0];
 	//-----------------------------------------------------------------------------------------------------
 	
 	reg [2:0] led_test;
@@ -132,10 +130,8 @@ module Edge_detection_project(
 	
 	Buffer(						// Instance of Buffer module
 	.d_in_a(data_buffer_in_a),
-	.r_addr_r(read_addr_r),
-	.w_addr_r(write_addr_r),
-	.r_addr_c(read_addr_c),
-	.w_addr_c(write_addr_c),
+	.r_addr(read_addr),
+	.w_addr(write_addr),
 	.w_clk(clk_25),
 	.r_clk(clk_50),
 	.w_en_a(write_en_a),
@@ -171,26 +167,25 @@ module Edge_detection_project(
 //			data_buffer_in_a <= 16'd0;					
 			data_buffer_in_a <= cam_pixel_data;
 
-			// Check if the current pixel in the needed portion of the image or not (250x250)
-			if(pixel_cam_counterv < 'd250 && pixel_cam_counterh < 'd250 )
+			// Check if the current pixel in the needed portion of the image or not (256x256)
+			if(pixel_cam_counterv < 'd256 && pixel_cam_counterh < 'd256 )
 			begin
 				// Start writing to the buffer port A
-				if(!read_ready)	write_en_a <= 1;									// Set the Enable to write on the buffer
-				write_addr_c <= pixel_cam_counterh;
-				write_addr_r <= pixel_cam_counterv;
+				if(!read_ready)	write_en_a <= 1'b1;									// Set the Enable to write on the buffer
+				write_addr <= pixel_cam_counterh + pixel_cam_counterv << 8;
 			end
-			else write_en_a <= 0;
+			else write_en_a <= 1'b0;
 			// Increase the Vertical and Horizontal counter by one and check their limits
 			if(cam_frame_done) begin
-				pixel_cam_counterh <= 'd0;
-				pixel_cam_counterv <= 'd0;
+				pixel_cam_counterh <= 10'd0;
+				pixel_cam_counterv <= 9'd0;
 				end
-			else if(pixel_cam_counterh == 'd639)begin
-				pixel_cam_counterh <= 'd0;
-				if(pixel_cam_counterv == 'd479)	pixel_cam_counterv <= 'd0;
-				else pixel_cam_counterv <= pixel_cam_counterv + 'd1;
+			else if(pixel_cam_counterh == 10'd639)begin
+				pixel_cam_counterh <= 10'd0;
+				if(pixel_cam_counterv == 9'd479)	pixel_cam_counterv <= 9'd0;
+				else pixel_cam_counterv <= pixel_cam_counterv + 9'd1;
 				end
-				else pixel_cam_counterh <= pixel_cam_counterh + 'd1;
+				else pixel_cam_counterh <= pixel_cam_counterh + 10'd1;
 		end
 	end
 	
@@ -211,20 +206,22 @@ module Edge_detection_project(
 			end
 			
 			// Check if the pixel that is displayed in the available portion of the storage or not
-			if(VGA_vpos < 'd250 && VGA_hpos < 'd250)
+			if(VGA_vpos < 'd256 && VGA_hpos < 'd256)
 			begin	
-				read_addr_c = VGA_hpos[7:0];
-				read_addr_r = VGA_vpos[7:0];
+				read_addr = VGA_hpos[7:0] + VGA_vpos[7:0] << 8;
 				
 				if(read_ready) begin
-					pixel_data_hold[read_addr_r][read_addr_c] <= outp_a;
+					pixel_data_hold[read_addr] <= outp_a;
 					read_count <= read_count + 16'd1;
-					if(read_count == 16'd62500) read_ready <= 1'b0;
+					if(read_count == 16'd65535) begin
+						read_ready <= 1'b0;
+						read_count == 16'd0;
+					end
 				end
 				// Set the value of displayed pixe; if the value is one it will display white
-				pixel_VGA_R <= {pixel_data_hold[read_addr_r][read_addr_c][7:3],3'd0};
-				pixel_VGA_G <= {pixel_data_hold[read_addr_r][read_addr_c][2:0],pixel_data_hold[read_addr_r][read_addr_c][15:13],2'd0};
-				pixel_VGA_B <= {pixel_data_hold[read_addr_r][read_addr_c][12:8],3'd0};
+				pixel_VGA_R <= {pixel_data_hold[read_addr][7:3],3'd0};
+				pixel_VGA_G <= {pixel_data_hold[read_addr][2:0],pixel_data_hold[read_addr][15:13],2'd0};
+				pixel_VGA_B <= {pixel_data_hold[read_addr][12:8],3'd0};
 				
 			end
 			else

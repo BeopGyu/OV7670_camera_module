@@ -47,10 +47,8 @@
 	 reg delay_finish;
 	 reg[15:0] message[250:0];
 	 reg[7:0] message_index_q=0,message_index_d;
-	 reg[15:0] pixel_q,pixel_d;
 	 reg wr_en;
 	 wire full;
-	 wire key0_tick,key1_tick,key2_tick,key3_tick;
 	 
 	 //buffer for all inputs coming from the camera
 	 reg pclk_1,pclk_2,href_1,href_2,vsync_1,vsync_2;
@@ -151,7 +149,6 @@
 			delay_q<=0;
 			start_delay_q<=0;
 			message_index_q<=0;
-			pixel_q<=0;
 			
 			
 			sccb_state_q<=0;
@@ -187,7 +184,6 @@
 		delay_d=delay_q;
 		delay_finish=0;
 		message_index_d=message_index_q;
-		pixel_d=pixel_q;
 		wr_en=0;
 		
 		sccb_state_d=sccb_state_q;
@@ -271,7 +267,7 @@
 			sccb_idle: if(state==0) begin //wait for any pushbutton
 								if(key0_tick) begin//increase brightness
 									brightness_d=(brightness_q[7]==1)? brightness_q-1:brightness_q+1;
-									if(brightness_q==8'h80) brightness_d=0;
+									if(brightness_q==8'h80) brightness_d=8'h00;
 									start=1;
 									wr_data=8'h42; //slave address of OV7670 for write
 									addr_d=8'h55; //brightness control address
@@ -281,7 +277,7 @@
 								end
 								if(key1_tick) begin //decrease brightness
 									brightness_d=(brightness_q[7]==1)? brightness_q+1:brightness_q-1;
-									if(brightness_q==0) brightness_d=8'h80;
+									if(brightness_q==8'h00) brightness_d=8'h80;
 									start=1;
 									wr_data=8'h42; 
 									addr_d=8'h55;
@@ -290,7 +286,7 @@
 									led_d=4'b1101;
 								end
 								else if(key2_tick) begin //increase contrast
-									contrast_d=contrast_q+1;
+									contrast_d=contrast_q+8'h01;
 									start=1;
 									wr_data=8'h42; //slave address of OV7670 for write
 									addr_d=8'h56; //contrast control address
@@ -299,7 +295,7 @@
 									led_d=4'b1011;
 								end
 								else if(key3_tick) begin //change contrast
-									contrast_d=contrast_q-1;
+									contrast_d=contrast_q-8'h01;
 									start=1;
 									wr_data=8'h42;
 									addr_d=8'h56;

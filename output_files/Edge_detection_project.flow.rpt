@@ -1,5 +1,5 @@
 Flow report for Edge_detection_project
-Tue Oct 25 19:15:02 2022
+Wed Oct 26 16:56:57 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -41,22 +41,22 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Oct 25 19:14:48 2022       ;
+; Flow Status                        ; Successful - Wed Oct 26 16:56:51 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; Edge_detection_project                      ;
 ; Top-level Entity Name              ; Edge_detection_project                      ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 1,732,709                                   ;
-;     Total combinational functions  ; 732,641                                     ;
-;     Dedicated logic registers      ; 1,000,300                                   ;
-; Total registers                    ; 1000300                                     ;
-; Total pins                         ; 83                                          ;
+; Total logic elements               ; 5,939 / 114,480 ( 5 % )                     ;
+;     Total combinational functions  ; 3,865 / 114,480 ( 3 % )                     ;
+;     Dedicated logic registers      ; 4,394 / 114,480 ( 4 % )                     ;
+; Total registers                    ; 4394                                        ;
+; Total pins                         ; 83 / 529 ( 16 % )                           ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 1,008,016                                   ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 2                                           ;
+; Total memory bits                  ; 1,048,576 / 3,981,312 ( 26 % )              ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+------------------------+
 ; Option            ; Setting                ;
 +-------------------+------------------------+
-; Start date & time ; 10/25/2022 15:55:33    ;
+; Start date & time ; 10/26/2022 16:49:14    ;
 ; Main task         ; Compilation            ;
 ; Revision Name     ; Edge_detection_project ;
 +-------------------+------------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 123719796521441.166668093307368        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 123719796521441.166677055414420        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; pll.ppf                                ; --            ; --          ; --         ;
@@ -100,8 +100,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 03:17:03     ; 1.0                     ; 13685 MB            ; 03:17:33                           ;
-; Total                ; 03:17:03     ; --                      ; --                  ; 03:17:33                           ;
+; Analysis & Synthesis ; 00:05:35     ; 1.0                     ; 14647 MB            ; 00:05:39                           ;
+; Fitter               ; 00:01:56     ; 1.1                     ; 5929 MB             ; 00:02:36                           ;
+; Assembler            ; 00:00:04     ; 1.0                     ; 4709 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.3                     ; 4939 MB             ; 00:00:06                           ;
+; Total                ; 00:07:40     ; --                      ; --                  ; 00:08:24                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -111,6 +114,9 @@ https://fpgasoftware.intel.com/eula.
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
 ; Analysis & Synthesis ; IDEA             ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; IDEA             ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; IDEA             ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; IDEA             ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -118,6 +124,9 @@ https://fpgasoftware.intel.com/eula.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off Edge_detection_project -c Edge_detection_project
+quartus_fit --read_settings_files=off --write_settings_files=off Edge_detection_project -c Edge_detection_project
+quartus_asm --read_settings_files=off --write_settings_files=off Edge_detection_project -c Edge_detection_project
+quartus_sta Edge_detection_project -c Edge_detection_project
 
 
 
