@@ -66,9 +66,11 @@ module Edge_detection_project(
 	
 	reg [2:0] led_test;
 	wire clk_24;
-	assign cam_xclk = clk_24;
+	wire clk_25;
+	
 	assign ledt[0] = button;
 	assign ledG = pixel_VGA_G[7:2];
+	assign cam_xclk = clk_24;
 	assign VGA_clk = clk_25;
 	assign VGA_sync = VGA_hsync & VGA_vsync;
 	assign VGA_blank = VGA_active;
@@ -92,19 +94,19 @@ module Edge_detection_project(
 	
 	wire [3:0] S100, S10, S1;
 	
-//	assign S1 = pixel_cam_counterv % 10;
-//	assign S10 = (pixel_cam_counterv / 10)%10;
-//	assign S100 = pixel_cam_counterv / 100;
-//	
-//	Seg7 Seg100(.num(S100), .seg(seg_100));
-//	Seg7 Seg10(.num(S10), .seg(seg_10));
-//	Seg7 Seg1(.num(S1), .seg(seg_1));
+	assign S1 = pixel_cam_counterv % 10;
+	assign S10 = (pixel_cam_counterv / 10)%10;
+	assign S100 = pixel_cam_counterv / 100;
+	
+	Seg7 Seg100(.num(S100), .seg(seg_100));
+	Seg7 Seg10(.num(S10), .seg(seg_10));
+	Seg7 Seg1(.num(S1), .seg(seg_1));
 	
 	
 	clock_25 n1 (.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
 	clk24 n2 (.inclk0(clk_50), .c0(clk_24));
 		
-	Camera(						// Instance of Camera module
+	Camera c1(						// Instance of Camera module
 	.clock(cam_clock),
 	.vsync(cam_vsync),
 	.href(cam_href),
@@ -115,7 +117,7 @@ module Edge_detection_project(
    );
 	
 	
-	camera_interface m0 //control logic for retrieving data from camera, storing data to asyn_fifo, and  sending data to sdram
+	camera_interface i1 //control logic for retrieving data from camera, storing data to asyn_fifo, and  sending data to sdram
 	(
 		.clk(clk_25),
 		.rst_n(rst_n),
@@ -126,7 +128,7 @@ module Edge_detection_project(
 		.led(led_d)
     );
 	
-	Buffer(						// Instance of Buffer module
+	Buffer b1(						// Instance of Buffer module
 	.d_in_a(data_buffer_in_a),
 	.r_addr(read_addr),
 	.w_addr(write_addr),
@@ -140,7 +142,7 @@ module Edge_detection_project(
 	);
 	
 	
-	VGA(							// Instance of VGA module
+	VGA v1(							// Instance of VGA module
 		.clk(clk_50),
 		.pixel_r(pixel_VGA_R),
 		.pixel_g(pixel_VGA_G),

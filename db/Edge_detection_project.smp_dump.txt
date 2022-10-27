@@ -1,5 +1,5 @@
 
-State Machine - |Edge_detection_project|camera_interface:m0|state_q
+State Machine - |Edge_detection_project|camera_interface:i1|state_q
 Name state_q.digest_end state_q.delay state_q.digest_loop state_q.write_data state_q.write_address state_q.start_sccb state_q.idle 
 state_q.idle 0 0 0 0 0 0 0 
 state_q.start_sccb 0 0 0 0 0 1 1 
@@ -9,7 +9,7 @@ state_q.digest_loop 0 0 1 0 0 0 1
 state_q.delay 0 1 0 0 0 0 1 
 state_q.digest_end 1 0 0 0 0 0 1 
 
-State Machine - |Edge_detection_project|camera_interface:m0|i2c_top:m0|state_q
+State Machine - |Edge_detection_project|camera_interface:i1|i2c_top:m0|state_q
 Name state_q.stop_1 state_q.ack_master state_q.read state_q.renew_data state_q.ack_servant state_q.packet state_q.starting state_q.idle state_q.stop_2 
 state_q.idle 0 0 0 0 0 0 0 0 0 
 state_q.starting 0 0 0 0 0 0 1 1 0 

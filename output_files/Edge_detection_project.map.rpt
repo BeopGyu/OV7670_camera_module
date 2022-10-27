@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Edge_detection_project
-Thu Oct 27 14:16:44 2022
+Thu Oct 27 14:50:45 2022
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -15,28 +15,32 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
- 10. State Machine - |Edge_detection_project|camera_interface:m0|state_q
- 11. State Machine - |Edge_detection_project|camera_interface:m0|i2c_top:m0|state_q
+ 10. State Machine - |Edge_detection_project|camera_interface:i1|state_q
+ 11. State Machine - |Edge_detection_project|camera_interface:i1|i2c_top:m0|state_q
  12. Registers Removed During Synthesis
  13. Removed Registers Triggering Further Register Optimizations
  14. General Register Statistics
  15. Inverted Register Statistics
  16. Registers Packed Into Inferred Megafunctions
  17. Multiplexer Restructuring Statistics (Restructuring Performed)
- 18. Source assignments for Buffer:comb_125|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated
- 19. Source assignments for Buffer:comb_125|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated
+ 18. Source assignments for Buffer:b1|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated
+ 19. Source assignments for Buffer:b1|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated
  20. Parameter Settings for User Entity Instance: clock_25:n1|altpll:altpll_component
  21. Parameter Settings for User Entity Instance: clk24:n2|altpll:altpll_component
- 22. Parameter Settings for User Entity Instance: camera_interface:m0|i2c_top:m0
- 23. Parameter Settings for Inferred Entity Instance: Buffer:comb_125|altsyncram:data_b_rtl_0
- 24. Parameter Settings for Inferred Entity Instance: Buffer:comb_125|altsyncram:data_a_rtl_0
- 25. altpll Parameter Settings by Entity Instance
- 26. altsyncram Parameter Settings by Entity Instance
- 27. Port Connectivity Checks: "Buffer:comb_125"
- 28. Port Connectivity Checks: "camera_interface:m0|i2c_top:m0"
- 29. Post-Synthesis Netlist Statistics for Top Partition
- 30. Elapsed Time Per Partition
- 31. Analysis & Synthesis Messages
+ 22. Parameter Settings for User Entity Instance: camera_interface:i1|i2c_top:m0
+ 23. Parameter Settings for Inferred Entity Instance: Buffer:b1|altsyncram:data_b_rtl_0
+ 24. Parameter Settings for Inferred Entity Instance: Buffer:b1|altsyncram:data_a_rtl_0
+ 25. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
+ 26. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 27. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 28. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 29. altpll Parameter Settings by Entity Instance
+ 30. altsyncram Parameter Settings by Entity Instance
+ 31. Port Connectivity Checks: "Buffer:b1"
+ 32. Port Connectivity Checks: "camera_interface:i1|i2c_top:m0"
+ 33. Post-Synthesis Netlist Statistics for Top Partition
+ 34. Elapsed Time Per Partition
+ 35. Analysis & Synthesis Messages
 
 
 
@@ -63,13 +67,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Oct 27 14:16:44 2022       ;
+; Analysis & Synthesis Status        ; Successful - Thu Oct 27 14:50:45 2022       ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                      ; Edge_detection_project                      ;
 ; Top-level Entity Name              ; Edge_detection_project                      ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 799                                         ;
-;     Total combinational functions  ; 707                                         ;
+; Total logic elements               ; 1,037                                       ;
+;     Total combinational functions  ; 945                                         ;
 ;     Dedicated logic registers      ; 305                                         ;
 ; Total registers                    ; 305                                         ;
 ; Total pins                         ; 83                                          ;
@@ -192,6 +196,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                 ; Library ;
 +----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
+; Seg7.v                           ; yes             ; User Verilog HDL File        ; C:/YJ/OV7670_camera_module/Seg7.v                                            ;         ;
 ; camera_interface.v               ; yes             ; User Verilog HDL File        ; C:/YJ/OV7670_camera_module/camera_interface.v                                ;         ;
 ; i2c_top.v                        ; yes             ; User Verilog HDL File        ; C:/YJ/OV7670_camera_module/i2c_top.v                                         ;         ;
 ; main.v                           ; yes             ; User Verilog HDL File        ; C:/YJ/OV7670_camera_module/main.v                                            ;         ;
@@ -220,6 +225,18 @@ https://fpgasoftware.intel.com/eula.
 ; db/decode_k8a.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/decode_k8a.tdf                                 ;         ;
 ; db/mux_qob.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/mux_qob.tdf                                    ;         ;
 ; db/altsyncram_5dd1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/altsyncram_5dd1.tdf                            ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_divide.tdf        ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/abs_divider.inc       ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/sign_div_unsign.inc   ;         ;
+; db/lpm_divide_nhm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/lpm_divide_nhm.tdf                             ;         ;
+; db/sign_div_unsign_fkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/sign_div_unsign_fkh.tdf                        ;         ;
+; db/alt_u_div_i4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/alt_u_div_i4f.tdf                              ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/add_sub_7pc.tdf                                ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/add_sub_8pc.tdf                                ;         ;
+; db/lpm_divide_khm.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/lpm_divide_khm.tdf                             ;         ;
+; db/sign_div_unsign_ckh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/sign_div_unsign_ckh.tdf                        ;         ;
+; db/alt_u_div_c4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/alt_u_div_c4f.tdf                              ;         ;
+; db/lpm_divide_n9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/YJ/OV7670_camera_module/db/lpm_divide_n9m.tdf                             ;         ;
 +----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------+---------+
 
 
@@ -228,17 +245,17 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 799          ;
+; Estimated Total logic elements              ; 1,037        ;
 ;                                             ;              ;
-; Total combinational functions               ; 707          ;
+; Total combinational functions               ; 945          ;
 ; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 388          ;
-;     -- 3 input functions                    ; 99           ;
-;     -- <=2 input functions                  ; 220          ;
+;     -- 4 input functions                    ; 429          ;
+;     -- 3 input functions                    ; 163          ;
+;     -- <=2 input functions                  ; 353          ;
 ;                                             ;              ;
 ; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 570          ;
-;     -- arithmetic mode                      ; 137          ;
+;     -- normal mode                          ; 733          ;
+;     -- arithmetic mode                      ; 212          ;
 ;                                             ;              ;
 ; Total registers                             ; 305          ;
 ;     -- Dedicated logic registers            ; 305          ;
@@ -254,48 +271,67 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;              ;
 ; Maximum fan-out node                        ; clk_50~input ;
 ; Maximum fan-out                             ; 326          ;
-; Total fan-out                               ; 9460         ;
-; Average fan-out                             ; 6.58         ;
+; Total fan-out                               ; 10063        ;
+; Average fan-out                             ; 6.01         ;
 +---------------------------------------------+--------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                  ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                   ; Entity Name            ; Library Name ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; |Edge_detection_project                   ; 707 (196)           ; 305 (138)                 ; 2097152     ; 0            ; 0       ; 0         ; 83   ; 0            ; |Edge_detection_project                                                                                               ; Edge_detection_project ; work         ;
-;    |Buffer:comb_125|                      ; 165 (37)            ; 26 (20)                   ; 2097152     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125                                                                               ; Buffer                 ; work         ;
-;       |altsyncram:data_a_rtl_0|           ; 108 (0)             ; 3 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125|altsyncram:data_a_rtl_0                                                       ; altsyncram             ; work         ;
-;          |altsyncram_5dd1:auto_generated| ; 108 (0)             ; 3 (3)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated                        ; altsyncram_5dd1        ; work         ;
-;             |decode_rsa:decode2|          ; 12 (12)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated|decode_rsa:decode2     ; decode_rsa             ; work         ;
-;             |mux_qob:mux3|                ; 96 (96)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated|mux_qob:mux3           ; mux_qob                ; work         ;
-;       |altsyncram:data_b_rtl_0|           ; 20 (0)              ; 3 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125|altsyncram:data_b_rtl_0                                                       ; altsyncram             ; work         ;
-;          |altsyncram_oi81:auto_generated| ; 20 (0)              ; 3 (3)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated                        ; altsyncram_oi81        ; work         ;
-;             |decode_k8a:rden_decode|      ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated|decode_k8a:rden_decode ; decode_k8a             ; work         ;
-;             |decode_rsa:decode3|          ; 13 (13)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:comb_125|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated|decode_rsa:decode3     ; decode_rsa             ; work         ;
-;    |Camera:comb_124|                      ; 6 (6)               ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Camera:comb_124                                                                               ; Camera                 ; work         ;
-;    |VGA:comb_126|                         ; 61 (61)             ; 42 (42)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|VGA:comb_126                                                                                  ; VGA                    ; work         ;
-;    |camera_interface:m0|                  ; 279 (189)           ; 79 (47)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|camera_interface:m0                                                                           ; camera_interface       ; work         ;
-;       |i2c_top:m0|                        ; 90 (90)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|camera_interface:m0|i2c_top:m0                                                                ; i2c_top                ; work         ;
-;    |clk24:n2|                             ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clk24:n2                                                                                      ; clk24                  ; work         ;
-;       |altpll:altpll_component|           ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clk24:n2|altpll:altpll_component                                                              ; altpll                 ; work         ;
-;          |clk24_altpll:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clk24:n2|altpll:altpll_component|clk24_altpll:auto_generated                                  ; clk24_altpll           ; work         ;
-;    |clock_25:n1|                          ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clock_25:n1                                                                                   ; clock_25               ; work         ;
-;       |altpll:altpll_component|           ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clock_25:n1|altpll:altpll_component                                                           ; altpll                 ; work         ;
-;          |clock_25_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clock_25:n1|altpll:altpll_component|clock_25_altpll:auto_generated                            ; clock_25_altpll        ; work         ;
-+-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                    ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                     ; Entity Name            ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
+; |Edge_detection_project                   ; 945 (194)           ; 305 (138)                 ; 2097152     ; 0            ; 0       ; 0         ; 83   ; 0            ; |Edge_detection_project                                                                                                 ; Edge_detection_project ; work         ;
+;    |Buffer:b1|                            ; 165 (37)            ; 26 (20)                   ; 2097152     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1                                                                                       ; Buffer                 ; work         ;
+;       |altsyncram:data_a_rtl_0|           ; 108 (0)             ; 3 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1|altsyncram:data_a_rtl_0                                                               ; altsyncram             ; work         ;
+;          |altsyncram_5dd1:auto_generated| ; 108 (0)             ; 3 (3)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated                                ; altsyncram_5dd1        ; work         ;
+;             |decode_rsa:decode2|          ; 12 (12)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated|decode_rsa:decode2             ; decode_rsa             ; work         ;
+;             |mux_qob:mux3|                ; 96 (96)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated|mux_qob:mux3                   ; mux_qob                ; work         ;
+;       |altsyncram:data_b_rtl_0|           ; 20 (0)              ; 3 (0)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1|altsyncram:data_b_rtl_0                                                               ; altsyncram             ; work         ;
+;          |altsyncram_oi81:auto_generated| ; 20 (0)              ; 3 (3)                     ; 1048576     ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated                                ; altsyncram_oi81        ; work         ;
+;             |decode_k8a:rden_decode|      ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated|decode_k8a:rden_decode         ; decode_k8a             ; work         ;
+;             |decode_rsa:decode3|          ; 13 (13)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Buffer:b1|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated|decode_rsa:decode3             ; decode_rsa             ; work         ;
+;    |Camera:c1|                            ; 6 (6)               ; 20 (20)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Camera:c1                                                                                       ; Camera                 ; work         ;
+;    |Seg7:Seg100|                          ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Seg7:Seg100                                                                                     ; Seg7                   ; work         ;
+;    |Seg7:Seg10|                           ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Seg7:Seg10                                                                                      ; Seg7                   ; work         ;
+;    |Seg7:Seg1|                            ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|Seg7:Seg1                                                                                       ; Seg7                   ; work         ;
+;    |VGA:v1|                               ; 61 (61)             ; 42 (42)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|VGA:v1                                                                                          ; VGA                    ; work         ;
+;    |camera_interface:i1|                  ; 272 (185)           ; 79 (47)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|camera_interface:i1                                                                             ; camera_interface       ; work         ;
+;       |i2c_top:m0|                        ; 87 (87)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|camera_interface:i1|i2c_top:m0                                                                  ; i2c_top                ; work         ;
+;    |clk24:n2|                             ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clk24:n2                                                                                        ; clk24                  ; work         ;
+;       |altpll:altpll_component|           ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clk24:n2|altpll:altpll_component                                                                ; altpll                 ; work         ;
+;          |clk24_altpll:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clk24:n2|altpll:altpll_component|clk24_altpll:auto_generated                                    ; clk24_altpll           ; work         ;
+;    |clock_25:n1|                          ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clock_25:n1                                                                                     ; clock_25               ; work         ;
+;       |altpll:altpll_component|           ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clock_25:n1|altpll:altpll_component                                                             ; altpll                 ; work         ;
+;          |clock_25_altpll:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|clock_25:n1|altpll:altpll_component|clock_25_altpll:auto_generated                              ; clock_25_altpll        ; work         ;
+;    |lpm_divide:Div0|                      ; 69 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div0                                                                                 ; lpm_divide             ; work         ;
+;       |lpm_divide_khm:auto_generated|     ; 69 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div0|lpm_divide_khm:auto_generated                                                   ; lpm_divide_khm         ; work         ;
+;          |sign_div_unsign_ckh:divider|    ; 69 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div0|lpm_divide_khm:auto_generated|sign_div_unsign_ckh:divider                       ; sign_div_unsign_ckh    ; work         ;
+;             |alt_u_div_c4f:divider|       ; 69 (69)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div0|lpm_divide_khm:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider ; alt_u_div_c4f          ; work         ;
+;    |lpm_divide:Div1|                      ; 47 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div1                                                                                 ; lpm_divide             ; work         ;
+;       |lpm_divide_nhm:auto_generated|     ; 47 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div1|lpm_divide_nhm:auto_generated                                                   ; lpm_divide_nhm         ; work         ;
+;          |sign_div_unsign_fkh:divider|    ; 47 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div1|lpm_divide_nhm:auto_generated|sign_div_unsign_fkh:divider                       ; sign_div_unsign_fkh    ; work         ;
+;             |alt_u_div_i4f:divider|       ; 47 (47)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Div1|lpm_divide_nhm:auto_generated|sign_div_unsign_fkh:divider|alt_u_div_i4f:divider ; alt_u_div_i4f          ; work         ;
+;    |lpm_divide:Mod0|                      ; 72 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0                                                                                 ; lpm_divide             ; work         ;
+;       |lpm_divide_n9m:auto_generated|     ; 72 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_n9m:auto_generated                                                   ; lpm_divide_n9m         ; work         ;
+;          |sign_div_unsign_ckh:divider|    ; 72 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider                       ; sign_div_unsign_ckh    ; work         ;
+;             |alt_u_div_c4f:divider|       ; 72 (72)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod0|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider ; alt_u_div_c4f          ; work         ;
+;    |lpm_divide:Mod1|                      ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1                                                                                 ; lpm_divide             ; work         ;
+;       |lpm_divide_n9m:auto_generated|     ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_n9m:auto_generated                                                   ; lpm_divide_n9m         ; work         ;
+;          |sign_div_unsign_ckh:divider|    ; 38 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider                       ; sign_div_unsign_ckh    ; work         ;
+;             |alt_u_div_c4f:divider|       ; 38 (38)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Edge_detection_project|lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider ; alt_u_div_c4f          ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                         ;
-+-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
-; Name                                                                              ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF  ;
-+-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
-; Buffer:comb_125|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 65536        ; 16           ; 65536        ; 16           ; 1048576 ; None ;
-; Buffer:comb_125|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 65536        ; 16           ; --           ; --           ; 1048576 ; None ;
-+-----------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                   ;
++-----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
+; Name                                                                        ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size    ; MIF  ;
++-----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
+; Buffer:b1|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 65536        ; 16           ; 65536        ; 16           ; 1048576 ; None ;
+; Buffer:b1|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 65536        ; 16           ; --           ; --           ; 1048576 ; None ;
++-----------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+---------+------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------+
@@ -310,7 +346,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 Encoding Type:  One-Hot
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |Edge_detection_project|camera_interface:m0|state_q                                                                                               ;
+; State Machine - |Edge_detection_project|camera_interface:i1|state_q                                                                                               ;
 +-----------------------+--------------------+---------------+---------------------+--------------------+-----------------------+--------------------+--------------+
 ; Name                  ; state_q.digest_end ; state_q.delay ; state_q.digest_loop ; state_q.write_data ; state_q.write_address ; state_q.start_sccb ; state_q.idle ;
 +-----------------------+--------------------+---------------+---------------------+--------------------+-----------------------+--------------------+--------------+
@@ -326,7 +362,7 @@ Encoding Type:  One-Hot
 
 Encoding Type:  One-Hot
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |Edge_detection_project|camera_interface:m0|i2c_top:m0|state_q                                                                                                          ;
+; State Machine - |Edge_detection_project|camera_interface:i1|i2c_top:m0|state_q                                                                                                          ;
 +---------------------+----------------+--------------------+--------------+--------------------+---------------------+----------------+------------------+--------------+----------------+
 ; Name                ; state_q.stop_1 ; state_q.ack_master ; state_q.read ; state_q.renew_data ; state_q.ack_servant ; state_q.packet ; state_q.starting ; state_q.idle ; state_q.stop_2 ;
 +---------------------+----------------+--------------------+--------------+--------------------+---------------------+----------------+------------------+--------------+----------------+
@@ -350,23 +386,23 @@ Encoding Type:  One-Hot
 ; pixel_VGA_B[0]                           ; Stuck at GND due to stuck port data_in ;
 ; pixel_VGA_G[0]                           ; Stuck at GND due to stuck port data_in ;
 ; pixel_VGA_R[0]                           ; Stuck at GND due to stuck port data_in ;
-; VGA:comb_126|red_r[0]                    ; Stuck at GND due to stuck port data_in ;
-; VGA:comb_126|green_r[0]                  ; Stuck at GND due to stuck port data_in ;
-; VGA:comb_126|blue_r[0]                   ; Stuck at GND due to stuck port data_in ;
-; VGA:comb_126|blue_r[2]                   ; Merged with VGA:comb_126|blue_r[1]     ;
-; VGA:comb_126|green_r[1]                  ; Merged with VGA:comb_126|blue_r[1]     ;
-; VGA:comb_126|red_r[1,2]                  ; Merged with VGA:comb_126|blue_r[1]     ;
+; VGA:v1|red_r[0]                          ; Stuck at GND due to stuck port data_in ;
+; VGA:v1|green_r[0]                        ; Stuck at GND due to stuck port data_in ;
+; VGA:v1|blue_r[0]                         ; Stuck at GND due to stuck port data_in ;
+; VGA:v1|blue_r[2]                         ; Merged with VGA:v1|blue_r[1]           ;
+; VGA:v1|green_r[1]                        ; Merged with VGA:v1|blue_r[1]           ;
+; VGA:v1|red_r[1,2]                        ; Merged with VGA:v1|blue_r[1]           ;
 ; pixel_VGA_B[2]                           ; Merged with pixel_VGA_B[1]             ;
 ; pixel_VGA_G[1]                           ; Merged with pixel_VGA_B[1]             ;
 ; pixel_VGA_R[1,2]                         ; Merged with pixel_VGA_B[1]             ;
-; camera_interface:m0|state_q~4            ; Lost fanout                            ;
-; camera_interface:m0|state_q~5            ; Lost fanout                            ;
-; camera_interface:m0|state_q~6            ; Lost fanout                            ;
-; camera_interface:m0|state_q~7            ; Lost fanout                            ;
-; camera_interface:m0|i2c_top:m0|state_q~4 ; Lost fanout                            ;
-; camera_interface:m0|i2c_top:m0|state_q~5 ; Lost fanout                            ;
-; camera_interface:m0|i2c_top:m0|state_q~6 ; Lost fanout                            ;
-; camera_interface:m0|delay_q[27]          ; Lost fanout                            ;
+; camera_interface:i1|state_q~4            ; Lost fanout                            ;
+; camera_interface:i1|state_q~5            ; Lost fanout                            ;
+; camera_interface:i1|state_q~6            ; Lost fanout                            ;
+; camera_interface:i1|state_q~7            ; Lost fanout                            ;
+; camera_interface:i1|i2c_top:m0|state_q~4 ; Lost fanout                            ;
+; camera_interface:i1|i2c_top:m0|state_q~5 ; Lost fanout                            ;
+; camera_interface:i1|i2c_top:m0|state_q~6 ; Lost fanout                            ;
+; camera_interface:i1|delay_q[27]          ; Lost fanout                            ;
 ; Total Number of Removed Registers = 22   ;                                        ;
 +------------------------------------------+----------------------------------------+
 
@@ -376,11 +412,11 @@ Encoding Type:  One-Hot
 +----------------+---------------------------+----------------------------------------+
 ; Register name  ; Reason for Removal        ; Registers Removed due to This Register ;
 +----------------+---------------------------+----------------------------------------+
-; pixel_VGA_B[0] ; Stuck at GND              ; VGA:comb_126|blue_r[0]                 ;
+; pixel_VGA_B[0] ; Stuck at GND              ; VGA:v1|blue_r[0]                       ;
 ;                ; due to stuck port data_in ;                                        ;
-; pixel_VGA_G[0] ; Stuck at GND              ; VGA:comb_126|green_r[0]                ;
+; pixel_VGA_G[0] ; Stuck at GND              ; VGA:v1|green_r[0]                      ;
 ;                ; due to stuck port data_in ;                                        ;
-; pixel_VGA_R[0] ; Stuck at GND              ; VGA:comb_126|red_r[0]                  ;
+; pixel_VGA_R[0] ; Stuck at GND              ; VGA:v1|red_r[0]                        ;
 ;                ; due to stuck port data_in ;                                        ;
 +----------------+---------------------------+----------------------------------------+
 
@@ -405,19 +441,19 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; camera_interface:m0|led_q[0]           ; 2       ;
+; camera_interface:i1|led_q[0]           ; 2       ;
 ; Total number of inverted registers = 1 ;         ;
 +----------------------------------------+---------+
 
 
-+----------------------------------------------------------------------+
-; Registers Packed Into Inferred Megafunctions                         ;
-+--------------------------------+------------------------------+------+
-; Register Name                  ; Megafunction                 ; Type ;
-+--------------------------------+------------------------------+------+
-; Buffer:comb_125|d_out_a[0..15] ; Buffer:comb_125|data_b_rtl_0 ; RAM  ;
-; Buffer:comb_125|data_t[0..15]  ; Buffer:comb_125|data_a_rtl_0 ; RAM  ;
-+--------------------------------+------------------------------+------+
++----------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions             ;
++--------------------------+------------------------+------+
+; Register Name            ; Megafunction           ; Type ;
++--------------------------+------------------------+------+
+; Buffer:b1|d_out_a[0..15] ; Buffer:b1|data_b_rtl_0 ; RAM  ;
+; Buffer:b1|data_t[0..15]  ; Buffer:b1|data_a_rtl_0 ; RAM  ;
++--------------------------+------------------------+------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -425,34 +461,34 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
-; 3:1                ; 28 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:m0|delay_q[25]             ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |Edge_detection_project|Buffer:comb_125|read_count[13]              ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Edge_detection_project|pixel_VGA_G[2]                              ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:m0|i2c_top:m0|wr_data_q[1] ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Edge_detection_project|camera_interface:m0|led_q[2]                ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Edge_detection_project|camera_interface:m0|i2c_top:m0|wr_data_q[7] ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:m0|i2c_top:m0|idx_q[2]     ;
-; 9:1                ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |Edge_detection_project|camera_interface:m0|Selector6               ;
-; 11:1               ; 2 bits    ; 14 LEs        ; 6 LEs                ; 8 LEs                  ; No         ; |Edge_detection_project|camera_interface:m0|i2c_top:m0|Selector19   ;
+; 3:1                ; 28 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:i1|delay_q[10]             ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |Edge_detection_project|Buffer:b1|read_count[3]                     ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Edge_detection_project|pixel_VGA_B[3]                              ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:i1|i2c_top:m0|wr_data_q[1] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Edge_detection_project|camera_interface:i1|led_q[1]                ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |Edge_detection_project|camera_interface:i1|i2c_top:m0|wr_data_q[2] ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 12 LEs               ; 20 LEs                 ; Yes        ; |Edge_detection_project|camera_interface:i1|i2c_top:m0|idx_q[0]     ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |Edge_detection_project|camera_interface:i1|Selector0               ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 6 LEs                ; 8 LEs                  ; No         ; |Edge_detection_project|camera_interface:i1|i2c_top:m0|Selector22   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------+
-; Source assignments for Buffer:comb_125|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated ;
-+---------------------------------+--------------------+------+---------------------------------+
-; Assignment                      ; Value              ; From ; To                              ;
-+---------------------------------+--------------------+------+---------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
-+---------------------------------+--------------------+------+---------------------------------+
++-----------------------------------------------------------------------------------------+
+; Source assignments for Buffer:b1|altsyncram:data_b_rtl_0|altsyncram_oi81:auto_generated ;
++---------------------------------+--------------------+------+---------------------------+
+; Assignment                      ; Value              ; From ; To                        ;
++---------------------------------+--------------------+------+---------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                         ;
++---------------------------------+--------------------+------+---------------------------+
 
 
-+-----------------------------------------------------------------------------------------------+
-; Source assignments for Buffer:comb_125|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated ;
-+---------------------------------+--------------------+------+---------------------------------+
-; Assignment                      ; Value              ; From ; To                              ;
-+---------------------------------+--------------------+------+---------------------------------+
-; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                               ;
-+---------------------------------+--------------------+------+---------------------------------+
++-----------------------------------------------------------------------------------------+
+; Source assignments for Buffer:b1|altsyncram:data_a_rtl_0|altsyncram_5dd1:auto_generated ;
++---------------------------------+--------------------+------+---------------------------+
+; Assignment                      ; Value              ; From ; To                        ;
++---------------------------------+--------------------+------+---------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                         ;
++---------------------------------+--------------------+------+---------------------------+
 
 
 +----------------------------------------------------------------------------------+
@@ -1204,7 +1240,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-----------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: camera_interface:m0|i2c_top:m0 ;
+; Parameter Settings for User Entity Instance: camera_interface:i1|i2c_top:m0 ;
 +----------------+--------+---------------------------------------------------+
 ; Parameter Name ; Value  ; Type                                              ;
 +----------------+--------+---------------------------------------------------+
@@ -1213,125 +1249,217 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Buffer:comb_125|altsyncram:data_b_rtl_0 ;
-+------------------------------------+----------------------+------------------------------+
-; Parameter Name                     ; Value                ; Type                         ;
-+------------------------------------+----------------------+------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                      ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                   ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                 ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                 ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE               ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped                      ;
-; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                      ;
-; WIDTH_A                            ; 16                   ; Untyped                      ;
-; WIDTHAD_A                          ; 16                   ; Untyped                      ;
-; NUMWORDS_A                         ; 65536                ; Untyped                      ;
-; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                      ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                      ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                      ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                      ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped                      ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                      ;
-; WIDTH_B                            ; 1                    ; Untyped                      ;
-; WIDTHAD_B                          ; 1                    ; Untyped                      ;
-; NUMWORDS_B                         ; 1                    ; Untyped                      ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped                      ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                      ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                      ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                      ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                      ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                      ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped                      ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                      ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                      ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                      ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                      ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                      ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                      ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                      ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                      ;
-; BYTE_SIZE                          ; 8                    ; Untyped                      ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                      ;
-; READ_DURING_WRITE_MODE_PORT_A      ; OLD_DATA             ; Untyped                      ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                      ;
-; INIT_FILE                          ; UNUSED               ; Untyped                      ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                      ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped                      ;
-; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                      ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                      ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                      ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                      ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                      ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                      ;
-; ENABLE_ECC                         ; FALSE                ; Untyped                      ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                      ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                      ;
-; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                      ;
-; CBXI_PARAMETER                     ; altsyncram_oi81      ; Untyped                      ;
-+------------------------------------+----------------------+------------------------------+
++------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Buffer:b1|altsyncram:data_b_rtl_0 ;
++------------------------------------+----------------------+------------------------+
+; Parameter Name                     ; Value                ; Type                   ;
++------------------------------------+----------------------+------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE         ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                ;
+; WIDTH_A                            ; 16                   ; Untyped                ;
+; WIDTHAD_A                          ; 16                   ; Untyped                ;
+; NUMWORDS_A                         ; 65536                ; Untyped                ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                ;
+; WIDTH_B                            ; 1                    ; Untyped                ;
+; WIDTHAD_B                          ; 1                    ; Untyped                ;
+; NUMWORDS_B                         ; 1                    ; Untyped                ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                ;
+; BYTE_SIZE                          ; 8                    ; Untyped                ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                ;
+; READ_DURING_WRITE_MODE_PORT_A      ; OLD_DATA             ; Untyped                ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                ;
+; INIT_FILE                          ; UNUSED               ; Untyped                ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                ;
+; CBXI_PARAMETER                     ; altsyncram_oi81      ; Untyped                ;
++------------------------------------+----------------------+------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Buffer:comb_125|altsyncram:data_a_rtl_0 ;
-+------------------------------------+----------------------+------------------------------+
-; Parameter Name                     ; Value                ; Type                         ;
-+------------------------------------+----------------------+------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                      ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                   ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                 ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                 ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE               ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped                      ;
-; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                      ;
-; WIDTH_A                            ; 16                   ; Untyped                      ;
-; WIDTHAD_A                          ; 16                   ; Untyped                      ;
-; NUMWORDS_A                         ; 65536                ; Untyped                      ;
-; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                      ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                      ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                      ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                      ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped                      ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                      ;
-; WIDTH_B                            ; 16                   ; Untyped                      ;
-; WIDTHAD_B                          ; 16                   ; Untyped                      ;
-; NUMWORDS_B                         ; 65536                ; Untyped                      ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped                      ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                      ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                      ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                      ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                      ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                      ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped                      ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                      ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                      ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                      ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                      ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                      ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                      ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                      ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                      ;
-; BYTE_SIZE                          ; 8                    ; Untyped                      ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                      ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                      ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                      ;
-; INIT_FILE                          ; UNUSED               ; Untyped                      ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                      ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped                      ;
-; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                      ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                      ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                      ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                      ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                      ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                      ;
-; ENABLE_ECC                         ; FALSE                ; Untyped                      ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                      ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                      ;
-; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                      ;
-; CBXI_PARAMETER                     ; altsyncram_5dd1      ; Untyped                      ;
-+------------------------------------+----------------------+------------------------------+
++------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Buffer:b1|altsyncram:data_a_rtl_0 ;
++------------------------------------+----------------------+------------------------+
+; Parameter Name                     ; Value                ; Type                   ;
++------------------------------------+----------------------+------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE         ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                ;
+; WIDTH_A                            ; 16                   ; Untyped                ;
+; WIDTHAD_A                          ; 16                   ; Untyped                ;
+; NUMWORDS_A                         ; 65536                ; Untyped                ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                ;
+; WIDTH_B                            ; 16                   ; Untyped                ;
+; WIDTHAD_B                          ; 16                   ; Untyped                ;
+; NUMWORDS_B                         ; 65536                ; Untyped                ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Untyped                ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                ;
+; BYTE_SIZE                          ; 8                    ; Untyped                ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                ;
+; INIT_FILE                          ; UNUSED               ; Untyped                ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped                ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                ;
+; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                ;
+; CBXI_PARAMETER                     ; altsyncram_5dd1      ; Untyped                ;
++------------------------------------+----------------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                ;
+; LPM_WIDTHD             ; 7              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_nhm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_khm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_n9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 9              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_n9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1360,39 +1488,39 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+-------------------------------------+
 
 
-+-------------------------------------------------------------------------------------+
-; altsyncram Parameter Settings by Entity Instance                                    ;
-+-------------------------------------------+-----------------------------------------+
-; Name                                      ; Value                                   ;
-+-------------------------------------------+-----------------------------------------+
-; Number of entity instances                ; 2                                       ;
-; Entity Instance                           ; Buffer:comb_125|altsyncram:data_b_rtl_0 ;
-;     -- OPERATION_MODE                     ; SINGLE_PORT                             ;
-;     -- WIDTH_A                            ; 16                                      ;
-;     -- NUMWORDS_A                         ; 65536                                   ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED                            ;
-;     -- WIDTH_B                            ; 1                                       ;
-;     -- NUMWORDS_B                         ; 1                                       ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                               ;
-; Entity Instance                           ; Buffer:comb_125|altsyncram:data_a_rtl_0 ;
-;     -- OPERATION_MODE                     ; DUAL_PORT                               ;
-;     -- WIDTH_A                            ; 16                                      ;
-;     -- NUMWORDS_A                         ; 65536                                   ;
-;     -- OUTDATA_REG_A                      ; UNREGISTERED                            ;
-;     -- WIDTH_B                            ; 16                                      ;
-;     -- NUMWORDS_B                         ; 65536                                   ;
-;     -- ADDRESS_REG_B                      ; CLOCK1                                  ;
-;     -- OUTDATA_REG_B                      ; UNREGISTERED                            ;
-;     -- RAM_BLOCK_TYPE                     ; AUTO                                    ;
-;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                               ;
-+-------------------------------------------+-----------------------------------------+
++-------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                              ;
++-------------------------------------------+-----------------------------------+
+; Name                                      ; Value                             ;
++-------------------------------------------+-----------------------------------+
+; Number of entity instances                ; 2                                 ;
+; Entity Instance                           ; Buffer:b1|altsyncram:data_b_rtl_0 ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                       ;
+;     -- WIDTH_A                            ; 16                                ;
+;     -- NUMWORDS_A                         ; 65536                             ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                      ;
+;     -- WIDTH_B                            ; 1                                 ;
+;     -- NUMWORDS_B                         ; 1                                 ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                            ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                      ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                              ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                         ;
+; Entity Instance                           ; Buffer:b1|altsyncram:data_a_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                         ;
+;     -- WIDTH_A                            ; 16                                ;
+;     -- NUMWORDS_A                         ; 65536                             ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                      ;
+;     -- WIDTH_B                            ; 16                                ;
+;     -- NUMWORDS_B                         ; 65536                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                            ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                      ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                              ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                         ;
++-------------------------------------------+-----------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Buffer:comb_125"                                                                       ;
+; Port Connectivity Checks: "Buffer:b1"                                                                             ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port    ; Type   ; Severity ; Details                                                                             ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1401,7 +1529,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "camera_interface:m0|i2c_top:m0"                                                        ;
+; Port Connectivity Checks: "camera_interface:i1|i2c_top:m0"                                                        ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port    ; Type   ; Severity ; Details                                                                             ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1425,21 +1553,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SCLR SLD          ; 4                           ;
 ;     plain             ; 81                          ;
 ; cycloneiii_io_obuf    ; 1                           ;
-; cycloneiii_lcell_comb ; 710                         ;
-;     arith             ; 137                         ;
-;         2 data inputs ; 133                         ;
-;         3 data inputs ; 4                           ;
-;     normal            ; 573                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 18                          ;
-;         2 data inputs ; 71                          ;
-;         3 data inputs ; 95                          ;
-;         4 data inputs ; 388                         ;
+; cycloneiii_lcell_comb ; 951                         ;
+;     arith             ; 212                         ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 147                         ;
+;         3 data inputs ; 64                          ;
+;     normal            ; 739                         ;
+;         0 data inputs ; 19                          ;
+;         1 data inputs ; 24                          ;
+;         2 data inputs ; 168                         ;
+;         3 data inputs ; 99                          ;
+;         4 data inputs ; 429                         ;
 ; cycloneiii_pll        ; 2                           ;
 ; cycloneiii_ram_block  ; 256                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 2.78                        ;
+; Max LUT depth         ; 17.30                       ;
+; Average LUT depth     ; 5.03                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1458,7 +1587,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu Oct 27 14:16:31 2022
+    Info: Processing started: Thu Oct 27 14:50:33 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Edge_detection_project -c Edge_detection_project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -1470,7 +1599,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file i2c_top
     Info (12023): Found entity 1: i2c_top File: C:/YJ/OV7670_camera_module/i2c_top.v Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file dcm24.v
     Info (12023): Found entity 1: dcm24 File: C:/YJ/OV7670_camera_module/dcm24.v Line: 40
-Warning (10275): Verilog HDL Module Instantiation warning at main.v(157): ignored dangling comma in List of Port Connections File: C:/YJ/OV7670_camera_module/main.v Line: 157
+Warning (10275): Verilog HDL Module Instantiation warning at main.v(159): ignored dangling comma in List of Port Connections File: C:/YJ/OV7670_camera_module/main.v Line: 159
 Info (12021): Found 1 design units, including 1 entities, in source file main.v
     Info (12023): Found entity 1: Edge_detection_project File: C:/YJ/OV7670_camera_module/main.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file buffer.v
@@ -1491,17 +1620,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file clk24.v
     Info (12023): Found entity 1: clk24 File: C:/YJ/OV7670_camera_module/clk24.v Line: 40
 Warning (10236): Verilog HDL Implicit Net warning at camera_interface.v(235): created implicit net for "cmos_pwdn" File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 235
 Warning (10236): Verilog HDL Implicit Net warning at camera_interface.v(236): created implicit net for "cmos_rst_n" File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 236
-Warning (10236): Verilog HDL Implicit Net warning at main.v(104): created implicit net for "clk_25" File: C:/YJ/OV7670_camera_module/main.v Line: 104
-Critical Warning (10846): Verilog HDL Instantiation warning at main.v(115): instance has no name File: C:/YJ/OV7670_camera_module/main.v Line: 115
-Critical Warning (10846): Verilog HDL Instantiation warning at main.v(140): instance has no name File: C:/YJ/OV7670_camera_module/main.v Line: 140
-Critical Warning (10846): Verilog HDL Instantiation warning at main.v(157): instance has no name File: C:/YJ/OV7670_camera_module/main.v Line: 157
 Info (12127): Elaborating entity "Edge_detection_project" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at main.v(97): truncated value with size 32 to match size of target (4) File: C:/YJ/OV7670_camera_module/main.v Line: 97
+Warning (10230): Verilog HDL assignment warning at main.v(98): truncated value with size 32 to match size of target (4) File: C:/YJ/OV7670_camera_module/main.v Line: 98
+Warning (10230): Verilog HDL assignment warning at main.v(99): truncated value with size 32 to match size of target (4) File: C:/YJ/OV7670_camera_module/main.v Line: 99
 Warning (10034): Output port "led_err" at main.v(6) has no driver File: C:/YJ/OV7670_camera_module/main.v Line: 6
-Warning (10034): Output port "seg_100" at main.v(7) has no driver File: C:/YJ/OV7670_camera_module/main.v Line: 7
-Warning (10034): Output port "seg_10" at main.v(7) has no driver File: C:/YJ/OV7670_camera_module/main.v Line: 7
-Warning (10034): Output port "seg_1" at main.v(7) has no driver File: C:/YJ/OV7670_camera_module/main.v Line: 7
 Warning (10034): Output port "ledt[3]" at main.v(22) has no driver File: C:/YJ/OV7670_camera_module/main.v Line: 22
-Info (12128): Elaborating entity "clock_25" for hierarchy "clock_25:n1" File: C:/YJ/OV7670_camera_module/main.v Line: 104
+Info (12128): Elaborating entity "Seg7" for hierarchy "Seg7:Seg100" File: C:/YJ/OV7670_camera_module/main.v Line: 101
+Info (12128): Elaborating entity "clock_25" for hierarchy "clock_25:n1" File: C:/YJ/OV7670_camera_module/main.v Line: 106
 Info (12128): Elaborating entity "altpll" for hierarchy "clock_25:n1|altpll:altpll_component" File: C:/YJ/OV7670_camera_module/clock_25.v Line: 91
 Info (12130): Elaborated megafunction instantiation "clock_25:n1|altpll:altpll_component" File: C:/YJ/OV7670_camera_module/clock_25.v Line: 91
 Info (12133): Instantiated megafunction "clock_25:n1|altpll:altpll_component" with the following parameter: File: C:/YJ/OV7670_camera_module/clock_25.v Line: 91
@@ -1562,7 +1688,7 @@ Info (12133): Instantiated megafunction "clock_25:n1|altpll:altpll_component" wi
 Info (12021): Found 1 design units, including 1 entities, in source file db/clock_25_altpll.v
     Info (12023): Found entity 1: clock_25_altpll File: C:/YJ/OV7670_camera_module/db/clock_25_altpll.v Line: 30
 Info (12128): Elaborating entity "clock_25_altpll" for hierarchy "clock_25:n1|altpll:altpll_component|clock_25_altpll:auto_generated" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "clk24" for hierarchy "clk24:n2" File: C:/YJ/OV7670_camera_module/main.v Line: 105
+Info (12128): Elaborating entity "clk24" for hierarchy "clk24:n2" File: C:/YJ/OV7670_camera_module/main.v Line: 107
 Info (12128): Elaborating entity "altpll" for hierarchy "clk24:n2|altpll:altpll_component" File: C:/YJ/OV7670_camera_module/clk24.v Line: 91
 Info (12130): Elaborated megafunction instantiation "clk24:n2|altpll:altpll_component" File: C:/YJ/OV7670_camera_module/clk24.v Line: 91
 Info (12133): Instantiated megafunction "clk24:n2|altpll:altpll_component" with the following parameter: File: C:/YJ/OV7670_camera_module/clk24.v Line: 91
@@ -1623,15 +1749,15 @@ Info (12133): Instantiated megafunction "clk24:n2|altpll:altpll_component" with 
 Info (12021): Found 1 design units, including 1 entities, in source file db/clk24_altpll.v
     Info (12023): Found entity 1: clk24_altpll File: C:/YJ/OV7670_camera_module/db/clk24_altpll.v Line: 30
 Info (12128): Elaborating entity "clk24_altpll" for hierarchy "clk24:n2|altpll:altpll_component|clk24_altpll:auto_generated" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "Camera" for hierarchy "Camera:comb_124" File: C:/YJ/OV7670_camera_module/main.v Line: 115
-Info (12128): Elaborating entity "camera_interface" for hierarchy "camera_interface:m0" File: C:/YJ/OV7670_camera_module/main.v Line: 127
+Info (12128): Elaborating entity "Camera" for hierarchy "Camera:c1" File: C:/YJ/OV7670_camera_module/main.v Line: 117
+Info (12128): Elaborating entity "camera_interface" for hierarchy "camera_interface:i1" File: C:/YJ/OV7670_camera_module/main.v Line: 129
 Warning (10036): Verilog HDL or VHDL warning at camera_interface.v(235): object "cmos_pwdn" assigned a value but never read File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 235
 Warning (10036): Verilog HDL or VHDL warning at camera_interface.v(236): object "cmos_rst_n" assigned a value but never read File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 236
 Warning (10036): Verilog HDL or VHDL warning at camera_interface.v(39): object "wr_en" assigned a value but never read File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 39
 Warning (10030): Net "message.data_a" at camera_interface.v(37) has no driver or initial value, using a default initial value '0' File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 37
 Warning (10030): Net "message.waddr_a" at camera_interface.v(37) has no driver or initial value, using a default initial value '0' File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 37
 Warning (10030): Net "message.we_a" at camera_interface.v(37) has no driver or initial value, using a default initial value '0' File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 37
-Info (12128): Elaborating entity "i2c_top" for hierarchy "camera_interface:m0|i2c_top:m0" File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 253
+Info (12128): Elaborating entity "i2c_top" for hierarchy "camera_interface:i1|i2c_top:m0" File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 253
 Warning (10230): Verilog HDL assignment warning at i2c_top.v(92): truncated value with size 32 to match size of target (7) File: C:/YJ/OV7670_camera_module/i2c_top.v Line: 92
 Warning (10230): Verilog HDL assignment warning at i2c_top.v(120): truncated value with size 32 to match size of target (1) File: C:/YJ/OV7670_camera_module/i2c_top.v Line: 120
 Warning (10230): Verilog HDL assignment warning at i2c_top.v(132): truncated value with size 32 to match size of target (1) File: C:/YJ/OV7670_camera_module/i2c_top.v Line: 132
@@ -1639,13 +1765,13 @@ Warning (10230): Verilog HDL assignment warning at i2c_top.v(133): truncated val
 Warning (10230): Verilog HDL assignment warning at i2c_top.v(164): truncated value with size 32 to match size of target (4) File: C:/YJ/OV7670_camera_module/i2c_top.v Line: 164
 Warning (10230): Verilog HDL assignment warning at i2c_top.v(204): truncated value with size 32 to match size of target (1) File: C:/YJ/OV7670_camera_module/i2c_top.v Line: 204
 Warning (10230): Verilog HDL assignment warning at i2c_top.v(205): truncated value with size 32 to match size of target (1) File: C:/YJ/OV7670_camera_module/i2c_top.v Line: 205
-Info (12128): Elaborating entity "Buffer" for hierarchy "Buffer:comb_125" File: C:/YJ/OV7670_camera_module/main.v Line: 140
-Info (12128): Elaborating entity "VGA" for hierarchy "VGA:comb_126" File: C:/YJ/OV7670_camera_module/main.v Line: 157
-Warning (276027): Inferred dual-clock RAM node "Buffer:comb_125|data_a_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Info (12128): Elaborating entity "Buffer" for hierarchy "Buffer:b1" File: C:/YJ/OV7670_camera_module/main.v Line: 142
+Info (12128): Elaborating entity "VGA" for hierarchy "VGA:v1" File: C:/YJ/OV7670_camera_module/main.v Line: 159
+Warning (276027): Inferred dual-clock RAM node "Buffer:b1|data_a_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
 Critical Warning (127005): Memory depth (256) in the design file differs from memory depth (251) in the Memory Initialization File "C:/YJ/OV7670_camera_module/db/Edge_detection_project.ram0_camera_interface_13f3216d.hdl.mif" -- setting initial value for remaining addresses to 0
 Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/YJ/OV7670_camera_module/db/Edge_detection_project.ram0_camera_interface_13f3216d.hdl.mif" contains "don't care" values -- overwriting them with 0s
 Info (19000): Inferred 2 megafunctions from design logic
-    Info (276029): Inferred altsyncram megafunction from the following design logic: "Buffer:comb_125|data_b_rtl_0" 
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "Buffer:b1|data_b_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to SINGLE_PORT
         Info (286033): Parameter WIDTH_A set to 16
         Info (286033): Parameter WIDTHAD_A set to 16
@@ -1656,7 +1782,7 @@ Info (19000): Inferred 2 megafunctions from design logic
         Info (286033): Parameter READ_DURING_WRITE_MODE_PORT_A set to OLD_DATA
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
-    Info (276029): Inferred altsyncram megafunction from the following design logic: "Buffer:comb_125|data_a_rtl_0" 
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "Buffer:b1|data_a_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
         Info (286033): Parameter WIDTH_A set to 16
         Info (286033): Parameter WIDTHAD_A set to 16
@@ -1671,8 +1797,13 @@ Info (19000): Inferred 2 megafunctions from design logic
         Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
         Info (286033): Parameter INDATA_ACLR_A set to NONE
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
-Info (12130): Elaborated megafunction instantiation "Buffer:comb_125|altsyncram:data_b_rtl_0"
-Info (12133): Instantiated megafunction "Buffer:comb_125|altsyncram:data_b_rtl_0" with the following parameter:
+Info (278001): Inferred 4 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: C:/YJ/OV7670_camera_module/main.v Line: 99
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: C:/YJ/OV7670_camera_module/main.v Line: 98
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/YJ/OV7670_camera_module/main.v Line: 98
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/YJ/OV7670_camera_module/main.v Line: 97
+Info (12130): Elaborated megafunction instantiation "Buffer:b1|altsyncram:data_b_rtl_0"
+Info (12133): Instantiated megafunction "Buffer:b1|altsyncram:data_b_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "SINGLE_PORT"
     Info (12134): Parameter "WIDTH_A" = "16"
     Info (12134): Parameter "WIDTHAD_A" = "16"
@@ -1691,8 +1822,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/deco
     Info (12023): Found entity 1: decode_k8a File: C:/YJ/OV7670_camera_module/db/decode_k8a.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_qob.tdf
     Info (12023): Found entity 1: mux_qob File: C:/YJ/OV7670_camera_module/db/mux_qob.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "Buffer:comb_125|altsyncram:data_a_rtl_0"
-Info (12133): Instantiated megafunction "Buffer:comb_125|altsyncram:data_a_rtl_0" with the following parameter:
+Info (12130): Elaborated megafunction instantiation "Buffer:b1|altsyncram:data_a_rtl_0"
+Info (12133): Instantiated megafunction "Buffer:b1|altsyncram:data_a_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
     Info (12134): Parameter "WIDTH_A" = "16"
     Info (12134): Parameter "WIDTHAD_A" = "16"
@@ -1709,53 +1840,72 @@ Info (12133): Instantiated megafunction "Buffer:comb_125|altsyncram:data_a_rtl_0
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_5dd1.tdf
     Info (12023): Found entity 1: altsyncram_5dd1 File: C:/YJ/OV7670_camera_module/db/altsyncram_5dd1.tdf Line: 34
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: C:/YJ/OV7670_camera_module/main.v Line: 99
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: C:/YJ/OV7670_camera_module/main.v Line: 99
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_nhm.tdf
+    Info (12023): Found entity 1: lpm_divide_nhm File: C:/YJ/OV7670_camera_module/db/lpm_divide_nhm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_fkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_fkh File: C:/YJ/OV7670_camera_module/db/sign_div_unsign_fkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i4f.tdf
+    Info (12023): Found entity 1: alt_u_div_i4f File: C:/YJ/OV7670_camera_module/db/alt_u_div_i4f.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: C:/YJ/OV7670_camera_module/db/add_sub_7pc.tdf Line: 23
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: C:/YJ/OV7670_camera_module/db/add_sub_8pc.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: C:/YJ/OV7670_camera_module/main.v Line: 98
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: C:/YJ/OV7670_camera_module/main.v Line: 98
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_khm.tdf
+    Info (12023): Found entity 1: lpm_divide_khm File: C:/YJ/OV7670_camera_module/db/lpm_divide_khm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ckh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_ckh File: C:/YJ/OV7670_camera_module/db/sign_div_unsign_ckh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_c4f.tdf
+    Info (12023): Found entity 1: alt_u_div_c4f File: C:/YJ/OV7670_camera_module/db/alt_u_div_c4f.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: C:/YJ/OV7670_camera_module/main.v Line: 98
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: C:/YJ/OV7670_camera_module/main.v Line: 98
+    Info (12134): Parameter "LPM_WIDTHN" = "9"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_n9m.tdf
+    Info (12023): Found entity 1: lpm_divide_n9m File: C:/YJ/OV7670_camera_module/db/lpm_divide_n9m.tdf Line: 25
 Info (13000): Registers with preset signals will power-up high File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 145
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "led_err[0]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 6
     Warning (13410): Pin "led_err[1]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 6
-    Warning (13410): Pin "seg_100[0]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_100[1]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_100[2]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_100[3]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_100[4]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_100[5]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_100[6]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_10[0]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_10[1]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_10[2]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_10[3]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_10[4]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_10[5]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_10[6]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_1[0]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_1[1]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_1[2]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_1[3]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_1[4]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_1[5]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
-    Warning (13410): Pin "seg_1[6]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 7
     Warning (13410): Pin "VGA_red[0]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 9
     Warning (13410): Pin "VGA_green[0]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 9
     Warning (13410): Pin "VGA_blue[0]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 9
     Warning (13410): Pin "ledt[3]" is stuck at GND File: C:/YJ/OV7670_camera_module/main.v Line: 22
 Info (286030): Timing-Driven Synthesis is running
 Critical Warning (18061): Ignored Power-Up Level option on the following registers
-    Critical Warning (18010): Register camera_interface:m0|led_q[0] will power up to High File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 145
+    Critical Warning (18010): Register camera_interface:i1|led_q[0] will power up to High File: C:/YJ/OV7670_camera_module/camera_interface.v Line: 145
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider|add_sub_8_result_int[0]~0" File: C:/YJ/OV7670_camera_module/db/alt_u_div_c4f.tdf Line: 67
+    Info (17048): Logic cell "lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider|add_sub_6_result_int[0]~10" File: C:/YJ/OV7670_camera_module/db/alt_u_div_c4f.tdf Line: 57
+    Info (17048): Logic cell "lpm_divide:Mod1|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider|add_sub_7_result_int[0]~10" File: C:/YJ/OV7670_camera_module/db/alt_u_div_c4f.tdf Line: 62
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 2 node(s), including 0 DDIO, 2 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 1140 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1378 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 14 input pins
     Info (21059): Implemented 68 output pins
     Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 799 logic cells
+    Info (21061): Implemented 1037 logic cells
     Info (21064): Implemented 256 RAM segments
     Info (21065): Implemented 2 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 59 warnings
-    Info: Peak virtual memory: 5070 megabytes
-    Info: Processing ended: Thu Oct 27 14:16:44 2022
-    Info: Elapsed time: 00:00:13
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 34 warnings
+    Info: Peak virtual memory: 4819 megabytes
+    Info: Processing ended: Thu Oct 27 14:50:45 2022
+    Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:19
 
 

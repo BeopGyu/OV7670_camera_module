@@ -70,9 +70,9 @@ module VGA(
 			vsync_r <= 1'b0;
 			hsync_r <= 1'b0;
 			
-			red_r <= 7'd0;
-			green_r <= 7'd0;
-			blue_r <= 7'd0;
+			red_r <= 8'd0;
+			green_r <= 8'd0;
+			blue_r <= 8'd0;
 			
 		end
 		else begin
@@ -140,8 +140,8 @@ module VGA(
 	assign	ypos = vcount;
 	assign	ptick = ptick_w;
 
-	assign	red = active ? red_r : 7'd0;
-	assign	green = active ? green_r : 7'd0;
-	assign	blue = active ? blue_r : 7'd0;
+	assign	red = active ? red_r : 8'd0;
+	assign	green = active ? green_r : 8'd0;
+	assign	blue = active ? blue_r : 8'd0;
 	
 endmodule

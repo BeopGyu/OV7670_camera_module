@@ -53,62 +53,62 @@ button => data_buffer_in_a[13].ENA
 button => data_buffer_in_a[14].ENA
 button => data_buffer_in_a[15].ENA
 rst_n => rst_n.IN1
-led_d[0] << camera_interface:m0.led
-led_d[1] << camera_interface:m0.led
-led_d[2] << camera_interface:m0.led
-led_d[3] << camera_interface:m0.led
-led_err[0] << <GND>
-led_err[1] << <GND>
-seg_100[0] << <GND>
-seg_100[1] << <GND>
-seg_100[2] << <GND>
-seg_100[3] << <GND>
-seg_100[4] << <GND>
-seg_100[5] << <GND>
-seg_100[6] << <GND>
-seg_10[0] << <GND>
-seg_10[1] << <GND>
-seg_10[2] << <GND>
-seg_10[3] << <GND>
-seg_10[4] << <GND>
-seg_10[5] << <GND>
-seg_10[6] << <GND>
-seg_1[0] << <GND>
-seg_1[1] << <GND>
-seg_1[2] << <GND>
-seg_1[3] << <GND>
-seg_1[4] << <GND>
-seg_1[5] << <GND>
-seg_1[6] << <GND>
-VGA_red[0] << VGA:comb_126.red
-VGA_red[1] << VGA:comb_126.red
-VGA_red[2] << VGA:comb_126.red
-VGA_red[3] << VGA:comb_126.red
-VGA_red[4] << VGA:comb_126.red
-VGA_red[5] << VGA:comb_126.red
-VGA_red[6] << VGA:comb_126.red
-VGA_red[7] << VGA:comb_126.red
-VGA_green[0] << VGA:comb_126.green
-VGA_green[1] << VGA:comb_126.green
-VGA_green[2] << VGA:comb_126.green
-VGA_green[3] << VGA:comb_126.green
-VGA_green[4] << VGA:comb_126.green
-VGA_green[5] << VGA:comb_126.green
-VGA_green[6] << VGA:comb_126.green
-VGA_green[7] << VGA:comb_126.green
-VGA_blue[0] << VGA:comb_126.blue
-VGA_blue[1] << VGA:comb_126.blue
-VGA_blue[2] << VGA:comb_126.blue
-VGA_blue[3] << VGA:comb_126.blue
-VGA_blue[4] << VGA:comb_126.blue
-VGA_blue[5] << VGA:comb_126.blue
-VGA_blue[6] << VGA:comb_126.blue
-VGA_blue[7] << VGA:comb_126.blue
-VGA_hsync << VGA:comb_126.hsync
-VGA_vsync << VGA:comb_126.vsync
-VGA_clk << clk_25.DB_MAX_OUTPUT_PORT_TYPE
-VGA_sync << VGA_sync.DB_MAX_OUTPUT_PORT_TYPE
-VGA_blank << VGA:comb_126.active
+led_d[0] <= camera_interface:i1.led
+led_d[1] <= camera_interface:i1.led
+led_d[2] <= camera_interface:i1.led
+led_d[3] <= camera_interface:i1.led
+led_err[0] <= <GND>
+led_err[1] <= <GND>
+seg_100[0] <= Seg7:Seg100.seg
+seg_100[1] <= Seg7:Seg100.seg
+seg_100[2] <= Seg7:Seg100.seg
+seg_100[3] <= Seg7:Seg100.seg
+seg_100[4] <= Seg7:Seg100.seg
+seg_100[5] <= Seg7:Seg100.seg
+seg_100[6] <= Seg7:Seg100.seg
+seg_10[0] <= Seg7:Seg10.seg
+seg_10[1] <= Seg7:Seg10.seg
+seg_10[2] <= Seg7:Seg10.seg
+seg_10[3] <= Seg7:Seg10.seg
+seg_10[4] <= Seg7:Seg10.seg
+seg_10[5] <= Seg7:Seg10.seg
+seg_10[6] <= Seg7:Seg10.seg
+seg_1[0] <= Seg7:Seg1.seg
+seg_1[1] <= Seg7:Seg1.seg
+seg_1[2] <= Seg7:Seg1.seg
+seg_1[3] <= Seg7:Seg1.seg
+seg_1[4] <= Seg7:Seg1.seg
+seg_1[5] <= Seg7:Seg1.seg
+seg_1[6] <= Seg7:Seg1.seg
+VGA_red[0] <= VGA:v1.red
+VGA_red[1] <= VGA:v1.red
+VGA_red[2] <= VGA:v1.red
+VGA_red[3] <= VGA:v1.red
+VGA_red[4] <= VGA:v1.red
+VGA_red[5] <= VGA:v1.red
+VGA_red[6] <= VGA:v1.red
+VGA_red[7] <= VGA:v1.red
+VGA_green[0] <= VGA:v1.green
+VGA_green[1] <= VGA:v1.green
+VGA_green[2] <= VGA:v1.green
+VGA_green[3] <= VGA:v1.green
+VGA_green[4] <= VGA:v1.green
+VGA_green[5] <= VGA:v1.green
+VGA_green[6] <= VGA:v1.green
+VGA_green[7] <= VGA:v1.green
+VGA_blue[0] <= VGA:v1.blue
+VGA_blue[1] <= VGA:v1.blue
+VGA_blue[2] <= VGA:v1.blue
+VGA_blue[3] <= VGA:v1.blue
+VGA_blue[4] <= VGA:v1.blue
+VGA_blue[5] <= VGA:v1.blue
+VGA_blue[6] <= VGA:v1.blue
+VGA_blue[7] <= VGA:v1.blue
+VGA_hsync <= VGA:v1.hsync
+VGA_vsync <= VGA:v1.vsync
+VGA_clk <= clk_25.DB_MAX_OUTPUT_PORT_TYPE
+VGA_sync <= VGA_sync.DB_MAX_OUTPUT_PORT_TYPE
+VGA_blank <= VGA:v1.active
 cam_clock => cam_clock.IN1
 cam_vsync => cam_vsync.IN1
 cam_href => cam_href.IN1
@@ -120,20 +120,62 @@ cam_data_wires[4] => cam_data_wires[4].IN1
 cam_data_wires[5] => cam_data_wires[5].IN1
 cam_data_wires[6] => cam_data_wires[6].IN1
 cam_data_wires[7] => cam_data_wires[7].IN1
-cmos_scl << camera_interface:m0.cmos_scl
-cmos_sda <> camera_interface:m0.cmos_sda
+cmos_scl <= camera_interface:i1.cmos_scl
+cmos_sda <> camera_interface:i1.cmos_sda
 clk_50 => clk_50.IN3
-cam_xclk << clk24:n2.c0
-ledt[0] << button.DB_MAX_OUTPUT_PORT_TYPE
-ledt[1] << cnt[25].DB_MAX_OUTPUT_PORT_TYPE
-ledt[2] << cnt2[25].DB_MAX_OUTPUT_PORT_TYPE
-ledt[3] << <GND>
-ledG[0] << pixel_VGA_G[2].DB_MAX_OUTPUT_PORT_TYPE
-ledG[1] << pixel_VGA_G[3].DB_MAX_OUTPUT_PORT_TYPE
-ledG[2] << pixel_VGA_G[4].DB_MAX_OUTPUT_PORT_TYPE
-ledG[3] << pixel_VGA_G[5].DB_MAX_OUTPUT_PORT_TYPE
-ledG[4] << pixel_VGA_G[6].DB_MAX_OUTPUT_PORT_TYPE
-ledG[5] << pixel_VGA_G[7].DB_MAX_OUTPUT_PORT_TYPE
+cam_xclk <= clk24:n2.c0
+ledt[0] <= button.DB_MAX_OUTPUT_PORT_TYPE
+ledt[1] <= cnt[25].DB_MAX_OUTPUT_PORT_TYPE
+ledt[2] <= cnt2[25].DB_MAX_OUTPUT_PORT_TYPE
+ledt[3] <= <GND>
+ledG[0] <= pixel_VGA_G[2].DB_MAX_OUTPUT_PORT_TYPE
+ledG[1] <= pixel_VGA_G[3].DB_MAX_OUTPUT_PORT_TYPE
+ledG[2] <= pixel_VGA_G[4].DB_MAX_OUTPUT_PORT_TYPE
+ledG[3] <= pixel_VGA_G[5].DB_MAX_OUTPUT_PORT_TYPE
+ledG[4] <= pixel_VGA_G[6].DB_MAX_OUTPUT_PORT_TYPE
+ledG[5] <= pixel_VGA_G[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Edge_detection_project|Seg7:Seg100
+num[0] => Decoder0.IN3
+num[1] => Decoder0.IN2
+num[2] => Decoder0.IN1
+num[3] => Decoder0.IN0
+seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Edge_detection_project|Seg7:Seg10
+num[0] => Decoder0.IN3
+num[1] => Decoder0.IN2
+num[2] => Decoder0.IN1
+num[3] => Decoder0.IN0
+seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Edge_detection_project|Seg7:Seg1
+num[0] => Decoder0.IN3
+num[1] => Decoder0.IN2
+num[2] => Decoder0.IN1
+num[3] => Decoder0.IN0
+seg[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+seg[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+seg[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+seg[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+seg[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+seg[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+seg[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Edge_detection_project|clock_25:n1
@@ -286,7 +328,7 @@ inclk[0] => pll1.CLK
 inclk[1] => pll1.CLK1
 
 
-|Edge_detection_project|Camera:comb_124
+|Edge_detection_project|Camera:c1
 clock => p_data[0]~reg0.CLK
 clock => p_data[1]~reg0.CLK
 clock => p_data[2]~reg0.CLK
@@ -363,7 +405,7 @@ p_data[15] <= p_data[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 f_done <= f_done~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Edge_detection_project|camera_interface:m0
+|Edge_detection_project|camera_interface:i1
 clk => clk.IN1
 rst_n => rst_n.IN1
 cmos_sda <> i2c_top:m0.sda
@@ -374,7 +416,7 @@ led[2] <= led_q[2].DB_MAX_OUTPUT_PORT_TYPE
 led[3] <= led_q[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Edge_detection_project|camera_interface:m0|i2c_top:m0
+|Edge_detection_project|camera_interface:i1|i2c_top:m0
 clk => rd_data_q[0].CLK
 clk => rd_data_q[1].CLK
 clk => rd_data_q[2].CLK
@@ -515,7 +557,7 @@ state[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
 state[3] <= state[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Edge_detection_project|Buffer:comb_125
+|Edge_detection_project|Buffer:b1
 d_in_a[0] => data_a.data_a[0].DATAIN
 d_in_a[0] => data_a.DATAIN
 d_in_a[1] => data_a.data_a[1].DATAIN
@@ -807,7 +849,7 @@ err_w_a <= err_w_a~reg0.DB_MAX_OUTPUT_PORT_TYPE
 r_done <= r_done~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Edge_detection_project|VGA:comb_126
+|Edge_detection_project|VGA:v1
 clk => blue_r[0].CLK
 clk => blue_r[1].CLK
 clk => blue_r[2].CLK
