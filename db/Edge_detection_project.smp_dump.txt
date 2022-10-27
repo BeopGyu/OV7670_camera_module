@@ -1,12 +1,4 @@
 
-State Machine - |Edge_detection_project|camera_interface:m0|sccb_state_q
-Name sccb_state_q.sccb_data sccb_state_q.sccb_address sccb_state_q.sccb_idle sccb_state_q.wait_init sccb_state_q.sccb_stop 
-sccb_state_q.wait_init 0 0 0 0 0 
-sccb_state_q.sccb_idle 0 0 1 1 0 
-sccb_state_q.sccb_address 0 1 0 1 0 
-sccb_state_q.sccb_data 1 0 0 1 0 
-sccb_state_q.sccb_stop 0 0 0 1 1 
-
 State Machine - |Edge_detection_project|camera_interface:m0|state_q
 Name state_q.digest_end state_q.delay state_q.digest_loop state_q.write_data state_q.write_address state_q.start_sccb state_q.idle 
 state_q.idle 0 0 0 0 0 0 0 

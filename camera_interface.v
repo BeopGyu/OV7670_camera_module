@@ -19,22 +19,11 @@
 					
 					stopping=10;
 					
-	 localparam wait_init=0,
-					sccb_idle=1,
-					sccb_address=2,
-					sccb_data=3,
-					sccb_stop=4;
-					
 	 localparam MSG_INDEX=77; //number of the last index to be digested by SCCB
 	 
 	 
 	 
 	 reg[3:0] state_q=0,state_d;
-	 reg[2:0] sccb_state_q=0,sccb_state_d;
-	 reg[7:0] addr_q,addr_d;
-	 reg[7:0] data_q,data_d;
-	 reg[7:0] brightness_q,brightness_d;
-	 reg[7:0] contrast_q,contrast_d;
 	 reg start,stop;
 	 reg[7:0] wr_data;
 	 wire rd_tick;
@@ -151,11 +140,6 @@
 			message_index_q<=0;
 			
 			
-			sccb_state_q<=0;
-			addr_q<=0;
-			data_q<=0;
-			brightness_q<=0;
-			contrast_q<=0;
 		end
 		else begin
 			state_q<=state_d;
@@ -164,11 +148,6 @@
 			start_delay_q<=start_delay_d;
 			message_index_q<=message_index_d;
 			
-			sccb_state_q<=sccb_state_d;
-			addr_q<=addr_d;
-			data_q<=data_d;
-			brightness_q<=brightness_d;
-			contrast_q<=contrast_d;
 		end
 	 end
 	 	 
@@ -186,11 +165,6 @@
 		message_index_d=message_index_q;
 		wr_en=0;
 		
-		sccb_state_d=sccb_state_q;
-		addr_d=addr_q;
-		data_d=data_q;
-		brightness_d=brightness_q;
-		contrast_d=contrast_q;
 		
 		//delay logic  
 		if(start_delay_q) delay_d=delay_q+1'b1;
@@ -254,71 +228,6 @@
 		default: state_d=idle;
 		endcase
 		
-		//Logic for increasing/decreasing brightness and contrast via the 4 keybuttons
-		case(sccb_state_q)
-			wait_init: if(state_q==write_address) begin //wait for initial SCCB transmission to finish
-							sccb_state_d=sccb_idle;
-							addr_d=0;
-							data_d=0;
-							brightness_d=8'h00; 
-							contrast_d=8'h40;
-							led_d = 4'b1111;
-						  end
-			sccb_idle: if(state==0) begin //wait for any pushbutton
-								if(key0_tick) begin//increase brightness
-									brightness_d=(brightness_q[7]==1)? brightness_q-1:brightness_q+1;
-									if(brightness_q==8'h80) brightness_d=8'h00;
-									start=1;
-									wr_data=8'h42; //slave address of OV7670 for write
-									addr_d=8'h55; //brightness control address
-									data_d=brightness_d;
-									sccb_state_d=sccb_address;
-									led_d=4'b1110;
-								end
-								if(key1_tick) begin //decrease brightness
-									brightness_d=(brightness_q[7]==1)? brightness_q+1:brightness_q-1;
-									if(brightness_q==8'h00) brightness_d=8'h80;
-									start=1;
-									wr_data=8'h42; 
-									addr_d=8'h55;
-									data_d=brightness_d;
-									sccb_state_d=sccb_address;
-									led_d=4'b1101;
-								end
-								else if(key2_tick) begin //increase contrast
-									contrast_d=contrast_q+8'h01;
-									start=1;
-									wr_data=8'h42; //slave address of OV7670 for write
-									addr_d=8'h56; //contrast control address
-									data_d=contrast_d;
-									sccb_state_d=sccb_address;
-									led_d=4'b1011;
-								end
-								else if(key3_tick) begin //change contrast
-									contrast_d=contrast_q-8'h01;
-									start=1;
-									wr_data=8'h42;
-									addr_d=8'h56;
-									data_d=contrast_d;
-									sccb_state_d=sccb_address;
-									led_d=4'b1010;
-								end
-						  end
-		sccb_address: if(ack==2'b11) begin 
-							wr_data=addr_q; //write address
-							sccb_state_d=sccb_data;
-						end
-		  sccb_data: if(ack==2'b11) begin 
-							wr_data=data_q; //write databyte
-							sccb_state_d=sccb_stop;
-						 end
-		  sccb_stop: if(ack==2'b11) begin //stop
-							stop=1;
-							sccb_state_d=sccb_idle;
-							led_d = 4'b1001;
-						 end
-			 default: sccb_state_d=wait_init;
-		endcase
 		
 	 end
 	 

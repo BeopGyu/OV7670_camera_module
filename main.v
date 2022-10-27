@@ -48,9 +48,8 @@ module Edge_detection_project(
 	reg write_en_a = 0;						// Writing enable flag for port A
 	wire [15:0]outp_a;							// Output data from the port A (8-bits)
 	wire error_write_a;						// Writing error flag for port A
-	
+	wire r_done;
 	reg read_ready = 0;
-	reg [15:0] read_count;
 	//-----------------------------------------------------------------------------------------------------
 	
 	
@@ -63,7 +62,6 @@ module Edge_detection_project(
 	reg	[7:0]	pixel_VGA_G;
 	reg	[7:0]	pixel_VGA_B;
 	
-	reg [15:0] pixel_data_hold[65535:0];
 	//-----------------------------------------------------------------------------------------------------
 	
 	reg [2:0] led_test;
@@ -94,13 +92,13 @@ module Edge_detection_project(
 	
 	wire [3:0] S100, S10, S1;
 	
-	assign S1 = pixel_cam_counterv % 10;
-	assign S10 = (pixel_cam_counterv / 10)%10;
-	assign S100 = pixel_cam_counterv / 100;
-	
-	Seg7 Seg100(.num(S100), .seg(seg_100));
-	Seg7 Seg10(.num(S10), .seg(seg_10));
-	Seg7 Seg1(.num(S1), .seg(seg_1));
+//	assign S1 = pixel_cam_counterv % 10;
+//	assign S10 = (pixel_cam_counterv / 10)%10;
+//	assign S100 = pixel_cam_counterv / 100;
+//	
+//	Seg7 Seg100(.num(S100), .seg(seg_100));
+//	Seg7 Seg10(.num(S10), .seg(seg_10));
+//	Seg7 Seg1(.num(S1), .seg(seg_1));
 	
 	
 	clock_25 n1 (.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
@@ -135,8 +133,10 @@ module Edge_detection_project(
 	.w_clk(clk_25),
 	.r_clk(clk_50),
 	.w_en_a(write_en_a),
+	.r_rd(read_ready),
 	.d_out_a(outp_a),
 	.err_w_a(error_write_a),
+	.r_done(r_done)
 	);
 	
 	
@@ -171,16 +171,17 @@ module Edge_detection_project(
 			if(pixel_cam_counterv < 'd256 && pixel_cam_counterh < 'd256 )
 			begin
 				// Start writing to the buffer port A
-				if(!read_ready)	write_en_a <= 1'b1;									// Set the Enable to write on the buffer
-				write_addr <= pixel_cam_counterh + pixel_cam_counterv << 8;
+				write_en_a <= 1'b1;									// Set the Enable to write on the buffer
+				write_addr <= {pixel_cam_counterv[7:0], pixel_cam_counterh[7:0]};
 			end
 			else write_en_a <= 1'b0;
 			// Increase the Vertical and Horizontal counter by one and check their limits
+			/*
 			if(cam_frame_done) begin
 				pixel_cam_counterh <= 10'd0;
 				pixel_cam_counterv <= 9'd0;
 				end
-			else if(pixel_cam_counterh == 10'd639)begin
+			else */if(pixel_cam_counterh == 10'd639)begin
 				pixel_cam_counterh <= 10'd0;
 				if(pixel_cam_counterv == 9'd479)	pixel_cam_counterv <= 9'd0;
 				else pixel_cam_counterv <= pixel_cam_counterv + 9'd1;
@@ -201,27 +202,21 @@ module Edge_detection_project(
 			end
 		else begin
 			if(cam_frame_done) begin
-				read_ready = 1'b1;
-				read_count <= 16'd0;
+				read_ready <= 1'b1;
+			end
+			if(r_done) begin
+				read_ready <= 1'b0;
 			end
 			
 			// Check if the pixel that is displayed in the available portion of the storage or not
 			if(VGA_vpos < 'd256 && VGA_hpos < 'd256)
 			begin	
-				read_addr = VGA_hpos[7:0] + VGA_vpos[7:0] << 8;
+				read_addr <= {VGA_vpos[7:0], VGA_hpos[7:0]};
 				
-				if(read_ready) begin
-					pixel_data_hold[read_addr] <= outp_a;
-					read_count <= read_count + 16'd1;
-					if(read_count == 16'd65535) begin
-						read_ready <= 1'b0;
-						read_count == 16'd0;
-					end
-				end
 				// Set the value of displayed pixe; if the value is one it will display white
-				pixel_VGA_R <= {pixel_data_hold[read_addr][7:3],3'd0};
-				pixel_VGA_G <= {pixel_data_hold[read_addr][2:0],pixel_data_hold[read_addr][15:13],2'd0};
-				pixel_VGA_B <= {pixel_data_hold[read_addr][12:8],3'd0};
+				pixel_VGA_R <= {outp_a[7:3],3'd0};
+				pixel_VGA_G <= {outp_a[2:0],outp_a[15:13],2'd0};
+				pixel_VGA_B <= {outp_a[12:8],3'd0};
 				
 			end
 			else
