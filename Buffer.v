@@ -9,7 +9,7 @@ module Buffer(
 	input r_clk,					//	Read clock  (50MHz)
 	input w_en_a,					//	Port A write flag enable
 	input r_rd,
-	output reg [15:0] d_out_a,	// Port A data out (8-bits)
+	output reg [15:0] d_out_b,	// Port B data out
 	output reg err_w_a,			// Port A error in writing
 	output reg r_done = 1,
 	
@@ -72,6 +72,7 @@ module Buffer(
 				read: begin
 					if(read_count <= 17'd65535 ) begin
 						data_t <= data_a[read_count[15:0] + 16'd1];
+//						data_t <= data_a[read_count[15:0]];
 						read_count <= read_count + 17'd1;
 						data_b[read_count[15:0]] <= data_t;
 					end
@@ -86,7 +87,7 @@ module Buffer(
 			endcase
 		end
 	
-		d_out_a <= data_b[r_addr];		
+		d_out_b <= data_b[r_addr];		
 	end
 	
 	assign read_start = read_p1 && !read_p2;
