@@ -125,7 +125,8 @@
 	// These are values scalped from https://github.com/jonlwowski012/OV7670_NEXYS4_Verilog/blob/master/ov7670_registers_verilog.v
     message[4]= 16'h12_04; // COM7,     set RGB color output
     message[5]= 16'h11_80; // CLKRC     internal PLL matches input clock
-    message[6]= 16'h0C_00; // COM3,     default settings
+    message[6]= 16'h0C_02; // COM3,     downsampling enable
+//    message[6]= 16'h0C_00; // COM3,     default settings
     message[7]= 16'h3E_00; // COM14,    no scaling, normal pclock
     message[8]= 16'h04_00; // COM1,     disable CCIR656
     message[9]= 16'h40_d0; //COM15,     RGB565, full output range
@@ -145,6 +146,12 @@
     message[23]= 16'h19_03; //VSTART     start high 8 bits
     message[24]= 16'h1A_7B; //VSTOP      stop high 8 bits
     message[25]= 16'h03_0A; //VREF       vsync edge offset
+//	 message[20]= 16'h17_11; //HSTART     start high 8 bits
+//    message[21]= 16'h18_61; //HSTOP      stop high 8 bits //these kill the odd colored line
+//    message[22]= 16'h32_80; //HREF       edge offset
+//    message[23]= 16'h19_03; //VSTART     start high 8 bits
+//    message[24]= 16'h1A_7B; //VSTOP      stop high 8 bits
+//    message[25]= 16'h03_03; //VREF       vsync edge offset
     message[26]= 16'h0F_41; //COM6       reset timings
     message[27]= 16'h1E_00; //MVFP       disable mirror / flip //might have magic value of 03
     message[28]= 16'h33_0B; //CHLF       //magic value from the internet
@@ -158,7 +165,7 @@
     //begin mystery scaling numbers
     message[36]= 16'h70_3a;
     message[37]= 16'h71_35;
-    message[38]= 16'h72_11;
+    message[38]= 16'h72_22;
     message[39]= 16'h73_f0;
     message[40]= 16'ha2_02;
     //gamma curve values

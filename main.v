@@ -75,7 +75,8 @@ module Edge_detection_project(
 	
 	assign ledt[0] = button;
 //	assign ledt[1] = cam_vsync;
-	assign ledt[1] = cam_frame_done;
+//	assign ledt[1] = cam_frame_done;
+	assign ledt[1] = (pixel_cam_counterv < 9'd5)? 1'b1 : 1'b0;
 	assign ledG = pixel_VGA_G[7:2];
 	assign cam_xclk = clk_24;
 	assign VGA_clk = clk_25;
@@ -170,10 +171,16 @@ module Edge_detection_project(
 	
 	// This block is activated at the positive edge of pixel_valid signal which means that pixel from the camera is ready
 	// This block recieve the pixel's color values in RGB565 format and convert it to grayscale then store it in Buffer port A
-	always @(posedge cam_pixel_valid) 
+	always @(posedge cam_pixel_valid or posedge cam_frame_done) 
 	begin
+	
+		if(cam_frame_done) begin
+			pixel_cam_counterh <= 10'd0;
+			pixel_cam_counterv <= 9'd0;
+		end
+		
 		// This is to check the button to stop the real-time at specific frame or to display the static image in the begining
-		if(button == 1)
+		else if(button == 1)
 		begin
 //			data_buffer_in_a <= 16'd0;					
 			data_buffer_in_a <= cam_pixel_data;
@@ -187,12 +194,7 @@ module Edge_detection_project(
 			end
 			else write_en_a <= 1'b0;
 			// Increase the Vertical and Horizontal counter by one and check their limits
-			/*
-			if(cam_frame_done) begin
-				pixel_cam_counterh <= 10'd0;
-				pixel_cam_counterv <= 9'd0;
-				end
-			else */
+			
 			if(pixel_cam_counterh == 10'd639)begin
 				pixel_cam_counterh <= 10'd0;
 				if(pixel_cam_counterv == 9'd479)	pixel_cam_counterv <= 9'd0;

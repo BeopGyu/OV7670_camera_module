@@ -50,7 +50,6 @@ module Buffer(
 	
 	// This block is activated at the positive edge of the reading clock (50MHz)
 	// This block is responsible to read from the port A and read and write from port B
-	// Port B is read and writen at the same clock (50MHz) as it is read by VGA and writen by Sobel operator
 	always @(posedge r_clk)
 	begin
 		read_p1 <= r_rd;
@@ -67,16 +66,14 @@ module Buffer(
 					end
 				end
 				wait_start: begin
-//					if (w_addr < 16'd20) begin
-						r_done <= 1'd0;
-						state <= read;
-//					end
+					r_done <= 1'd0;
+					state <= read;
 				end
 				read: begin
 					if(read_count <= 17'd65535 ) begin
 						data_t <= data_a[read_count[15:0] + 16'd1];
 						read_count <= read_count + 17'd1;
-						data_b[read_count] <= data_t;
+						data_b[read_count[15:0]] <= data_t;
 					end
 					else begin
 						r_done <= 1'd1;
@@ -87,20 +84,6 @@ module Buffer(
 					state <= idle;
 				end
 			endcase
-
-				/*
-			if(read_start) begin
-				read_count <= 17'd0;
-				r_done <= 1'd0;
-			end
-			if(read_count <= 17'd65535) begin
-				read_count <= read_count + 17'd1;
-				data_b[r_addr] <= data_t;
-			end
-			else begin
-				r_done <= 1'd1;
-			end
-			*/
 		end
 	
 		d_out_a <= data_b[r_addr];		
