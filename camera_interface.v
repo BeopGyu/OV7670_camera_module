@@ -125,7 +125,7 @@
 	// These are values scalped from https://github.com/jonlwowski012/OV7670_NEXYS4_Verilog/blob/master/ov7670_registers_verilog.v
     message[4]= 16'h12_04; // COM7,     set RGB color output
     message[5]= 16'h11_80; // CLKRC     internal PLL matches input clock
-    message[6]= 16'h0C_02; // COM3,     downsampling enable
+    message[6]= 16'h0C_00; // COM3,     downsampling enable
 //    message[6]= 16'h0C_00; // COM3,     default settings
     message[7]= 16'h3E_00; // COM14,    no scaling, normal pclock
     message[8]= 16'h04_00; // COM1,     disable CCIR656

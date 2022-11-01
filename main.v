@@ -24,7 +24,7 @@ module Edge_detection_project(
 	
 	//---------------------------VGA---------------------------
 	// Interface for VGA module
-	wire	[9:0]	VGA_hpos, VGA_vpos;				// Current pixel position
+	wire	[11:0]	VGA_hpos, VGA_vpos;				// Current pixel position
 	wire 			VGA_active;					// Active flag to indicate when the screen area is active
 	wire			VGA_pixel_tick;				// Signal coming from the VGA generator when the pixel position is ready to be displayed
 	wire	[7:0]	pixel_VGA_R;			// Current pixel's RGB value
@@ -43,16 +43,32 @@ module Edge_detection_project(
 	assign VGA_sync = VGA_hsync & VGA_vsync;
 	assign VGA_blank = VGA_active;
 	
+	assign VGA_red = VGA_active ? pixel_VGA_R : 8'd0;
+	assign VGA_green = VGA_active ? pixel_VGA_G : 8'd0;
+	assign VGA_blue = VGA_active ? pixel_VGA_B : 8'd0;
+	
 	clock_25 n1 (.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
+	clk_PatGen u0 (.inclk0(clk_50), .c0(clk_148));	// 148.5MHz (for FHD)
+	
+	parameter vstart = 11'd150;
+	parameter vend = vstart + 11'd256;
+	parameter hstart = 11'd150;
+	parameter hend = hstart + 11'd256;
+	
+	wire [9:0] data_vpos, data_hpos;
+	assign data_vpos = (VGA_vpos > vstart && VGA_vpos < vend) ? (VGA_vpos - vstart) : 10'd300;
+	assign data_hpos = (VGA_hpos > hstart && VGA_hpos < hend) ? (VGA_hpos - hstart) : 10'd300;
+//	assign data_vpos = VGA_vpos[11:2];
+//	assign data_hpos = VGA_hpos[11:2];
 	
 	OV7670(
 		.rst_n(rst_n),
 		.write(button),
 		//VGA I/O
 		.VGA_active(VGA_active),
-		.VGA_pixel_tick(VGA_pixel_tick),
-		.data_vpos(VGA_vpos),
-		.data_hpos(VGA_hpos),
+		.VGA_pixel_tick(clk_148),
+		.data_vpos(data_vpos),								// 10bit data position
+		.data_hpos(data_hpos),
 		.pixel_data_R(pixel_VGA_R),
 		.pixel_data_G(pixel_VGA_G),
 		.pixel_data_B(pixel_VGA_B),
@@ -72,21 +88,35 @@ module Edge_detection_project(
 	
 	);
 	
-	VGA v1(							// Instance of VGA module
-		.clk(clk_50),
-		.pixel_r(pixel_VGA_R),
-		.pixel_g(pixel_VGA_G),
-		.pixel_b(pixel_VGA_B),
-		.hsync(VGA_hsync),
-		.vsync(VGA_vsync),
-		.red(VGA_red),
-		.green(VGA_green),
-		.blue(VGA_blue),
-		.active(VGA_active),
-		.ptick(VGA_pixel_tick),
-		.xpos(VGA_hpos),
-		.ypos(VGA_vpos),
+	// FHD(1920x1080) signals
+	CNT_BLANK_SYNC u1 (
+		.clk(clk_148), 
+		.reset(rst_n), 
+		.HCNT(VGA_hpos), 
+		.VCNT(VGA_vpos), 
+		.BLANK(VGA_active), 
+//		.SYNC(SYNC), 
+		.HSYNC(VGA_hsync), 
+		.VSYNC(VGA_vsync)
 	);
+	
+	
+	// VGA(640x480) signals
+//	VGA v1(							// Instance of VGA module
+//		.clk(clk_50),
+//		.pixel_r(pixel_VGA_R),
+//		.pixel_g(pixel_VGA_G),
+//		.pixel_b(pixel_VGA_B),
+//		.hsync(VGA_hsync),
+//		.vsync(VGA_vsync),
+//		.red(VGA_red),
+//		.green(VGA_green),
+//		.blue(VGA_blue),
+//		.active(VGA_active),
+//		.ptick(VGA_pixel_tick),
+//		.xpos(VGA_hpos),
+//		.ypos(VGA_vpos),
+//	);
 	
 	
 endmodule

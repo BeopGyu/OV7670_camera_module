@@ -5,7 +5,7 @@ module OV7670(
 	//VGA I/O
 	input VGA_active, 							// Active flag to indicate when the screen area is active
 	input VGA_pixel_tick,						// Signal coming from the VGA generator when the pixel position is ready to be displayed
-	input [8:0] data_vpos, data_hpos,			// data position to decide read address for buffer port B
+	input [9:0] data_vpos, data_hpos,			// data position to decide read address for buffer port B
 	output reg[7:0] pixel_data_R, pixel_data_G, pixel_data_B,	//VGA colors' channel
 	//Camera I/O
 	input cam_vsync, cam_href,					//Cameera vertical and horizontal synchronization signals
@@ -75,7 +75,7 @@ module OV7670(
 			data_buffer_in_a <= cam_pixel_data;
 
 			// Check if the current pixel in the needed portion of the image or not (256x256)
-			if(pixel_cam_counterv < 'd256 && pixel_cam_counterh < 'd256 )
+			if(pixel_cam_counterv < 9'd256 && pixel_cam_counterh < 10'd256 )
 			begin
 				// Start writing to the buffer port A
 				write_en_a <= 1'b1;									// Set the Enable to write on the buffer
@@ -86,7 +86,7 @@ module OV7670(
 			// Increase the Vertical and Horizontal counter by one and check their limits
 			if(pixel_cam_counterh == 10'd639)begin
 				pixel_cam_counterh <= 10'd0;
-				if(pixel_cam_counterv == 9'd479)	pixel_cam_counterv <= 9'd0;
+				if(pixel_cam_counterv == 9'd480)	pixel_cam_counterv <= 9'd0;
 				else pixel_cam_counterv <= pixel_cam_counterv + 9'd1;
 			end
 			else pixel_cam_counterh <= pixel_cam_counterh + 10'd1;
@@ -112,7 +112,7 @@ module OV7670(
 			end
 			
 			// Check if the pixel that is displayed in the available portion of the storage or not
-			if(data_vpos < 'd256 && data_hpos < 'd256)
+			if(data_vpos < 10'd256 && data_hpos < 10'd256)
 			begin	
 				read_addr <= {data_vpos[7:0], data_hpos[7:0]};
 				
@@ -160,7 +160,7 @@ module OV7670(
 	.r_addr(read_addr),
 	.w_addr(write_addr),
 	.w_clk(clk_50),
-	.r_clk(clk_50),
+	.r_clk(VGA_pixel_tick),
 	.w_en_a(write_en_a),
 	.r_rd(read_ready),
 	.d_out_b(outp_b),

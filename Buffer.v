@@ -23,6 +23,8 @@ module Buffer(
 	
 	reg [16:0] read_count;
 	
+	reg [15:0] w_addr_t;
+	
 	reg [1:0] state;
 	
 	reg read_p1,read_p2;
@@ -41,7 +43,8 @@ module Buffer(
 		if(w_en_a && r_done)
 		begin
 			err_w_a <= 0;
-			data_a[w_addr] <= d_in_a;
+			w_addr_t <= w_addr;
+			data_a[w_addr_t] <= d_in_a;
 		end
 		else
 			err_w_a <= 1;
