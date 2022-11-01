@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE115F29) Path("C:/221026_tmep/output_files/") File("Edge_detection_project.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE115F29) Path("C:/221028/OV7670_camera_module/output_files/") File("Edge_detection_project.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

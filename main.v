@@ -39,7 +39,7 @@ module Edge_detection_project(
 	assign rst = 1'b1;
 	assign pwdn = 1'b0;
 	
-	assign VGA_clk = clk_25;
+	assign VGA_clk = clk_148;
 	assign VGA_sync = VGA_hsync & VGA_vsync;
 	assign VGA_blank = VGA_active;
 	
@@ -47,17 +47,26 @@ module Edge_detection_project(
 	assign VGA_green = VGA_active ? pixel_VGA_G : 8'd0;
 	assign VGA_blue = VGA_active ? pixel_VGA_B : 8'd0;
 	
+	// Test pattern
+//	assign VGA_red = VGA_active ? (VGA_vpos > 11'd600 && VGA_vpos < 11'd900 && VGA_hpos >11'd600 && VGA_hpos < 11'd900)? 8'd200:pixel_VGA_R : 8'd0;
+//	assign VGA_green = VGA_active ? (VGA_vpos > 11'd600 && VGA_vpos < 11'd900 && VGA_hpos >11'd600 && VGA_hpos < 11'd900)? 8'd200:pixel_VGA_G : 8'd0;
+//	assign VGA_blue = VGA_active ? (VGA_vpos > 11'd600 && VGA_vpos < 11'd900 && VGA_hpos >11'd600 && VGA_hpos < 11'd900)? 8'd200:pixel_VGA_B : 8'd0;
+	
 	clock_25 n1 (.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
 	clk_PatGen u0 (.inclk0(clk_50), .c0(clk_148));	// 148.5MHz (for FHD)
 	
-	parameter vstart = 11'd150;
-	parameter vend = vstart + 11'd256;
-	parameter hstart = 11'd150;
-	parameter hend = hstart + 11'd256;
+	parameter vmul = 2;
+	parameter hmul = 2;
+	parameter vstart = 12'd10;
+	parameter vend = vstart + (12'd256 << vmul);
+	parameter hstart = 12'd450;
+	parameter hend = hstart + (12'd256 << hmul);
 	
-	wire [9:0] data_vpos, data_hpos;
-	assign data_vpos = (VGA_vpos > vstart && VGA_vpos < vend) ? (VGA_vpos - vstart) : 10'd300;
-	assign data_hpos = (VGA_hpos > hstart && VGA_hpos < hend) ? (VGA_hpos - hstart) : 10'd300;
+	wire [11:0] data_vpos, data_hpos;
+	assign data_vpos = (VGA_vpos > vstart && VGA_vpos < vend) ? ((VGA_vpos - vstart) >> vmul) : 10'd300;
+	assign data_hpos = (VGA_hpos > hstart && VGA_hpos < hend) ? ((VGA_hpos - hstart) >> hmul) : 10'd300;
+//	assign data_vpos = (VGA_vpos > vstart && VGA_vpos < vend) ? (VGA_vpos - vstart) : 10'd300;
+//	assign data_hpos = (VGA_hpos > hstart && VGA_hpos < hend) ? (VGA_hpos - hstart) : 10'd300;
 //	assign data_vpos = VGA_vpos[11:2];
 //	assign data_hpos = VGA_hpos[11:2];
 	

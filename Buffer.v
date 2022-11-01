@@ -39,12 +39,12 @@ module Buffer(
 	// This block is responsible to write the datat in buffer port A
 	always @(posedge w_clk) 
 	begin
+		w_addr_t <= w_addr;
 		// Check if the writing enable is activated or not to write on port B
 		if(w_en_a && r_done)
 		begin
 			err_w_a <= 0;
-			w_addr_t <= w_addr;
-			data_a[w_addr_t] <= d_in_a;
+			data_a[w_addr] <= d_in_a;
 		end
 		else
 			err_w_a <= 1;

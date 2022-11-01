@@ -5,7 +5,7 @@ module OV7670(
 	//VGA I/O
 	input VGA_active, 							// Active flag to indicate when the screen area is active
 	input VGA_pixel_tick,						// Signal coming from the VGA generator when the pixel position is ready to be displayed
-	input [9:0] data_vpos, data_hpos,			// data position to decide read address for buffer port B
+	input [11:0] data_vpos, data_hpos,			// data position to decide read address for buffer port B
 	output reg[7:0] pixel_data_R, pixel_data_G, pixel_data_B,	//VGA colors' channel
 	//Camera I/O
 	input cam_vsync, cam_href,					//Cameera vertical and horizontal synchronization signals
@@ -54,11 +54,13 @@ module OV7670(
 	
 	wire clk_24;
 	wire clk_25;
+	wire clk_48;
 	
 	assign cam_xclk = clk_24;
 	
 	clock_25 n1 (.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
 	clk24 n2 (.inclk0(clk_50), .c0(clk_24));
+	clk48 n3 (.inclk0(clk_50), .c0(clk_48));
 	
 	// This block recieve the pixel's color values in RGB565 format and store it in Buffer port A
 	always @(posedge cam_pixel_valid or posedge cam_frame_done) 
@@ -86,7 +88,7 @@ module OV7670(
 			// Increase the Vertical and Horizontal counter by one and check their limits
 			if(pixel_cam_counterh == 10'd639)begin
 				pixel_cam_counterh <= 10'd0;
-				if(pixel_cam_counterv == 9'd480)	pixel_cam_counterv <= 9'd0;
+				if(pixel_cam_counterv == 9'd479)	pixel_cam_counterv <= 9'd0;
 				else pixel_cam_counterv <= pixel_cam_counterv + 9'd1;
 			end
 			else pixel_cam_counterh <= pixel_cam_counterh + 10'd1;
@@ -112,7 +114,7 @@ module OV7670(
 			end
 			
 			// Check if the pixel that is displayed in the available portion of the storage or not
-			if(data_vpos < 10'd256 && data_hpos < 10'd256)
+			if(data_vpos < 12'd256 && data_hpos < 12'd256)
 			begin	
 				read_addr <= {data_vpos[7:0], data_hpos[7:0]};
 				

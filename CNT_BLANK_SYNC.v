@@ -2,11 +2,11 @@ module CNT_BLANK_SYNC(clk, reset, HCNT, VCNT,
  BLANK, SYNC, HSYNC, VSYNC);
 
 parameter sync_h = 12'd44; 
-parameter fp_h = 12'd91; 			//화면이 좌상단으로 밀려서 fp 조정
+parameter fp_h = 12'd88; 			//화면이 좌상단으로 밀려서 fp 조정
 parameter active_h = 12'd1920;
 parameter total_h = 12'd2200;
 parameter sync_v = 11'd5; 
-parameter fp_v = 11'd6; 			//화면이 좌상단으로 밀려서 fp 조정
+parameter fp_v = 11'd4; 			//화면이 좌상단으로 밀려서 fp 조정
 parameter active_v = 11'd1080;
 parameter total_v = 11'd1125;
 
