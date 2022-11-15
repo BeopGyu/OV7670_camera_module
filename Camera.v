@@ -21,17 +21,17 @@ module Camera(
 	// This block is handling the signal of vertical and horizontal synchronization signals to recieve the data in the right cycle
 	always@(posedge clock)
 	begin 
+	
 		f_done <= vsync ? 1'b1 : 1'b0;		// Indicate if the frame is done or not yet
+		
 		case(state_flag)
 			0: begin 	// Waiting until the falling edge of the Vsync signal to start recieving the pixel's value 	
 				state_flag <= (!vsync) ? 1'b1 : 1'b0;	// Changing the state depends on the Vertical signal (Negative edge)
 				// Reset the flags of the frame and pixel
-//				f_done <= 0;
 				p_half <= 0;				
 			end
 		
 			1: begin 	// State of recieving the 2 bytes (16-bits) of the value of the pixel
-//				f_done <= vsync ? 1'b1 : 1'b0;		// Indicate if the frame is done or not yet
 				state_flag <= vsync ? 1'b0 : 1'b1;	// Changing the state depends on the Vertical signal (Positive edge)
 				p_valid <= (href && p_half) ? 1'b1 : 1'b0;	// Indicate if the pixel's value is all recieved or not yet
 				// Recieving the pixel's color values

@@ -11,7 +11,7 @@ module OV7670(
 	input cam_vsync, cam_href,					//Cameera vertical and horizontal synchronization signals
 	input [7:0] cam_data_wires,				//Camera data wires (d0-d7)
 	input cam_pclk,								//Camera's clock that generated from the camera to indicate that pixel is ready to be sent
-	output cam_xclk,								//Clock 25 MHz generated from PLL to be connected to Camera system clock pin
+	output cam_xclk,								//Clock 24 MHz generated from PLL to be connected to Camera system clock pin
 	output cmos_scl,								//Clock for SCCB interface
 	inout cmos_sda,								//Data for SCCB interface
 	
@@ -26,7 +26,7 @@ module OV7670(
 	//Interface for Camera module
 	wire cam_pixel_valid;						//Pixel valid flag to indicate that the camra sent a pixel
 	wire [15:0] cam_pixel_data;				//Pixel data lines' values
-	wire cam_frame_done;						//frame done flage to indicate that the whole frame has finished
+	wire cam_frame_done;						//frame done flag to indicate that the whole frame has finished
 	//--------------------------
 	reg[8:0] pixel_cam_counterv;		//y-position of the recieved pixel  
 	reg[9:0] pixel_cam_counterh;		//x-position of the recieved pixel
@@ -53,12 +53,10 @@ module OV7670(
 	assign led_d[5:2] = led_sccb;
 	
 	wire clk_24;
-	wire clk_25;
 	wire clk_48;
 	
 	assign cam_xclk = clk_24;
 	
-	clock_25 n1 (.inclk0(clk_50), .c0(clk_25));		// Instance of pll module
 	clk24 n2 (.inclk0(clk_50), .c0(clk_24));
 	clk48 n3 (.inclk0(clk_50), .c0(clk_48));
 	
@@ -146,7 +144,7 @@ module OV7670(
    );
 	
 	camera_interface i1( 		// Instance of Camera register setting module
-	.clk(clk_25),
+	.clk(clk_24),
 	.rst_n(rst_n),
 	//camera pinouts
 	.cmos_sda(cmos_sda),

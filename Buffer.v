@@ -1,12 +1,12 @@
 //This implementation of Dual port RAM
 //Which has the ability to write and read simultanuosly in different clocks
-//This Buffer has two inside ports Buffer A(150x150x8) and B(150x150x1)
+//This Buffer has two inside ports Buffer(256x256x16) A(for write) and B(for read)
 module Buffer(
 	input [15:0]d_in_a,			// Port A input data
 	input [15:0] r_addr,		// Port A address for reading
 	input [15:0] w_addr,		//	Port A address for writing
-	input w_clk,					//	Write clock (25MHz)
-	input r_clk,					//	Read clock  (50MHz)
+	input w_clk,					//	Write clock (50MHz)
+	input r_clk,					//	Read clock  (148.5MHz)
 	input w_en_a,					//	Port A write flag enable
 	input r_rd,
 	output reg [15:0] d_out_b,	// Port B data out
@@ -35,7 +35,7 @@ module Buffer(
 					wait_start=1,
 					read=2;
 	
-	// This block is activated at the positive edge of the writing clock (25MHz)
+	// This block is activated at the positive edge of the writing clock (50MHz)
 	// This block is responsible to write the datat in buffer port A
 	always @(posedge w_clk) 
 	begin
@@ -51,7 +51,7 @@ module Buffer(
 				
 	end
 	
-	// This block is activated at the positive edge of the reading clock (50MHz)
+	// This block is activated at the positive edge of the reading clock (148.5MHz)
 	// This block is responsible to read from the port A and read and write from port B
 	always @(posedge r_clk)
 	begin

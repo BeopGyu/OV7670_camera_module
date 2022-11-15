@@ -8,7 +8,7 @@ module Edge_detection_project(
 	output VGA_clk, VGA_sync, VGA_blank,
 	//Camera I/O
 	input cam_clock,								//(pixel clk pin) Camera's clock that generated from the camera to indicate that pixel is ready to be sent
-	input cam_vsync, cam_href,					//Cameera vertical and horizontal synchronization signals
+	input cam_vsync, cam_href,					//Camera vertical and horizontal synchronization signals
 	input [7:0] cam_data_wires,				//Camera data wires (d0-d7)
 	output cmos_scl,
 	inout cmos_sda,
@@ -65,10 +65,6 @@ module Edge_detection_project(
 	wire [11:0] data_vpos, data_hpos;
 	assign data_vpos = (VGA_vpos > vstart && VGA_vpos < vend) ? ((VGA_vpos - vstart) >> vmul) : 10'd300;
 	assign data_hpos = (VGA_hpos > hstart && VGA_hpos < hend) ? ((VGA_hpos - hstart) >> hmul) : 10'd300;
-//	assign data_vpos = (VGA_vpos > vstart && VGA_vpos < vend) ? (VGA_vpos - vstart) : 10'd300;
-//	assign data_hpos = (VGA_hpos > hstart && VGA_hpos < hend) ? (VGA_hpos - hstart) : 10'd300;
-//	assign data_vpos = VGA_vpos[11:2];
-//	assign data_hpos = VGA_hpos[11:2];
 	
 	OV7670(
 		.rst_n(rst_n),
